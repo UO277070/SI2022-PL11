@@ -2,6 +2,9 @@ package giis.demo.util;
 
 import java.awt.EventQueue;
 import javax.swing.JFrame;
+
+import ReservarInstalacionComoSocio.ReservaSocio_Controler;
+
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -48,21 +51,39 @@ public class SwingMain {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setTitle("Main");
-		frame.setBounds(0, 0, 287, 185);
+		frame.setBounds(0, 0, 533, 343);
 		frame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 		
 		JButton btnEjecutarTkrun = new JButton("Ejecutar giis.demo.tkrun");
+		btnEjecutarTkrun.setBounds(10, 11, 149, 23);
 		btnEjecutarTkrun.addActionListener(new ActionListener() { //NOSONAR codigo autogenerado
 			public void actionPerformed(ActionEvent e) {
 				CarrerasController controller=new CarrerasController(new CarrerasModel(), new CarrerasView());
 				controller.initController();
 			}
 		});
-		frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
+		frame.getContentPane().setLayout(null);
 		frame.getContentPane().add(btnEjecutarTkrun);
+		
+		
+		//_______________________________________________________________________________________________________________________________________________________________________________
+		
+		JButton btnEjecutarResSoc = new JButton("ReservaSocio");
+		btnEjecutarResSoc.setBounds(10, 11, 149, 23);
+		btnEjecutarResSoc.addActionListener(new ActionListener() { //NOSONAR codigo autogenerado
+			public void actionPerformed(ActionEvent e) {
+				ReservaSocio_Controler controler = new ReservaSocio_Controler();
+				controler.init();
+			}
+		});
+
+		frame.getContentPane().add(btnEjecutarResSoc);
+		
+//_______________________________________________________________________________________________________________________________________________________________________________
 		
 			
 		JButton btnInicializarBaseDeDatos = new JButton("Inicializar Base de Datos en Blanco");
+		btnInicializarBaseDeDatos.setBounds(302, 54, 197, 23);
 		btnInicializarBaseDeDatos.addActionListener(new ActionListener() { //NOSONAR codigo autogenerado
 			public void actionPerformed(ActionEvent e) {
 				Database db=new Database();
@@ -72,6 +93,7 @@ public class SwingMain {
 		frame.getContentPane().add(btnInicializarBaseDeDatos);
 			
 		JButton btnCargarDatosIniciales = new JButton("Cargar Datos Iniciales para Pruebas");
+		btnCargarDatosIniciales.setBounds(302, 100, 205, 23);
 		btnCargarDatosIniciales.addActionListener(new ActionListener() { //NOSONAR codigo autogenerado
 			public void actionPerformed(ActionEvent e) {
 				Database db=new Database();

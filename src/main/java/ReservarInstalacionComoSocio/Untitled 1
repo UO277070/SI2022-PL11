@@ -1,0 +1,12 @@
+Requisitos para la reserva:
+
+-Reservar con x antelacion		ESTO NO SE PLANTEA
+-No reservar con mas de x antelacion
+
+-Resrvar maximo de x horas por reserva
+-Reservar maximo de x horas por dia		(necesitas info de la base de datos)
+-Reservar max de x horas por periodo	(necesitas info de la base de datos)
+
+-Reservar antes de que inicie el horario de reserva (abran el local)
+-Reservar despues de que acabe el horario de reserva (cierren el local)
+
