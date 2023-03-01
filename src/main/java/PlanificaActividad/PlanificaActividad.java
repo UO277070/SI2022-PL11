@@ -20,7 +20,7 @@ import java.awt.Color;
 import javax.swing.border.BevelBorder;
 import javax.swing.JButton;
 
-public class PLanificaActividad {
+public class PlanificaActividad {
 
 	private JFrame frmPlanificarActividad;
 	private JTextField textFieldSocios;
@@ -34,7 +34,7 @@ public class PLanificaActividad {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					PLanificaActividad window = new PLanificaActividad();
+					PlanificaActividad window = new PlanificaActividad();
 					window.frmPlanificarActividad.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -46,7 +46,7 @@ public class PLanificaActividad {
 	/**
 	 * Create the application.
 	 */
-	public PLanificaActividad() {
+	public PlanificaActividad() {
 		initialize();
 	}
 
@@ -75,7 +75,7 @@ public class PLanificaActividad {
 		frmPlanificarActividad.getContentPane().add(LabelActvividad);
 		
 		JComboBox comboBoxActividad = new JComboBox();
-		comboBoxActividad.setBounds(10, 103, 162, 22);
+		comboBoxActividad.setBounds(10, 100, 162, 22);
 		frmPlanificarActividad.getContentPane().add(comboBoxActividad);
 		
 		JLabel LabelAforo = new JLabel("Aforo:");
