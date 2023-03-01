@@ -93,136 +93,137 @@
 	</dependencies>
 
 	<build>
-		<plugins>
-			<!-- Ejecucion pruebas UT (surefire) -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.22.2</version>
-				<configuration>
-					<testFailureIgnore>true</testFailureIgnore>
-					<!-- Sets the VM argument line used when unit tests are run under JaCoCo -->
-					<argLine>${surefireArgLine}</argLine>
-					<redirectTestOutputToFile>true</redirectTestOutputToFile>
-					<!--para evitar fallos con openjdk en linux-->
-                	<useSystemClassLoader>false</useSystemClassLoader>
-				</configuration>
-			</plugin>
-
-			<!-- jacoco plugin for code coverage, 
-			     Ver: https://www.petrikainulainen.net/programming/maven/creating-code-coverage-reports-for-unit-and-integration-tests-with-the-jacoco-maven-plugin/ -->
-			<plugin>
-				<groupId>org.jacoco</groupId>
-				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.8.8</version>
-				<configuration>
-					<excludes>
-						<exclude>**/TableColumnAdjuster.*</exclude>
-					</excludes>
-				</configuration>
-				<executions>
-					<execution>
-						<id>pre-unit-test</id>
-						<goals>
-							<goal>prepare-agent</goal>
-						</goals>
-						<configuration>
-							<destFile>${project.build.directory}/coverage-reports/jacoco-ut.exec</destFile>
-							<propertyName>surefireArgLine</propertyName>
-						</configuration>
-					</execution>
-					<execution>
-						<id>post-unit-test</id>
-						<phase>test</phase>
-						<goals>
-							<goal>report</goal>
-						</goals>
-						<configuration>
-							<dataFile>${project.build.directory}/coverage-reports/jacoco-ut.exec</dataFile>
-							<outputDirectory>${project.reporting.outputDirectory}/jacoco-ut</outputDirectory>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-
-			<!-- reports test estandar de maven -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-report-plugin</artifactId>
-				<version>2.22.2</version>
-				<executions>
-					<execution>
-						<id>ut-reports</id>
-						<phase>test</phase>
-						<goals>
-							<goal>report-only</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-
-			<!-- Reports de test en formato html estilo junit, generados con ant -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<version>3.1.0</version>
-				<executions>
-					<execution>
-						<id>junit-reports-ut</id>
-						<phase>test</phase>
-						<configuration>
-							<target unless="skipTests">
-								<junitreport todir="target/surefire-reports">
-									<fileset dir="target/surefire-reports">
-										<include name="**/*.xml" />
-									</fileset>
-									<report format="frames" todir="target/site/junit-frames" />
-									<report format="noframes" todir="target/site/junit-noframes" />
-								</junitreport>
-							</target>
-						</configuration>
-						<goals>
-							<goal>run</goal>
-						</goals>
-					</execution>
-				</executions>
-				<dependencies>
-					<dependency>
-						<groupId>org.apache.ant</groupId>
-						<artifactId>ant-junit</artifactId>
-						<version>1.10.13</version>
-					</dependency>
-					<dependency>
-						<groupId>org.apache.ant</groupId>
-						<artifactId>ant-trax</artifactId>
-						<version>1.8.0</version>
-					</dependency>
-				</dependencies>
-			</plugin>
-			
-			<!-- Generacion de documentacion javadoc (en fase install) -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>3.4.1</version>
-				<configuration>
-					<overview>${basedir}/src/main/java/overview.html</overview>
-					<sourcepath>${basedir}/src/main/java;${basedir}/src/test/java;${basedir}/src/it/java</sourcepath>
-					<outputDirectory>${project.reporting.outputDirectory}/apidocs</outputDirectory>
-					<quiet>true</quiet>
-					<doclint>none</doclint>
-				</configuration>
-				<executions>
-					<execution>
-						<id>attach-javadocs</id>
-						<phase>install</phase>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			
-		</plugins>
+		<pluginManagement>
+			<plugins>
+				<!-- Ejecucion pruebas UT (surefire) -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>2.22.2</version>
+					<configuration>
+						<testFailureIgnore>true</testFailureIgnore>
+						<!-- Sets the VM argument line used when unit tests are run under JaCoCo -->
+						<argLine>${surefireArgLine}</argLine>
+						<redirectTestOutputToFile>true</redirectTestOutputToFile>
+						<!--para evitar fallos con openjdk en linux-->
+	                	<useSystemClassLoader>false</useSystemClassLoader>
+					</configuration>
+				</plugin>
+	
+				<!-- jacoco plugin for code coverage, 
+				     Ver: https://www.petrikainulainen.net/programming/maven/creating-code-coverage-reports-for-unit-and-integration-tests-with-the-jacoco-maven-plugin/ -->
+				<plugin>
+					<groupId>org.jacoco</groupId>
+					<artifactId>jacoco-maven-plugin</artifactId>
+					<version>0.8.8</version>
+					<configuration>
+						<excludes>
+							<exclude>**/TableColumnAdjuster.*</exclude>
+						</excludes>
+					</configuration>
+					<executions>
+						<execution>
+							<id>pre-unit-test</id>
+							<goals>
+								<goal>prepare-agent</goal>
+							</goals>
+							<configuration>
+								<destFile>${project.build.directory}/coverage-reports/jacoco-ut.exec</destFile>
+								<propertyName>surefireArgLine</propertyName>
+							</configuration>
+						</execution>
+						<execution>
+							<id>post-unit-test</id>
+							<phase>test</phase>
+							<goals>
+								<goal>report</goal>
+							</goals>
+							<configuration>
+								<dataFile>${project.build.directory}/coverage-reports/jacoco-ut.exec</dataFile>
+								<outputDirectory>${project.reporting.outputDirectory}/jacoco-ut</outputDirectory>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+	
+				<!-- reports test estandar de maven -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-report-plugin</artifactId>
+					<version>2.22.2</version>
+					<executions>
+						<execution>
+							<id>ut-reports</id>
+							<phase>test</phase>
+							<goals>
+								<goal>report-only</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+	
+				<!-- Reports de test en formato html estilo junit, generados con ant -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>3.1.0</version>
+					<executions>
+						<execution>
+							<id>junit-reports-ut</id>
+							<phase>test</phase>
+							<configuration>
+								<target unless="skipTests">
+									<junitreport todir="target/surefire-reports">
+										<fileset dir="target/surefire-reports">
+											<include name="**/*.xml" />
+										</fileset>
+										<report format="frames" todir="target/site/junit-frames" />
+										<report format="noframes" todir="target/site/junit-noframes" />
+									</junitreport>
+								</target>
+							</configuration>
+							<goals>
+								<goal>run</goal>
+							</goals>
+						</execution>
+					</executions>
+					<dependencies>
+						<dependency>
+							<groupId>org.apache.ant</groupId>
+							<artifactId>ant-junit</artifactId>
+							<version>1.10.13</version>
+						</dependency>
+						<dependency>
+							<groupId>org.apache.ant</groupId>
+							<artifactId>ant-trax</artifactId>
+							<version>1.8.0</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+				
+				<!-- Generacion de documentacion javadoc (en fase install) -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>3.4.1</version>
+					<configuration>
+						<overview>${basedir}/src/main/java/overview.html</overview>
+						<sourcepath>${basedir}/src/main/java;${basedir}/src/test/java;${basedir}/src/it/java</sourcepath>
+						<outputDirectory>${project.reporting.outputDirectory}/apidocs</outputDirectory>
+						<quiet>true</quiet>
+						<doclint>none</doclint>
+					</configuration>
+					<executions>
+						<execution>
+							<id>attach-javadocs</id>
+							<phase>install</phase>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
 </project>
