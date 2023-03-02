@@ -7,6 +7,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import giis.demo.tkrun.*;
+import reservaInstalacionSocio.*;
+
 
 /**
  * Punto de entrada principal que incluye botones para la ejecucion de las pantallas 
@@ -54,7 +56,7 @@ public class SwingMain {
 		JButton btnEjecutarTkrun = new JButton("Ejecutar giis.demo.tkrun");
 		btnEjecutarTkrun.addActionListener(new ActionListener() { //NOSONAR codigo autogenerado
 			public void actionPerformed(ActionEvent e) {
-				CarrerasController controller=new CarrerasController(new CarrerasModel(), new CarrerasView());
+				ReservaController controller=new ReservaController(new ReservaModel(), new ReservaInstalacionSocio());
 				controller.initController();
 			}
 		});

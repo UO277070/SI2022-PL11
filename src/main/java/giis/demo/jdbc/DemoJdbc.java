@@ -19,7 +19,7 @@ import giis.demo.util.UnexpectedException;
 public class DemoJdbc {
 	//informacion de conexion a la base de datos utilizada
 	public static final String DRIVER="org.sqlite.JDBC";
-	public static final String URL="jdbc:sqlite:DemoDB.db";
+	public static final String URL="jdbc:sqlite:DemosqDB.db";
 	//datos para SQLServer:
 	//com.microsoft.sqlserver.jdbc.SQLServerDriver
 	//jdbc:sqlserver://localhost:1433;DatabaseName=******;user=******;password=******
