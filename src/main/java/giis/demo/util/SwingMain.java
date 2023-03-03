@@ -2,6 +2,9 @@ package giis.demo.util;
 
 import java.awt.EventQueue;
 import javax.swing.JFrame;
+
+import consultarReservas.*;
+
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -56,7 +59,7 @@ public class SwingMain {
 		JButton btnEjecutarTkrun = new JButton("Ejecutar giis.demo.tkrun");
 		btnEjecutarTkrun.addActionListener(new ActionListener() { //NOSONAR codigo autogenerado
 			public void actionPerformed(ActionEvent e) {
-				ReservaController controller=new ReservaController(new ReservaModel(), new ReservaInstalacionSocio());
+				ConsultasController controller=new ConsultasController(new ConsultasModel(), new ConsultasView());
 				controller.initController();
 			}
 		});

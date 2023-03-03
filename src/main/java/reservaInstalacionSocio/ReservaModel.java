@@ -17,18 +17,18 @@ public class ReservaModel {
 	private Database db=new Database();
 
 
-public List<Object[]> getInstalaciones() {
-	String sql=
-			"select nombre from Instalacion";
-	return db.executeQueryArray(sql);
-}
+	public List<Object[]> getInstalaciones() {
+		String sql=
+				"select nombre from Instalacion";
+		return db.executeQueryArray(sql);
+	}
 
-public double getPrecio(String nombreInst) {
-	String sql=
-			"select preciohora from Instalacion where nombre=?";
-	List<Object[]>rows=db.executeQueryArray(sql,nombreInst);
-	return (int)rows.get(0)[0];
-}
+	public double getPrecio(String nombreInst) {
+		String sql=
+				"select preciohora from Instalacion where nombre=?";
+		List<Object[]>rows=db.executeQueryArray(sql,nombreInst);
+		return (int)rows.get(0)[0];
+	}
 
 
 /*

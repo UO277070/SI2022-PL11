@@ -145,17 +145,17 @@ insert into Reserva (idReserva, idSocio, idInstalacion , fecha, horaIni, horafin
 
 (1,1,2,'2023-04-01', 10, 18, 'ocupado','Pepe', NULL ), 
 
-(2,1,1,'2023-03-01', 15, 16,'ocupado', 'Ramon', NULL), 
+(2,1,1,'2023-03-03', 15, 16,'ocupado', 'Ramon', NULL), 
 
-(3,1,2,'2023-03-01', 08, 09,'ocupado', 'Juan', NULL), 
+(3,1,1,'2023-03-03', 8, 9,'ocupado', 'Juan', NULL), 
 
-(4,1,2,'2023-03-01', 10, 14, 'ocupado','Pedro', NULL), 
+(4,1,1,'2023-03-03', 10, 14, 'ocupado','Pedro', NULL), 
 
-(5,1,2,'2023-03-01', 10, 14,'ocupado', 'Pedro', NULL), 
+(5,1,2,'2023-03-03', 10, 14,'ocupado', 'Pedro', NULL), 
 
-(13,1,1,'2022-03-09', 9, 12,'ocupado', 'Actividad1', 1 ), 
+(13,1,1,'2023-04-01', 9, 12,'ocupado', 'Actividad1', 1 ), 
 
-(6,1,1,'2022-03-09', 08, 09,'ocupado', 'Ramon', NULL ), 
+(6,1,1,'2023-04-01', 8, 9,'ocupado', 'Ramon', NULL ), 
 
   
 

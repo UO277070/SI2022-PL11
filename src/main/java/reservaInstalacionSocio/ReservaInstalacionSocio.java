@@ -14,11 +14,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ButtonGroup;
-import giis.demo.jdbc.DemoJdbc;
 import java.awt.Font;
-import javax.swing.SwingConstants;
-import javax.swing.event.ChangeListener;
-import javax.swing.event.ChangeEvent;
 import javax.swing.SpinnerNumberModel;
 
 public class ReservaInstalacionSocio extends JFrame {
@@ -99,7 +95,6 @@ public class ReservaInstalacionSocio extends JFrame {
 		
 		cBInstalacion = new JComboBox();
 		cBInstalacion.setBounds(78, 11, 144, 22);
-		this.cBInstalacion.setModel(new javax.swing.DefaultComboBoxModel());
 		contentPane.add(cBInstalacion);
 		
 		JLabel lblNewLabel_6 = new JLabel("Coste total:");
