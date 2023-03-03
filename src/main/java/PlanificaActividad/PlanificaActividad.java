@@ -26,6 +26,7 @@ public class PlanificaActividad {
 	private JTextField textFieldSocios;
 	private JTextField textFieldNoSocios;
 	private JTable tableHorario;
+	private JTextField textFieldNombre;
 
 	/**
 	 * Launch the application.
@@ -62,76 +63,58 @@ public class PlanificaActividad {
 		
 		JLabel LabelInstalacion = new JLabel("Instalación:");
 		LabelInstalacion.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		LabelInstalacion.setBounds(10, 24, 74, 14);
+		LabelInstalacion.setBounds(412, 11, 74, 14);
 		frmPlanificarActividad.getContentPane().add(LabelInstalacion);
 		
 		JComboBox comboBoxInstalacion = new JComboBox();
-		comboBoxInstalacion.setBounds(10, 45, 162, 22);
+		comboBoxInstalacion.setBounds(412, 36, 162, 22);
 		frmPlanificarActividad.getContentPane().add(comboBoxInstalacion);
 		
 		JLabel LabelActvividad = new JLabel("Tipo de Actividad:");
 		LabelActvividad.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		LabelActvividad.setBounds(10, 78, 132, 22);
+		LabelActvividad.setBounds(228, 7, 132, 22);
 		frmPlanificarActividad.getContentPane().add(LabelActvividad);
 		
 		JComboBox comboBoxActividad = new JComboBox();
-		comboBoxActividad.setBounds(10, 100, 162, 22);
+		comboBoxActividad.setBounds(228, 36, 162, 22);
 		frmPlanificarActividad.getContentPane().add(comboBoxActividad);
 		
 		JLabel LabelAforo = new JLabel("Aforo:");
 		LabelAforo.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		LabelAforo.setBounds(252, 24, 59, 14);
+		LabelAforo.setBounds(10, 67, 59, 14);
 		frmPlanificarActividad.getContentPane().add(LabelAforo);
 		
 		JSpinner spinnerAforo = new JSpinner();
-		spinnerAforo.setBounds(252, 46, 59, 20);
+		spinnerAforo.setBounds(10, 92, 59, 20);
 		frmPlanificarActividad.getContentPane().add(spinnerAforo);
 		
 		JLabel LabelSocios = new JLabel("Cuota Socios:\r\n");
 		LabelSocios.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		LabelSocios.setBounds(340, 24, 89, 14);
+		LabelSocios.setBounds(110, 67, 89, 14);
 		frmPlanificarActividad.getContentPane().add(LabelSocios);
 		
 		JLabel LabelNoSocios = new JLabel("Cuota No Socios:\r\n");
 		LabelNoSocios.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		LabelNoSocios.setBounds(453, 24, 114, 14);
+		LabelNoSocios.setBounds(228, 69, 114, 14);
 		frmPlanificarActividad.getContentPane().add(LabelNoSocios);
 		
 		textFieldSocios = new JTextField();
-		textFieldSocios.setBounds(340, 46, 48, 20);
+		textFieldSocios.setBounds(110, 92, 74, 20);
 		frmPlanificarActividad.getContentPane().add(textFieldSocios);
 		textFieldSocios.setColumns(10);
 		
 		textFieldNoSocios = new JTextField();
 		textFieldNoSocios.setColumns(10);
-		textFieldNoSocios.setBounds(453, 46, 48, 20);
+		textFieldNoSocios.setBounds(228, 92, 74, 20);
 		frmPlanificarActividad.getContentPane().add(textFieldNoSocios);
 		
 		JLabel LabelInscripcion = new JLabel("Periodo de Inscripción:");
 		LabelInscripcion.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		LabelInscripcion.setBounds(440, 163, 154, 14);
+		LabelInscripcion.setBounds(412, 67, 154, 14);
 		frmPlanificarActividad.getContentPane().add(LabelInscripcion);
 		
-		JLabel lblNewLabel = new JLabel("Fecha de Inicio:");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblNewLabel.setBounds(412, 188, 89, 14);
-		frmPlanificarActividad.getContentPane().add(lblNewLabel);
-		
-		JLabel lblFechaDeFinal = new JLabel("Fecha de Fin:");
-		lblFechaDeFinal.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblFechaDeFinal.setBounds(412, 242, 74, 14);
-		frmPlanificarActividad.getContentPane().add(lblFechaDeFinal);
-		
-		JDateChooser dateChooserInicio = new JDateChooser();
-		dateChooserInicio.setBounds(412, 213, 132, 20);
-		frmPlanificarActividad.getContentPane().add(dateChooserInicio);
-		
-		JDateChooser dateChooserFin = new JDateChooser();
-		dateChooserFin.setBounds(412, 267, 132, 20);
-		frmPlanificarActividad.getContentPane().add(dateChooserFin);
-		
 		JSeparator separator = new JSeparator();
-		separator.setBounds(400, 136, 194, 2);
+		separator.setBounds(10, 136, 584, 2);
 		frmPlanificarActividad.getContentPane().add(separator);
 		
 		tableHorario = new JTable();
@@ -170,5 +153,19 @@ public class PlanificaActividad {
 		JButton ButtonCrear = new JButton("Crear");
 		ButtonCrear.setBounds(535, 323, 59, 23);
 		frmPlanificarActividad.getContentPane().add(ButtonCrear);
+		
+		JLabel LabelNombre = new JLabel("Nombre");
+		LabelNombre.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		LabelNombre.setBounds(10, 11, 59, 14);
+		frmPlanificarActividad.getContentPane().add(LabelNombre);
+		
+		textFieldNombre = new JTextField();
+		textFieldNombre.setBounds(10, 36, 162, 20);
+		frmPlanificarActividad.getContentPane().add(textFieldNombre);
+		textFieldNombre.setColumns(10);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(412, 91, 167, 22);
+		frmPlanificarActividad.getContentPane().add(comboBox);
 	}
 }
