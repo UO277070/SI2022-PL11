@@ -133,7 +133,7 @@ public class ReservaInstalacionSocio extends JFrame {
 		contentPane.add(lblCosteTotal);
 	}
 	
-	public JComboBox<Object> getListaInstalaciones() {
+	public JComboBox getListaInstalaciones() {
 		return this.cBInstalacion;
 	}
 	public ReservaInstalacionSocio getFrame() {
