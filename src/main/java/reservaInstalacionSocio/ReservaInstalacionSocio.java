@@ -16,6 +16,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.ButtonGroup;
 import java.awt.Font;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.DefaultComboBoxModel;
 
 public class ReservaInstalacionSocio extends JFrame {
 
@@ -25,6 +26,8 @@ public class ReservaInstalacionSocio extends JFrame {
 	private JComboBox cBInstalacion;
 	private JLabel lblCosteTotal;
 	private JSpinner spHoras;
+	private JComboBox cBListaFechas;
+	private JComboBox cBListaHoras;
 
 	/**
 	 * Launch the application.
@@ -51,7 +54,7 @@ public class ReservaInstalacionSocio extends JFrame {
 	private void initComponents() {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 509, 342);
+		setBounds(100, 100, 509, 380);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		
@@ -60,28 +63,28 @@ public class ReservaInstalacionSocio extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("Datos");
 		lblNewLabel.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblNewLabel.setBounds(10, 40, 48, 14);
+		lblNewLabel.setBounds(10, 57, 48, 14);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Socio:");
-		lblNewLabel_1.setBounds(20, 65, 38, 14);
+		lblNewLabel_1.setBounds(20, 83, 38, 14);
 		contentPane.add(lblNewLabel_1);
 		
 		tFSocio = new JTextField();
-		tFSocio.setBounds(61, 62, 144, 20);
+		tFSocio.setBounds(61, 80, 144, 20);
 		contentPane.add(tFSocio);
 		tFSocio.setColumns(10);
 		
 		JLabel lblNewLabel_2 = new JLabel("Fecha de reserva:");
-		lblNewLabel_2.setBounds(20, 90, 113, 14);
+		lblNewLabel_2.setBounds(20, 112, 113, 14);
 		contentPane.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("Hora:");
-		lblNewLabel_3.setBounds(20, 115, 48, 14);
+		lblNewLabel_3.setBounds(20, 143, 48, 14);
 		contentPane.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("Nº de horas:");
-		lblNewLabel_4.setBounds(20, 140, 74, 14);
+		lblNewLabel_4.setBounds(20, 179, 74, 14);
 		contentPane.add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_5 = new JLabel("Instalación:");
@@ -89,8 +92,8 @@ public class ReservaInstalacionSocio extends JFrame {
 		contentPane.add(lblNewLabel_5);
 		
 		spHoras = new JSpinner();
-		spHoras.setModel(new SpinnerNumberModel(0, 0, 2, 1));
-		spHoras.setBounds(91, 137, 30, 20);
+		spHoras.setModel(new SpinnerNumberModel(1, 1, 2, 1));
+		spHoras.setBounds(101, 176, 30, 20);
 		contentPane.add(spHoras);
 		
 		cBInstalacion = new JComboBox();
@@ -98,21 +101,21 @@ public class ReservaInstalacionSocio extends JFrame {
 		contentPane.add(cBInstalacion);
 		
 		JLabel lblNewLabel_6 = new JLabel("Coste total:");
-		lblNewLabel_6.setBounds(10, 189, 84, 14);
+		lblNewLabel_6.setBounds(17, 226, 84, 14);
 		contentPane.add(lblNewLabel_6);
 		
 		JLabel lblNewLabel_7 = new JLabel("Forma de pago");
-		lblNewLabel_7.setBounds(214, 189, 106, 14);
+		lblNewLabel_7.setBounds(221, 226, 106, 14);
 		contentPane.add(lblNewLabel_7);
 		
 		JRadioButton rdbtnPagoInstalacion = new JRadioButton("Pago en instalación");
 		bGPago.add(rdbtnPagoInstalacion);
-		rdbtnPagoInstalacion.setBounds(227, 212, 144, 23);
+		rdbtnPagoInstalacion.setBounds(234, 249, 144, 23);
 		contentPane.add(rdbtnPagoInstalacion);
 		
 		JRadioButton rdbtnCuotaMensual = new JRadioButton("Cantidad añadida a su cuota mensual");
 		bGPago.add(rdbtnCuotaMensual);
-		rdbtnCuotaMensual.setBounds(227, 240, 267, 23);
+		rdbtnCuotaMensual.setBounds(234, 277, 267, 23);
 		contentPane.add(rdbtnCuotaMensual);
 		
 		JButton btnReservar = new JButton("Reservar");
@@ -121,19 +124,28 @@ public class ReservaInstalacionSocio extends JFrame {
 				
 			}
 		});
-		btnReservar.setBounds(5, 273, 89, 23);
+		btnReservar.setBounds(12, 310, 89, 23);
 		contentPane.add(btnReservar);
 		
 		JButton btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBounds(400, 273, 89, 23);
+		btnCancelar.setBounds(407, 310, 89, 23);
 		contentPane.add(btnCancelar);
 		
 		lblCosteTotal = new JLabel("");
-		lblCosteTotal.setBounds(77, 188, 56, 16);
+		lblCosteTotal.setBounds(89, 224, 56, 16);
 		contentPane.add(lblCosteTotal);
+		
+		cBListaHoras = new JComboBox();
+		cBListaHoras.setModel(new DefaultComboBoxModel(new String[] {"ho", "la"}));
+		cBListaHoras.setBounds(62, 138, 143, 25);
+		contentPane.add(cBListaHoras);
+		
+		cBListaFechas = new JComboBox();
+		cBListaFechas.setBounds(132, 107, 126, 25);
+		contentPane.add(cBListaFechas);
 	}
 	
-	public JComboBox getListaInstalaciones() {
+	public JComboBox getcBInstalaciones() {
 		return this.cBInstalacion;
 	}
 	public ReservaInstalacionSocio getFrame() {
@@ -147,6 +159,13 @@ public class ReservaInstalacionSocio extends JFrame {
 	public JSpinner getSpHoras() {
 		return spHoras;
 	}
-	
+
+	public JComboBox getcBListaFechas() {
+		return cBListaFechas;
+	}
+
+	public JComboBox getcBListaHoras() {
+		return cBListaHoras;
+	}
 	
 }

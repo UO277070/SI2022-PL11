@@ -59,7 +59,7 @@ public class SwingMain {
 		JButton btnEjecutarTkrun = new JButton("Ejecutar giis.demo.tkrun");
 		btnEjecutarTkrun.addActionListener(new ActionListener() { //NOSONAR codigo autogenerado
 			public void actionPerformed(ActionEvent e) {
-				ConsultasController controller=new ConsultasController(new ConsultasModel(), new ConsultasView());
+				ReservaController controller=new ReservaController(new ReservaModel(), new ReservaInstalacionSocio());
 				controller.initController();
 			}
 		});
