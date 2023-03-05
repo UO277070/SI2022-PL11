@@ -4,6 +4,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.text.Format;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -136,5 +137,10 @@ public class Util {
 		Format formatter = new SimpleDateFormat("yyyy-MM-dd");
 		return formatter.format(javaDate);
 	}
-	
+	/** 
+	 * Convierte Calendar a un string formato iso (para display o uso en sql) 
+	 */
+	public static String CalendarToIsoString(Calendar c) {
+		return new SimpleDateFormat("yyyy-MM-dd").format(c.getTime());
+	}
 }

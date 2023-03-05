@@ -3,8 +3,8 @@ package SocioVerDisponibilidadInstalaciones;
 public class Actividades {
 	private String actividad;
 	private String fecha;
-	private int hora_ini;
-	private int hora_fin;
+	private int horaini;
+	private int horafin;
 	
 	public Actividades() {
 		
@@ -13,8 +13,8 @@ public class Actividades {
 	public Actividades(String a, String f, int hi, int hf) {
 		this.actividad=a;
 		this.fecha=f;
-		this.hora_ini=hi;
-		this.hora_ini=hf;
+		this.horaini=hi;
+		this.horafin=hf;
 	}
 
 	public String getActividad() {
@@ -27,8 +27,8 @@ public class Actividades {
 	
 	@Override 
 	public String toString() {
-		return "Actividades [Nombre: " + actividad + ", fecha: " + fecha + ", hora inicial: " + hora_ini
-				+ ", hora final: " + hora_fin + "]" ;
+		return "Actividades [Nombre: " + actividad + ", fecha: " + fecha + ", hora inicial: " + horaini
+				+ ", hora final: " + horafin + "]" ;
 	}
 
 	public String getFecha() {
@@ -40,19 +40,19 @@ public class Actividades {
 	}
 
 	public int getHora_ini() {
-		return hora_ini;
+		return horaini;
 	}
 
 	public void setHora_ini(int hora_ini) {
-		this.hora_ini = hora_ini;
+		this.horaini = hora_ini;
 	}
 
 	public int getHora_fin() {
-		return hora_fin;
+		return horafin;
 	}
 
 	public void setHora_fin(int hora_fin) {
-		this.hora_fin = hora_fin;
+		this.horafin = hora_fin;
 	}
 	
 	
