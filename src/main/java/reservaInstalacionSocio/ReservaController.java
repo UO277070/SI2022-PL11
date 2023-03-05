@@ -2,14 +2,21 @@ package reservaInstalacionSocio;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Formatter;
 import java.util.List;
+import java.util.Scanner;
 
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.plaf.basic.BasicScrollPaneUI.ViewportChangeHandler;
 import javax.swing.table.TableModel;
 
 import giis.demo.tkrun.CarreraDisplayDTO;
@@ -39,6 +46,8 @@ public class ReservaController {
 		view.getcBListaFechas().addItemListener(e -> getNumHoras());
 		view.getcBListaFechas().addItemListener(e -> getPrecio());
 		view.getcBListaHoras().addItemListener(e -> getNumHoras());
+		view.getBtnReservar().addActionListener(e -> validacionReserva());
+		
 	}
 	
 	public void initView() {
@@ -48,6 +57,7 @@ public class ReservaController {
 		this.getFechas();
 		this.getHoras();
 		this.getNumHoras();
+		this.getPrecio();
 		
 		//Abre la ventana (sustituye al main generado por WindowBuilder)
 		view.getFrame().setVisible(true); 
@@ -116,5 +126,94 @@ public class ReservaController {
 		else
 			view.getSpHoras().setModel(new SpinnerNumberModel(1, 1, 1, 1));
 		
+	}
+	
+	public boolean validacionSocio(int idsocio, SocioEntity socio) {
+		System.out.print(socio.Nombre);
+		if (socio.getMoroso()) {
+			return false;
+		}
+		return true;
+	}
+	
+	public boolean validacionHorario(int idInstalacion,String fecha, int horaini, int horafin) {
+		boolean reservado = model.horaocupada(idInstalacion, fecha, horaini, horafin);
+		if (reservado) {
+			return false;
+		}
+		return true;
+	}
+	
+	public void validacionReserva() {
+		int idsocio = Integer.parseUnsignedInt(view.gettFSocio().getText());
+		SocioEntity socio = model.getSocio(idsocio);
+		String fecha = view.getcBListaFechas().getSelectedItem().toString();
+		int idInstalacion = model.getIdInstalacion(view.getcBInstalaciones().getSelectedItem().toString());
+		int horaini = Integer.parseUnsignedInt(view.getcBListaHoras().getSelectedItem().toString());
+		int horafin = horaini + (int) view.getSpHoras().getValue();
+		boolean socioCheck = validacionSocio(idsocio,socio);
+		boolean fechaCheck = validacionHorario(idInstalacion,fecha,horaini,horafin);
+		
+		if(socioCheck && fechaCheck) {
+			model.reservaInstalacion(idsocio, idInstalacion, fecha, horaini, horafin, socio.getNombre());
+			ReservaEntity detalles = model.reservaDetalles(idsocio, idInstalacion, fecha, horaini, horafin);
+			double newcuota = socio.cuota + Double.parseDouble(view.getLblCosteTotal().getText());
+			String metodo = metodopago(newcuota,socio.idSocio);
+			resguardo(detalles,metodo);
+			List<Object[]> lista = model.Prueba();
+			for(int i=0;i<lista.size();i++) {
+				for(int j=0;j<lista.get(i).length;j++) {
+					System.out.printf("%s ", lista.get(i)[j]);
+				}
+				System.out.println();
+			}
+			JOptionPane.showMessageDialog(view,"Reserva completada. Guarde su resguardo","Reserva",JOptionPane.INFORMATION_MESSAGE);
+			view.dispose();
+		}
+		else {
+			if(!socioCheck) {
+				JOptionPane.showMessageDialog(view,"Cuota mensual no pagada","Aviso",JOptionPane.ERROR_MESSAGE);
+				view.dispose();
+			}
+			else {
+				JOptionPane.showMessageDialog(view,"La hora ya no esta disponible","Aviso",JOptionPane.ERROR_MESSAGE);
+				view.dispose();
+			}
+		}
+	}
+	
+	private String metodopago(double cuota,int idSocio) {
+		if(view.getRdbtnCuotaMensual().isSelected()) {
+			model.updateCuotaMensual(cuota, idSocio);
+			return "Añadido a su cuota mensual";
+		}
+		else {
+			return "Pago pendiente en instalación";
+		}
+	}
+	
+	public void resguardo(ReservaEntity detalles, String metodo) {
+		Formatter out = null;
+		try {
+			String home = System.getProperty("user.home");
+			out = new Formatter(home+"\\Downloads\\resguardo.txt");
+		
+			out.format("Resguardo de su reserva\n"+
+						"Reserva: "+detalles.idReserva+"\n"+
+						"Instalacion: "+detalles.idInstalacion+"\n"+
+						"Reservado a nombre de: "+detalles.reservadopor+" SocioID: "+detalles.idSocio+"\n"+
+						"Fecha de reserva: "+detalles.fecha+"\n"+
+						"Horario: "+detalles.horaini+"h-"+detalles.horafin+"h\n"+
+						"Coste Total: "+view.getLblCosteTotal().getText()+" €\n"+
+						"Método de pago: "+metodo);
+				
+			
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+		finally {
+			if (out !=null) out.close();
+		}
 	}
 }

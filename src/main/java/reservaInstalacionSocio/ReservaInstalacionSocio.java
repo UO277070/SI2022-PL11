@@ -28,6 +28,9 @@ public class ReservaInstalacionSocio extends JFrame {
 	private JSpinner spHoras;
 	private JComboBox cBListaFechas;
 	private JComboBox cBListaHoras;
+	private JButton btnReservar;
+	private JRadioButton rdbtnPagoInstalacion;
+	private JRadioButton rdbtnCuotaMensual;
 
 	/**
 	 * Launch the application.
@@ -108,17 +111,18 @@ public class ReservaInstalacionSocio extends JFrame {
 		lblNewLabel_7.setBounds(221, 226, 106, 14);
 		contentPane.add(lblNewLabel_7);
 		
-		JRadioButton rdbtnPagoInstalacion = new JRadioButton("Pago en instalación");
+		rdbtnPagoInstalacion = new JRadioButton("Pago en instalación");
+		rdbtnPagoInstalacion.setSelected(true);
 		bGPago.add(rdbtnPagoInstalacion);
 		rdbtnPagoInstalacion.setBounds(234, 249, 144, 23);
 		contentPane.add(rdbtnPagoInstalacion);
 		
-		JRadioButton rdbtnCuotaMensual = new JRadioButton("Cantidad añadida a su cuota mensual");
+		rdbtnCuotaMensual = new JRadioButton("Cantidad añadida a su cuota mensual");
 		bGPago.add(rdbtnCuotaMensual);
 		rdbtnCuotaMensual.setBounds(234, 277, 267, 23);
 		contentPane.add(rdbtnCuotaMensual);
 		
-		JButton btnReservar = new JButton("Reservar");
+		btnReservar = new JButton("Reservar");
 		btnReservar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -128,7 +132,7 @@ public class ReservaInstalacionSocio extends JFrame {
 		contentPane.add(btnReservar);
 		
 		JButton btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBounds(407, 310, 89, 23);
+		btnCancelar.setBounds(396, 310, 89, 23);
 		contentPane.add(btnCancelar);
 		
 		lblCosteTotal = new JLabel("");
@@ -136,7 +140,6 @@ public class ReservaInstalacionSocio extends JFrame {
 		contentPane.add(lblCosteTotal);
 		
 		cBListaHoras = new JComboBox();
-		cBListaHoras.setModel(new DefaultComboBoxModel(new String[] {"ho", "la"}));
 		cBListaHoras.setBounds(62, 138, 143, 25);
 		contentPane.add(cBListaHoras);
 		
@@ -167,5 +170,22 @@ public class ReservaInstalacionSocio extends JFrame {
 	public JComboBox getcBListaHoras() {
 		return cBListaHoras;
 	}
+
+	public JButton getBtnReservar() {
+		return btnReservar;
+	}
+
+	public JRadioButton getRdbtnPagoInstalacion() {
+		return rdbtnPagoInstalacion;
+	}
+
+	public JRadioButton getRdbtnCuotaMensual() {
+		return rdbtnCuotaMensual;
+	}
+
+	public JTextField gettFSocio() {
+		return tFSocio;
+	}
+	
 	
 }

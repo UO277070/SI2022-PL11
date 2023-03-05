@@ -131,7 +131,7 @@ correo TEXT,
 
 cuota NUMERIC, 
 
-moroso  TEXT 
+moroso  BOOLEAN 
 
 ); 
 

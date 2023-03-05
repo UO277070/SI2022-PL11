@@ -67,7 +67,7 @@ insert into Socio (idSocio, nombre, apellido1, apellido2, correo, cuota, moroso)
 
 (1, 'Ramon','Perez','González','Correo@ejemplo.com', 35, false), 
 
-(2, 'Pedro','Perez2','González2','Correo2@ejemplo.com', 35, 'true'); 
+(2, 'Pedro','Perez2','González2','Correo2@ejemplo.com', 35, true); 
 
   
 
