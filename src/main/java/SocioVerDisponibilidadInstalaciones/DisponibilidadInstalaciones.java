@@ -18,7 +18,6 @@ import javax.swing.JButton;
 
 public class DisponibilidadInstalaciones extends JFrame {
 	
-	static DisponibilidadInstalaciones frame = new DisponibilidadInstalaciones();
 
 	private JPanel contentPane;
 	private JTable tDisponInstal;
@@ -36,6 +35,7 @@ public class DisponibilidadInstalaciones extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					DisponibilidadInstalaciones frame = new DisponibilidadInstalaciones();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -157,14 +157,4 @@ public class DisponibilidadInstalaciones extends JFrame {
 		this.panel = panel;
 	}
 
-	public DisponibilidadInstalaciones getFrame() {
-		return frame;
-	}
-
-	public void setFrame(DisponibilidadInstalaciones frame) {
-		DisponibilidadInstalaciones.frame = frame;
-	}
-	
-	
-	
 }
