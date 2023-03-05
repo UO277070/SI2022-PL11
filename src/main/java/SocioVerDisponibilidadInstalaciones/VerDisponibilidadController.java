@@ -14,12 +14,12 @@ import giis.demo.util.Util;
 
 public class VerDisponibilidadController {
 	private ActividadesModel model;
-	private DisponibilidadInstalaciones view;
+	private DisponibilidadInstalacionesView view;
 	
 	private String fechaHoy;
 	private String fecha30dias;
 	
-	public VerDisponibilidadController(ActividadesModel m, DisponibilidadInstalaciones v) {
+	public VerDisponibilidadController(ActividadesModel m, DisponibilidadInstalacionesView v) {
 		this.view=v;
 		this.model=m;
 		
