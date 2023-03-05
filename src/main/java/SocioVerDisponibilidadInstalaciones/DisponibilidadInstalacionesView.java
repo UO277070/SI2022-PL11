@@ -15,19 +15,16 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JButton;
+import javax.swing.SwingConstants;
 
-public class DisponibilidadInstalaciones extends JFrame {
-	
+public class DisponibilidadInstalacionesView extends JFrame {
 
 	private JPanel contentPane;
 	private JTable tDisponInstal;
+	
+	JComboBox cbSelecInst = new JComboBox();
+	JButton btnVerDisponb = new JButton("Ver disponibilidad");
 
-	JComboBox<Object> cbSelecInst;
-	JButton btnVerDisponb = new JButton("Disponibilidad en la instalación");
-	JScrollPane scrollPane = new JScrollPane();
-	JPanel panel = new JPanel();
-	
-	
 	/**
 	 * Launch the application.
 	 */
@@ -35,7 +32,7 @@ public class DisponibilidadInstalaciones extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					DisponibilidadInstalaciones frame = new DisponibilidadInstalaciones();
+					DisponibilidadInstalacionesView frame = new DisponibilidadInstalacionesView();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -47,7 +44,7 @@ public class DisponibilidadInstalaciones extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public DisponibilidadInstalaciones() {
+	public DisponibilidadInstalacionesView() {
 		setTitle("Disponibilidad instalaciones");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 806, 430);
@@ -58,20 +55,26 @@ public class DisponibilidadInstalaciones extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("Seleccionar instalación:");
 		
+		
+		JScrollPane scrollPane = new JScrollPane();
+		
+		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(25)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 745, Short.MAX_VALUE)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
+							.addContainerGap())
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(cbSelecInst, GroupLayout.PREFERRED_SIZE, 128, GroupLayout.PREFERRED_SIZE)
-							.addGap(140)
-							.addComponent(btnVerDisponb)))
-					.addContainerGap())
+							.addPreferredGap(ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+							.addComponent(btnVerDisponb)
+							.addGap(30))))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -83,9 +86,10 @@ public class DisponibilidadInstalaciones extends JFrame {
 						.addComponent(btnVerDisponb))
 					.addGap(18)
 					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 261, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(40, Short.MAX_VALUE))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		
+		JPanel panel = new JPanel();
 		scrollPane.setViewportView(panel);
 		
 		tDisponInstal = new JTable();
@@ -149,12 +153,5 @@ public class DisponibilidadInstalaciones extends JFrame {
 		this.tDisponInstal = tDisponInstal;
 	}
 
-	public JPanel getPanel() {
-		return panel;
-	}
-
-	public void setPanel(JPanel panel) {
-		this.panel = panel;
-	}
 
 }
