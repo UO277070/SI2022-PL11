@@ -12,6 +12,11 @@ public class CrearPeriodoInscripcionView {
 
 	private JFrame frmCrearPeriodoDe;
 	private JTextField tfNombrePI;
+	
+	JDateChooser dcInicio = new JDateChooser();
+	JDateChooser dcFinSocios = new JDateChooser();
+	JDateChooser dcFinNoSocios = new JDateChooser();
+	JButton btnCrear = new JButton("Crear");
 
 	/**
 	 * Launch the application.
@@ -62,15 +67,12 @@ public class CrearPeriodoInscripcionView {
 		lblNewLabel_3.setBounds(33, 163, 141, 20);
 		frmCrearPeriodoDe.getContentPane().add(lblNewLabel_3);
 		
-		JDateChooser dcInicio = new JDateChooser();
 		dcInicio.setBounds(219, 85, 91, 26);
 		frmCrearPeriodoDe.getContentPane().add(dcInicio);
 		
-		JDateChooser dcFinSocios = new JDateChooser();
 		dcFinSocios.setBounds(219, 121, 91, 26);
 		frmCrearPeriodoDe.getContentPane().add(dcFinSocios);
 		
-		JDateChooser dcFinNoSocios = new JDateChooser();
 		dcFinNoSocios.setBounds(219, 157, 91, 26);
 		frmCrearPeriodoDe.getContentPane().add(dcFinNoSocios);
 		
@@ -79,8 +81,57 @@ public class CrearPeriodoInscripcionView {
 		frmCrearPeriodoDe.getContentPane().add(tfNombrePI);
 		tfNombrePI.setColumns(10);
 		
-		JButton btnCrear = new JButton("Crear");
 		btnCrear.setBounds(414, 246, 115, 29);
 		frmCrearPeriodoDe.getContentPane().add(btnCrear);
 	}
+
+	public JTextField getTfNombrePI() {
+		return tfNombrePI;
+	}
+
+	public void setTfNombrePI(JTextField tfNombrePI) {
+		this.tfNombrePI = tfNombrePI;
+	}
+
+	public JDateChooser getDcInicio() {
+		return dcInicio;
+	}
+
+	public void setDcInicio(JDateChooser dcInicio) {
+		this.dcInicio = dcInicio;
+	}
+
+	public JDateChooser getDcFinSocios() {
+		return dcFinSocios;
+	}
+
+	public void setDcFinSocios(JDateChooser dcFinSocios) {
+		this.dcFinSocios = dcFinSocios;
+	}
+
+	public JDateChooser getDcFinNoSocios() {
+		return dcFinNoSocios;
+	}
+
+	public void setDcFinNoSocios(JDateChooser dcFinNoSocios) {
+		this.dcFinNoSocios = dcFinNoSocios;
+	}
+
+	public JButton getBtnCrear() {
+		return btnCrear;
+	}
+
+	public void setBtnCrear(JButton btnCrear) {
+		this.btnCrear = btnCrear;
+	}
+
+	public JFrame getFrmCrearPeriodoDe() {
+		return frmCrearPeriodoDe;
+	}
+
+	public void setFrmCrearPeriodoDe(JFrame frmCrearPeriodoDe) {
+		this.frmCrearPeriodoDe = frmCrearPeriodoDe;
+	}
+	
+	
 }
