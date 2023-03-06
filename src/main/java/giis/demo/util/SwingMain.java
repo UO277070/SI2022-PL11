@@ -56,15 +56,24 @@ public class SwingMain {
 		frame.setBounds(0, 0, 287, 185);
 		frame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 		
-		JButton btnEjecutarTkrun = new JButton("Ejecutar giis.demo.tkrun");
-		btnEjecutarTkrun.addActionListener(new ActionListener() { //NOSONAR codigo autogenerado
+		JButton btnConsultaReservasAdmin = new JButton("Consultar reservas (Administrador)");
+		btnConsultaReservasAdmin.addActionListener(new ActionListener() { //NOSONAR codigo autogenerado
+			public void actionPerformed(ActionEvent e) {
+				ConsultasController controller=new ConsultasController(new ConsultasModel(), new ConsultasView());
+				controller.initController();
+			}
+		});
+		
+		JButton btnReservaInstalacionSocio = new JButton("Reserva Instalación (Socio)");
+		btnReservaInstalacionSocio.addActionListener(new ActionListener() { //NOSONAR codigo autogenerado
 			public void actionPerformed(ActionEvent e) {
 				ReservaController controller=new ReservaController(new ReservaModel(), new ReservaInstalacionSocio());
 				controller.initController();
 			}
 		});
 		frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
-		frame.getContentPane().add(btnEjecutarTkrun);
+		frame.getContentPane().add(btnConsultaReservasAdmin);
+		frame.getContentPane().add(btnReservaInstalacionSocio);
 		
 			
 		JButton btnInicializarBaseDeDatos = new JButton("Inicializar Base de Datos en Blanco");
