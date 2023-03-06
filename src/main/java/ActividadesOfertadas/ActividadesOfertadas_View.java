@@ -12,11 +12,14 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.DefaultComboBoxModel;
 
 public class ActividadesOfertadas_View {
 
 	private JFrame frmActividadesOfertadas;
 	private JTable table;
+	private JComboBox periodo;
+	private JButton botonVer;
 
 	/**
 	 * Launch the application.
@@ -33,7 +36,15 @@ public class ActividadesOfertadas_View {
 			}
 		});
 	}
+	
+	public JFrame getFrame() {
+		return frmActividadesOfertadas;
+	}
 
+	public void setFrame(JFrame frame) {
+		this.frmActividadesOfertadas = frame;
+	}
+	
 	/**
 	 * Create the application.
 	 */
@@ -51,13 +62,14 @@ public class ActividadesOfertadas_View {
 		frmActividadesOfertadas.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmActividadesOfertadas.getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Periodo:");
-		lblNewLabel.setBounds(10, 15, 47, 14);
-		frmActividadesOfertadas.getContentPane().add(lblNewLabel);
+		JLabel LabelPeriodo = new JLabel("Periodo:");
+		LabelPeriodo.setBounds(10, 15, 47, 14);
+		frmActividadesOfertadas.getContentPane().add(LabelPeriodo);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(67, 15, 73, 18);
-		frmActividadesOfertadas.getContentPane().add(comboBox);
+		periodo = new JComboBox();
+		periodo.setModel(new DefaultComboBoxModel(new String[] {"Septiembre", "Enero", "Junio"}));
+		periodo.setBounds(67, 15, 96, 18);
+		frmActividadesOfertadas.getContentPane().add(periodo);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 40, 452, 184);
@@ -66,29 +78,51 @@ public class ActividadesOfertadas_View {
 		table = new JTable();
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
-				{"Nombre", "Tipo", "Fecha Inicio", "Fecha Fin", "Plazas", "Precio Socio", null},
 			},
 			new String[] {
 				"Nombre", "Tipo", "Fecha Inicio", "Fecha Fin", "Plazas", "Precio Socio", "Precio No Socio"
 			}
 		));
-		table.getColumnModel().getColumn(0).setResizable(false);
-		table.getColumnModel().getColumn(1).setResizable(false);
-		table.getColumnModel().getColumn(2).setResizable(false);
-		table.getColumnModel().getColumn(3).setResizable(false);
-		table.getColumnModel().getColumn(4).setResizable(false);
-		table.getColumnModel().getColumn(5).setResizable(false);
+		table.getColumnModel().getColumn(0).setPreferredWidth(60);
+		table.getColumnModel().getColumn(1).setPreferredWidth(52);
+		table.getColumnModel().getColumn(4).setPreferredWidth(44);
 		table.getColumnModel().getColumn(6).setPreferredWidth(88);
-		scrollPane.setRowHeaderView(table);
+		scrollPane.setViewportView(table);
 		
-		JButton btnNewButton = new JButton("Ver Actividades Ofertadas");
-		btnNewButton.addActionListener(new ActionListener() {
+		botonVer = new JButton("Ver Actividades Ofertadas");
+		botonVer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton.setBounds(271, 235, 191, 23);
-		frmActividadesOfertadas.getContentPane().add(btnNewButton);
+		botonVer.setBounds(271, 235, 191, 23);
+		frmActividadesOfertadas.getContentPane().add(botonVer);
 		
 		table.getTableHeader().setVisible(true);
 	}
+
+	public JComboBox getPeriodo() {
+		return periodo;
+	}
+	
+	public void setPeriodo(JComboBox periodo) {
+		this.periodo = periodo;
+	}
+	
+	public JTable getTable() {
+		return table;
+	}
+
+	public void setTable(JTable table) {
+		this.table = table;
+	}
+	
+	public JButton getbotonVer() {
+		return botonVer;
+	}
+	
+	public void setbotonVer(JButton ver) {
+		this.botonVer = ver;
+	}
+	
+	
 }

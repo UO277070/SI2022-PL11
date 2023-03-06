@@ -15,9 +15,11 @@ import giis.demo.util.Util;
 public class ActividadesOfertadas_Model {
 private Database db = new Database();
 	
-	public List<Object []> getListaActividades(int id){
+	public List<Object []> getListaActividades(String periodo){
 		String sql = "SELECT nombre, tipo, fechaini, fechafin, plazas, precio, precionosocio FROM Actividad"
-				+ "WHERE idPeriodoinscrip=?";
-		return db.executeQueryArray(sql, id);
+				+ "INNER JOIN PeriodoInscripcion"
+				+ "ON Actividad.idPeriodoinscrip = PeriodoInscripcion.idPeriodoinscrip"
+				+ "WHERE PeriodoInscripcion.nombre=?";
+		return db.executeQueryArray(sql, periodo);
 	}
 }
