@@ -17,6 +17,8 @@ import javax.swing.ButtonGroup;
 import java.awt.Font;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class ReservaInstalacionSocio extends JFrame {
 
@@ -35,18 +37,7 @@ public class ReservaInstalacionSocio extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ReservaInstalacionSocio frame = new ReservaInstalacionSocio();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the frame.
@@ -74,6 +65,14 @@ public class ReservaInstalacionSocio extends JFrame {
 		contentPane.add(lblNewLabel_1);
 		
 		tFSocio = new JTextField();
+		tFSocio.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				if(e.getKeyChar()<'0'||e.getKeyChar()>'9') {
+					e.consume();
+				}
+			}
+		});
 		tFSocio.setBounds(61, 80, 144, 20);
 		contentPane.add(tFSocio);
 		tFSocio.setColumns(10);
@@ -136,7 +135,7 @@ public class ReservaInstalacionSocio extends JFrame {
 		contentPane.add(btnCancelar);
 		
 		lblCosteTotal = new JLabel("");
-		lblCosteTotal.setBounds(89, 224, 56, 16);
+		lblCosteTotal.setBounds(89, 224, 38, 16);
 		contentPane.add(lblCosteTotal);
 		
 		cBListaHoras = new JComboBox();
@@ -186,6 +185,4 @@ public class ReservaInstalacionSocio extends JFrame {
 	public JTextField gettFSocio() {
 		return tFSocio;
 	}
-	
-	
 }

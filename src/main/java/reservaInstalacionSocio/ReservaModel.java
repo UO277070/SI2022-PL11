@@ -42,6 +42,10 @@ public class ReservaModel {
 		String sql=
 				"SELECT idSocio,Nombre,apellido1,apellido2,correo,cuota,moroso FROM Socio WHERE idSocio=?";
 		List<SocioEntity> datossocio = db.executeQueryPojo(SocioEntity.class, sql, idsocio);
+		
+		if(datossocio.isEmpty()) {
+			return null;
+		}
 		return datossocio.get(0);
 	}
 	
@@ -69,7 +73,7 @@ public class ReservaModel {
 	
 	public List<Object []> Prueba() {
 		String sql=
-				"SELECT * FROM Socio";
+				"SELECT * FROM Pago";
 		return db.executeQueryArray(sql);
 	}
 	
@@ -84,7 +88,7 @@ public class ReservaModel {
 	public void generaPago(double importe, String fecha, int idSocio, int idReserva) {
 		String sql = 
 				"INSERT INTO Pago (importe,fecha,estado,idSocio,idReserva) "
-				+ "values (?,?,'nopagado',?,?)";
+				+ "values (?,?,'sinpagar',?,?)";
 		db.executeUpdate(sql,importe,fecha,idSocio,idReserva);
 	}
 	
@@ -94,7 +98,12 @@ public class ReservaModel {
 		db.executeUpdate(sql,cuota,idSocio);
 	}
 	
-	
+	public List<Object[]> socioHoras(int idSocio,String fecha) {
+		String sql=
+				"SELECT horaini,horafin FROM Reserva "
+				+ "WHERE idsocio=? AND fecha=?";
+		return db.executeQueryArray(sql,idSocio, fecha);
+	}
 
 }
 

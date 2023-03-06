@@ -21,6 +21,7 @@ import javax.swing.table.TableModel;
 
 import giis.demo.tkrun.CarreraDisplayDTO;
 import giis.demo.util.SwingUtil;
+import giis.demo.util.UnexpectedException;
 import giis.demo.util.Util;
 
 public class ReservaController {
@@ -128,66 +129,103 @@ public class ReservaController {
 		
 	}
 	
-	public boolean validacionSocio(int idsocio, SocioEntity socio) {
+	public void validacionSocio(int idsocio, SocioEntity socio) throws UnexpectedException {
 		System.out.print(socio.Nombre);
 		if (socio.getMoroso()) {
-			return false;
+			throw new UnexpectedException("Socio no paga");
 		}
-		return true;
 	}
 	
-	public boolean validacionHorario(int idInstalacion,String fecha, int horaini, int horafin) {
-		boolean reservado = model.horaocupada(idInstalacion, fecha, horaini, horafin);
-		if (reservado) {
-			return false;
+	public void validacionHorario(int idInstalacion,String fecha, int horaini, int horafin) throws UnexpectedException {
+		if (model.horaocupada(idInstalacion, fecha, horaini, horafin)) {
+			throw new UnexpectedException("Hora ocupada");
 		}
-		return true;
+	}
+	
+	public void validacionHoras(int idSocio) throws UnexpectedException {
+		ComboBoxModel fechas = view.getcBListaFechas().getModel();
+		List<Object[]> fecha = model.socioHoras(idSocio,view.getcBListaFechas().getSelectedItem().toString());
+		int horaini;
+		int horafin;
+		int count=0;
+		for(int i=0;i<fecha.size();i++) {
+			horaini = (int)fecha.get(i)[0];
+			horafin = (int)fecha.get(i)[1];
+			count += horafin-horaini;
+		}
+		if(count >= 4)
+			throw new UnexpectedException("Límite de horas reservadas diarias");
+		
+		count=0;
+		for(int i=0;i<fechas.getSize();i++) {
+			fecha = model.socioHoras(idSocio,fechas.getElementAt(i).toString());
+			for(int j=0;j<fecha.size();j++) {
+				horaini = (int)fecha.get(j)[0];
+				horafin = (int)fecha.get(j)[1];
+				count += horafin-horaini;
+			}
+		}
+		if(count >= 10)
+			throw new UnexpectedException("Límite de horas reservadas para los siguientes 15 días");
+		
+		
 	}
 	
 	public void validacionReserva() {
-		int idsocio = Integer.parseUnsignedInt(view.gettFSocio().getText());
-		SocioEntity socio = model.getSocio(idsocio);
-		String fecha = view.getcBListaFechas().getSelectedItem().toString();
-		int idInstalacion = model.getIdInstalacion(view.getcBInstalaciones().getSelectedItem().toString());
-		int horaini = Integer.parseUnsignedInt(view.getcBListaHoras().getSelectedItem().toString());
-		int horafin = horaini + (int) view.getSpHoras().getValue();
-		boolean socioCheck = validacionSocio(idsocio,socio);
-		boolean fechaCheck = validacionHorario(idInstalacion,fecha,horaini,horafin);
-		
-		if(socioCheck && fechaCheck) {
-			model.reservaInstalacion(idsocio, idInstalacion, fecha, horaini, horafin, socio.getNombre());
-			ReservaEntity detalles = model.reservaDetalles(idsocio, idInstalacion, fecha, horaini, horafin);
-			double newcuota = socio.cuota + Double.parseDouble(view.getLblCosteTotal().getText());
-			String metodo = metodopago(newcuota,socio.idSocio);
-			resguardo(detalles,metodo);
-			List<Object[]> lista = model.Prueba();
-			for(int i=0;i<lista.size();i++) {
-				for(int j=0;j<lista.get(i).length;j++) {
-					System.out.printf("%s ", lista.get(i)[j]);
-				}
-				System.out.println();
-			}
-			JOptionPane.showMessageDialog(view,"Reserva completada. Guarde su resguardo","Reserva",JOptionPane.INFORMATION_MESSAGE);
-			view.dispose();
-		}
-		else {
-			if(!socioCheck) {
-				JOptionPane.showMessageDialog(view,"Cuota mensual no pagada","Aviso",JOptionPane.ERROR_MESSAGE);
-				view.dispose();
+		try {
+			if(view.gettFSocio().getText().equals("")) {
+				JOptionPane.showMessageDialog(view,"Introduce un socio","Aviso",JOptionPane.ERROR_MESSAGE);
 			}
 			else {
-				JOptionPane.showMessageDialog(view,"La hora ya no esta disponible","Aviso",JOptionPane.ERROR_MESSAGE);
-				view.dispose();
+				int idsocio = Integer.parseUnsignedInt(view.gettFSocio().getText());
+				SocioEntity socio = model.getSocio(idsocio);
+				if(socio == null) {
+					JOptionPane.showMessageDialog(view,"Socio no encontrado","Aviso",JOptionPane.ERROR_MESSAGE);
+				}
+				else {
+					String fecha = view.getcBListaFechas().getSelectedItem().toString();
+					int idInstalacion = model.getIdInstalacion(view.getcBInstalaciones().getSelectedItem().toString());
+
+					int horaini = Integer.parseUnsignedInt(view.getcBListaHoras().getSelectedItem().toString());
+					int horafin = horaini + (int) view.getSpHoras().getValue();
+					validacionSocio(idsocio,socio);
+					validacionHorario(idInstalacion,fecha,horaini,horafin);
+					validacionHoras(idsocio);
+
+
+					model.reservaInstalacion(idsocio, idInstalacion, fecha, horaini, horafin, socio.getNombre());
+					ReservaEntity detalles = model.reservaDetalles(idsocio, idInstalacion, fecha, horaini, horafin);
+					double pago = Double.parseDouble(view.getLblCosteTotal().getText());
+					double newcuota = socio.cuota + pago;
+					String metodo = metodopago(pago,newcuota,socio.idSocio,fecha,detalles.idReserva);
+					resguardo(detalles,metodo);
+					List<Object[]> lista = model.Prueba();
+					for(int i=0;i<lista.size();i++) {
+						for(int j=0;j<lista.get(i).length;j++) {
+							System.out.printf("%s ", lista.get(i)[j]);
+						}
+						System.out.println();
+					}
+					JOptionPane.showMessageDialog(view,"Reserva completada. Guarde su resguardo","Reserva",JOptionPane.INFORMATION_MESSAGE);
+					view.dispose();
+				}
 			}
+		}
+		catch (UnexpectedException e) {
+			JOptionPane.showMessageDialog(view,e.getMessage(),"Aviso",JOptionPane.ERROR_MESSAGE);
+			view.dispose();
 		}
 	}
 	
-	private String metodopago(double cuota,int idSocio) {
+
+	
+	private String metodopago(double pago, double newcuota, int idSocio, String fecha, int idReserva) {
 		if(view.getRdbtnCuotaMensual().isSelected()) {
-			model.updateCuotaMensual(cuota, idSocio);
+			model.updateCuotaMensual(newcuota, idSocio);
 			return "Añadido a su cuota mensual";
 		}
 		else {
+			model.generaPago(pago, fecha, idSocio, idReserva);
 			return "Pago pendiente en instalación";
 		}
 	}
@@ -201,7 +239,7 @@ public class ReservaController {
 			out.format("Resguardo de su reserva\n"+
 						"Reserva: "+detalles.idReserva+"\n"+
 						"Instalacion: "+detalles.idInstalacion+"\n"+
-						"Reservado a nombre de: "+detalles.reservadopor+" SocioID: "+detalles.idSocio+"\n"+
+						"Reservado a nombre de: "+detalles.reservadopor+" con número de socio: "+detalles.idSocio+"\n"+
 						"Fecha de reserva: "+detalles.fecha+"\n"+
 						"Horario: "+detalles.horaini+"h-"+detalles.horafin+"h\n"+
 						"Coste Total: "+view.getLblCosteTotal().getText()+" €\n"+
