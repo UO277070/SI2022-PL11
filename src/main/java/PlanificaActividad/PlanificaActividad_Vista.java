@@ -20,7 +20,7 @@ import java.awt.Color;
 import javax.swing.border.BevelBorder;
 import javax.swing.JButton;
 
-public class PlanificaActividad {
+public class PlanificaActividad_Vista {
 
 	private JFrame frmPlanificarActividad;
 	private JTextField textFieldSocios;
@@ -35,7 +35,7 @@ public class PlanificaActividad {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					PlanificaActividad window = new PlanificaActividad();
+					PlanificaActividad_Vista window = new PlanificaActividad_Vista();
 					window.frmPlanificarActividad.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -47,7 +47,7 @@ public class PlanificaActividad {
 	/**
 	 * Create the application.
 	 */
-	public PlanificaActividad() {
+	public PlanificaActividad_Vista() {
 		initialize();
 	}
 
