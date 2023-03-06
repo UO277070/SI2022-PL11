@@ -43,7 +43,7 @@ public class VerDisponibilidadController {
 		this.getInstalaciones();
 		this.setCabecerasTabla();
 
-		//DisponibilidadInstalaciones.panel.setVisible(true);
+		view.getFrame().setVisible(true);
 	}
 	
 	public void initController() {
