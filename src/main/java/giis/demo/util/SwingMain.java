@@ -6,6 +6,9 @@ import javax.swing.JFrame;
 import ActividadesOfertadas.ActividadesOfertadas_Controller;
 import ActividadesOfertadas.ActividadesOfertadas_Model;
 import ActividadesOfertadas.ActividadesOfertadas_View;
+import PlanificaActividad.PlanificaActividad_Controller;
+import PlanificaActividad.PlanificaActividad_Model;
+import PlanificaActividad.PlanificaActividad_View;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -86,7 +89,7 @@ public class SwingMain {
 		});
 		frame.getContentPane().add(btnCargarDatosIniciales);
 		
-		JButton btnActividadesOfertadas = new JButton("Ver las Actividades Ofertadas:");
+		JButton btnActividadesOfertadas = new JButton("Ver las Actividades Ofertadas");
 		btnActividadesOfertadas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ActividadesOfertadas_Controller cont = new ActividadesOfertadas_Controller(new ActividadesOfertadas_Model(), new ActividadesOfertadas_View());
@@ -95,6 +98,14 @@ public class SwingMain {
 		});
 		frame.getContentPane().add(btnActividadesOfertadas);
 		
+		JButton btnPlanificarActividad = new JButton("Planificar Actividad");
+		btnPlanificarActividad.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PlanificaActividad_Controller cont = new PlanificaActividad_Controller(new PlanificaActividad_Model(), new PlanificaActividad_View());
+				cont.initController();
+			}
+		});
+		frame.getContentPane().add(btnPlanificarActividad);
 	}
 
 	public JFrame getFrame() { return this.frame; }

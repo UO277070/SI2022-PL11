@@ -17,6 +17,10 @@ public class PlanificaActividad_Model {
 		
 	}
 	
+	public List<PeriodosInscripcion> getPeriodos(){
+		return db.executeQueryPojo(PeriodosInscripcion.class, "SELECT idPeriodoinscrip, nombre FROM PeriodoInscripcion");
+	}
+	
 	public void insertaActividad(String nombre, String tipo, int plazas, int precio, int precionosocio, Date fechaini, Date fechafin, int idp) {
 		db.executeUpdate("Insert into actividad(nombre,tipo,plazas,precio,precionosocio,fechaini,fechafin,periodoIns_id ,estado) values("+"'"+nombre+"'"+","+plazas+","+"'"+tipo+"'"+","+precio+","+precionosocio+","+"'"+Util.dateToIsoString(fechaini)+"'"+","+"'"+Util.dateToIsoString(fechafin)+"',"+idp+",1)");
 	}

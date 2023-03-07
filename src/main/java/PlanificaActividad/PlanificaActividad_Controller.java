@@ -18,6 +18,10 @@ public class PlanificaActividad_Controller {
 		this.initView();
 	}
 	
+	public void initController() {
+		view.getbtnCrear().addActionListener((e -> crearActividad()));
+	}
+	
 	
 	public void initView() {
 		this.model.getListaInstalaciones();
@@ -39,8 +43,11 @@ public class PlanificaActividad_Controller {
 	public void crearActividad() {
 		if(view.getTextFieldNombre().equals("") || view.getTextFieldTipo().equals("") || Integer.parseInt(view.getTextFieldNoSocios().getText())<0 || Integer.parseInt(view.getTextFieldSocios().getText())<0)
 			SwingUtil.showMessage("Hay por los menos un campo vacio ", "ERROR", JOptionPane.ERROR_MESSAGE);
-		else if(view.getdCini().getDate().after(view.getDcFinSocios().getDate())){
-			SwingUtil.showMessage("la fecha de fin es antes que la de inicio ", "ERROR", JOptionPane.ERROR_MESSAGE);
+		else if(view.getdCini().getDate().after(view.getdCfin().getDate())){
+			SwingUtil.showMessage("La fecha de fin es antes que la de inicio ", "ERROR", JOptionPane.ERROR_MESSAGE);
+		}
+		else {
+			model.insertaActividad(view.getTextFieldNombre().getText(), view.getTextFieldTipo().getText(), view.getSpinnerAforo(), Integer.parseInt(view.getTextFieldSocios().getText()), Integer.parseInt(view.getTextFieldNoSocios().getText()), view.getdCini().getDate(), view.getdCfin().getDate(), 0);
 		}
 	}
 	
