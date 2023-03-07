@@ -29,14 +29,11 @@ public class ActividadesOfertadas_Controller {
 	public void getListaActividades() {
 		String periodo = view.getPeriodo().getSelectedObjects()[0].toString();
 		
-		List <Object []> actividades = model.getListaActividades(periodo);
+		List <Actividades> actividades = model.getListaActividades(periodo);
 		
 		TableModel tmodel = SwingUtil.getTableModelFromPojos(actividades, new String[] {"nombre", "tipo", "fechainicio", "fechafin", "plazas", "preciosocio", "precionosocio"});
 		view.getTable().setModel(tmodel);
 	}
 	
-	public void getListaPeriodo() {
-		List<Object []> periodo = model.getListaPeriodo();
-	}
 	
 }

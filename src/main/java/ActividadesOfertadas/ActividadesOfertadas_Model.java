@@ -16,17 +16,12 @@ public class ActividadesOfertadas_Model {
 private Database db = new Database();
 	
 
-	public List<Object []> getListaActividades(String periodo){
+	public List<Actividades> getListaActividades(String periodo){
 		String sql = "SELECT Actividad.nombre, Actividad.tipo, Actividad.fechaini, Actividad.fechafin, Actividad.plazas, Actividad.precio, Actividad.precionosocio FROM Actividad "
 				+ "INNER JOIN PeriodoInscripcion "
 				+ "ON Actividad.idPeriodoinscrip = PeriodoInscripcion.idPeriodoinscrip "
 				+ "WHERE PeriodoInscripcion.nombre=?";
-		return db.executeQueryArray(sql, periodo);
+		return db.executeQueryPojo(Actividades.class, sql, periodo);
 	}
 	
-	public List<Object []> getListaPeriodo(){
-		String sql = "SELECT idPeriodoincrip from PeriodoInscripcion";
-		return db.executeQueryArray(sql);
-	}
-
 }
