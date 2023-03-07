@@ -1,5 +1,6 @@
 package ActividadesOfertadas;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.table.TableModel;
@@ -28,9 +29,14 @@ public class ActividadesOfertadas_Controller {
 	public void getListaActividades() {
 		String periodo = view.getPeriodo().getSelectedObjects()[0].toString();
 		
-		List<Object[]> actividades = model.getListaActividades(periodo);
+		List <Object []> actividades = model.getListaActividades(periodo);
+		
 		TableModel tmodel = SwingUtil.getTableModelFromPojos(actividades, new String[] {"nombre", "tipo", "fechainicio", "fechafin", "plazas", "preciosocio", "precionosocio"});
 		view.getTable().setModel(tmodel);
+	}
+	
+	public void getListaPeriodo() {
+		List<Object []> periodo = model.getListaPeriodo();
 	}
 	
 }

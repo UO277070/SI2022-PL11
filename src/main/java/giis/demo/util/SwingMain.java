@@ -2,6 +2,11 @@ package giis.demo.util;
 
 import java.awt.EventQueue;
 import javax.swing.JFrame;
+
+import ActividadesOfertadas.ActividadesOfertadas_Controller;
+import ActividadesOfertadas.ActividadesOfertadas_Model;
+import ActividadesOfertadas.ActividadesOfertadas_View;
+
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -80,6 +85,16 @@ public class SwingMain {
 			}
 		});
 		frame.getContentPane().add(btnCargarDatosIniciales);
+		
+		JButton btnActividadesOfertadas = new JButton("Ver las Actividades Ofertadas:");
+		btnActividadesOfertadas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ActividadesOfertadas_Controller cont = new ActividadesOfertadas_Controller(new ActividadesOfertadas_Model(), new ActividadesOfertadas_View());
+				cont.initController();
+			}
+		});
+		frame.getContentPane().add(btnActividadesOfertadas);
+		
 	}
 
 	public JFrame getFrame() { return this.frame; }
