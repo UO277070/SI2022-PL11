@@ -14,19 +14,28 @@ import javax.swing.JSeparator;
 import javax.swing.JTable;
 import javax.swing.JPanel;
 import java.awt.GridLayout;
+import java.util.List;
+
 import javax.swing.table.DefaultTableModel;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
+import java.awt.Component;
+
 import javax.swing.border.BevelBorder;
 import javax.swing.JButton;
 
-public class PlanificaActividad_Vista {
+public class PlanificaActividad_View {
 
 	private JFrame frmPlanificarActividad;
 	private JTextField textFieldSocios;
 	private JTextField textFieldNoSocios;
 	private JTable tableHorario;
 	private JTextField textFieldNombre;
+	private JCalendar calendar;
+	private JTextField textFieldTipo;
+	private JComboBox comboBoxInstalacion, comboBoxPeriodo;
+	private JDateChooser dCini, dCfin;
+	
 
 	/**
 	 * Launch the application.
@@ -35,7 +44,7 @@ public class PlanificaActividad_Vista {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					PlanificaActividad_Vista window = new PlanificaActividad_Vista();
+					PlanificaActividad_View window = new PlanificaActividad_View();
 					window.frmPlanificarActividad.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -47,7 +56,7 @@ public class PlanificaActividad_Vista {
 	/**
 	 * Create the application.
 	 */
-	public PlanificaActividad_Vista() {
+	public PlanificaActividad_View() {
 		initialize();
 	}
 
@@ -74,10 +83,6 @@ public class PlanificaActividad_Vista {
 		LabelActvividad.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		LabelActvividad.setBounds(228, 7, 132, 22);
 		frmPlanificarActividad.getContentPane().add(LabelActvividad);
-		
-		JComboBox comboBoxActividad = new JComboBox();
-		comboBoxActividad.setBounds(228, 36, 162, 22);
-		frmPlanificarActividad.getContentPane().add(comboBoxActividad);
 		
 		JLabel LabelAforo = new JLabel("Aforo:");
 		LabelAforo.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -164,8 +169,104 @@ public class PlanificaActividad_Vista {
 		frmPlanificarActividad.getContentPane().add(textFieldNombre);
 		textFieldNombre.setColumns(10);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(412, 91, 167, 22);
-		frmPlanificarActividad.getContentPane().add(comboBox);
+		JComboBox comboBoxPeriodo = new JComboBox();
+		comboBoxPeriodo.setBounds(412, 91, 167, 22);
+		frmPlanificarActividad.getContentPane().add(comboBoxPeriodo);
+		
+		JDateChooser dCini = new JDateChooser();
+		dCini.setBounds(458, 224, 95, 20);
+		frmPlanificarActividad.getContentPane().add(dCini);
+		
+		JDateChooser dCini_1 = new JDateChooser();
+		dCini_1.setBounds(458, 280, 95, 20);
+		frmPlanificarActividad.getContentPane().add(dCini_1);
+		
+		JLabel LabelDuracion = new JLabel("Duración:");
+		LabelDuracion.setBounds(483, 176, 59, 14);
+		frmPlanificarActividad.getContentPane().add(LabelDuracion);
+		
+		JLabel LabelInicio = new JLabel("Fecha Incio:");
+		LabelInicio.setBounds(458, 199, 82, 14);
+		frmPlanificarActividad.getContentPane().add(LabelInicio);
+		
+		JLabel lblNewLabel = new JLabel("Fecha Fin:");
+		lblNewLabel.setBounds(458, 255, 82, 14);
+		frmPlanificarActividad.getContentPane().add(lblNewLabel);
+		
+		textFieldTipo = new JTextField();
+		textFieldTipo.setBounds(228, 37, 114, 20);
+		frmPlanificarActividad.getContentPane().add(textFieldTipo);
+		textFieldTipo.setColumns(10);
 	}
+	
+	public JTextField getTextFieldTipo() {
+		return textFieldTipo;
+	}
+
+	public void setTextFieldTipo(JTextField textFieldTipo) {
+		this.textFieldTipo = textFieldTipo;
+	}
+
+	public JFrame getFrame() {
+		return this.frmPlanificarActividad;
+	}
+
+
+	public JTextField getTextFieldSocios() {
+		return textFieldSocios;
+	}
+
+	public void setTextFieldSocios(JTextField textFieldSocios) {
+		this.textFieldSocios = textFieldSocios;
+	}
+
+	public JTextField getTextFieldNoSocios() {
+		return textFieldNoSocios;
+	}
+
+	public void setTextFieldNoSocios(JTextField textFieldNoSocios) {
+		this.textFieldNoSocios = textFieldNoSocios;
+	}
+
+	public JTable getTableHorario() {
+		return tableHorario;
+	}
+
+	public void setTableHorario(JTable tableHorario) {
+		this.tableHorario = tableHorario;
+	}
+
+	public JTextField getTextFieldNombre() {
+		return textFieldNombre;
+	}
+
+	public void setTextFieldNombre(JTextField textFieldNombre) {
+		this.textFieldNombre = textFieldNombre;
+	}
+
+	public JCalendar getCalendar() {
+		return calendar;
+	}
+
+	public void setCalendar(JCalendar calendar) {
+		this.calendar = calendar;
+	}
+	
+	public void addPeriodo(List<PeriodosInscripcion> periodos) {
+		comboBoxPeriodo.addItem(periodos);
+	}
+	
+	public void addIntalaciones(List<Instalaciones> instalaciones) {
+		comboBoxInstalacion.addItem(instalaciones);
+	}
+	
+	public JDateChooser getdCini() {
+		return dCini;
+	}
+	
+	
+	public JDateChooser getdCfin() {
+		return dCfin;
+	}
+	
 }
