@@ -24,6 +24,7 @@ import java.awt.Component;
 import javax.swing.border.BevelBorder;
 import javax.swing.JButton;
 import javax.swing.SpinnerListModel;
+import javax.swing.JCheckBox;
 
 public class PlanificaActividad_View {
 
@@ -35,7 +36,6 @@ public class PlanificaActividad_View {
 	private JTextField textFieldTipo;
 	private JComboBox comboBoxInstalacion, comboBoxPeriodo;
 	private JDateChooser dCini, dCfin;
-	private JTable tableDias;
 	private JSpinner spinnerLunesIni;
 	private JSpinner spinnerLunesFin;
 	private JSpinner spinnerMartesIni;
@@ -182,101 +182,125 @@ public class PlanificaActividad_View {
 		frmPlanificarActividad.getContentPane().add(textFieldTipo);
 		textFieldTipo.setColumns(10);
 		
-		tableDias = new JTable();
-		tableDias.setModel(new DefaultTableModel(
-			new Object[][] {
-				{"Lunes"},
-				{"Martes"},
-				{"Mi\u00E9rcoles"},
-				{"Jueves"},
-				{"Viernes"},
-				{"S\u00E1bado"},
-				{"Domingo"},
-			},
-			new String[] {
-				"New column"
-			}
-		));
-		tableDias.setBounds(31, 176, 49, 112);
-		frmPlanificarActividad.getContentPane().add(tableDias);
-		
 		JLabel lblNewLabel_1 = new JLabel("Hora Inicio:");
-		lblNewLabel_1.setBounds(110, 149, 74, 14);
+		lblNewLabel_1.setBounds(103, 143, 74, 14);
 		frmPlanificarActividad.getContentPane().add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Hora Fin:");
-		lblNewLabel_2.setBounds(223, 149, 46, 14);
+		lblNewLabel_2.setBounds(207, 143, 46, 14);
 		frmPlanificarActividad.getContentPane().add(lblNewLabel_2);
 		
 		JSpinner spinnerLunesIni = new JSpinner();
+		spinnerLunesIni.setEnabled(false);
 		spinnerLunesIni.setModel(new SpinnerListModel(new String[] {"0", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"}));
-		spinnerLunesIni.setBounds(110, 173, 62, 20);
+		spinnerLunesIni.setBounds(103, 168, 62, 14);
 		frmPlanificarActividad.getContentPane().add(spinnerLunesIni);
 		
 		JSpinner spinnerMartesIni = new JSpinner();
+		spinnerMartesIni.setEnabled(false);
 		spinnerMartesIni.setModel(new SpinnerListModel(new String[] {"0", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"}));
-		spinnerMartesIni.setBounds(110, 193, 62, 20);
+		spinnerMartesIni.setBounds(103, 193, 62, 14);
 		frmPlanificarActividad.getContentPane().add(spinnerMartesIni);
 		
 		JSpinner spinnerMiercolesIni = new JSpinner();
+		spinnerMiercolesIni.setEnabled(false);
 		spinnerMiercolesIni.setModel(new SpinnerListModel(new String[] {"0", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"}));
-		spinnerMiercolesIni.setBounds(110, 213, 62, 20);
+		spinnerMiercolesIni.setBounds(103, 218, 62, 14);
 		frmPlanificarActividad.getContentPane().add(spinnerMiercolesIni);
 		
 		JSpinner spinnerJuevesIni = new JSpinner();
+		spinnerJuevesIni.setEnabled(false);
 		spinnerJuevesIni.setModel(new SpinnerListModel(new String[] {"0", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"}));
-		spinnerJuevesIni.setBounds(110, 234, 62, 20);
+		spinnerJuevesIni.setBounds(103, 243, 62, 14);
 		frmPlanificarActividad.getContentPane().add(spinnerJuevesIni);
 		
 		JSpinner spinnerViernesIni = new JSpinner();
+		spinnerViernesIni.setEnabled(false);
 		spinnerViernesIni.setModel(new SpinnerListModel(new String[] {"0", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"}));
-		spinnerViernesIni.setBounds(110, 252, 62, 20);
+		spinnerViernesIni.setBounds(103, 268, 62, 14);
 		frmPlanificarActividad.getContentPane().add(spinnerViernesIni);
 		
 		JSpinner spinnerSabadoIni = new JSpinner();
+		spinnerSabadoIni.setEnabled(false);
 		spinnerSabadoIni.setModel(new SpinnerListModel(new String[] {"0", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"}));
-		spinnerSabadoIni.setBounds(110, 268, 62, 20);
+		spinnerSabadoIni.setBounds(103, 291, 62, 14);
 		frmPlanificarActividad.getContentPane().add(spinnerSabadoIni);
 		
 		JSpinner spinnerDomingoIni = new JSpinner();
+		spinnerDomingoIni.setEnabled(false);
 		spinnerDomingoIni.setModel(new SpinnerListModel(new String[] {"0", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"}));
-		spinnerDomingoIni.setBounds(110, 290, 62, 20);
+		spinnerDomingoIni.setBounds(103, 316, 62, 14);
 		frmPlanificarActividad.getContentPane().add(spinnerDomingoIni);
 		
 		JSpinner spinnerLunesFin = new JSpinner();
+		spinnerLunesFin.setEnabled(false);
 		spinnerLunesFin.setModel(new SpinnerListModel(new String[] {"0", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"}));
-		spinnerLunesFin.setBounds(207, 173, 62, 20);
+		spinnerLunesFin.setBounds(207, 168, 62, 14);
 		frmPlanificarActividad.getContentPane().add(spinnerLunesFin);
 		
 		JSpinner spinnerMartesFin = new JSpinner();
+		spinnerMartesFin.setEnabled(false);
 		spinnerMartesFin.setModel(new SpinnerListModel(new String[] {"0", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"}));
-		spinnerMartesFin.setBounds(207, 193, 62, 20);
+		spinnerMartesFin.setBounds(207, 193, 62, 14);
 		frmPlanificarActividad.getContentPane().add(spinnerMartesFin);
 		
 		JSpinner spinnerMiercolesFin = new JSpinner();
+		spinnerMiercolesFin.setEnabled(false);
 		spinnerMiercolesFin.setModel(new SpinnerListModel(new String[] {"0", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"}));
-		spinnerMiercolesFin.setBounds(207, 213, 62, 20);
+		spinnerMiercolesFin.setBounds(207, 218, 62, 14);
 		frmPlanificarActividad.getContentPane().add(spinnerMiercolesFin);
 		
 		JSpinner spinnerJuevesFin = new JSpinner();
+		spinnerJuevesFin.setEnabled(false);
 		spinnerJuevesFin.setModel(new SpinnerListModel(new String[] {"0", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"}));
-		spinnerJuevesFin.setBounds(207, 234, 62, 20);
+		spinnerJuevesFin.setBounds(207, 243, 62, 14);
 		frmPlanificarActividad.getContentPane().add(spinnerJuevesFin);
 		
 		JSpinner spinnerViernesFin = new JSpinner();
+		spinnerViernesFin.setEnabled(false);
 		spinnerViernesFin.setModel(new SpinnerListModel(new String[] {"0", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"}));
-		spinnerViernesFin.setBounds(207, 252, 62, 20);
+		spinnerViernesFin.setBounds(207, 268, 62, 14);
 		frmPlanificarActividad.getContentPane().add(spinnerViernesFin);
 		
 		JSpinner spinnerSabadoFin = new JSpinner();
+		spinnerSabadoFin.setEnabled(false);
 		spinnerSabadoFin.setModel(new SpinnerListModel(new String[] {"0", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"}));
-		spinnerSabadoFin.setBounds(207, 268, 62, 20);
+		spinnerSabadoFin.setBounds(207, 291, 62, 14);
 		frmPlanificarActividad.getContentPane().add(spinnerSabadoFin);
 		
 		JSpinner spinnerDomingoFin = new JSpinner();
+		spinnerDomingoFin.setEnabled(false);
 		spinnerDomingoFin.setModel(new SpinnerListModel(new String[] {"0", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"}));
-		spinnerDomingoFin.setBounds(207, 290, 62, 20);
+		spinnerDomingoFin.setBounds(207, 316, 62, 14);
 		frmPlanificarActividad.getContentPane().add(spinnerDomingoFin);
+		
+		JCheckBox chckbxNewCheckBox = new JCheckBox("Lunes");
+		chckbxNewCheckBox.setBounds(28, 164, 69, 22);
+		frmPlanificarActividad.getContentPane().add(chckbxNewCheckBox);
+		
+		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("Martes");
+		chckbxNewCheckBox_1.setBounds(28, 191, 69, 19);
+		frmPlanificarActividad.getContentPane().add(chckbxNewCheckBox_1);
+		
+		JCheckBox chckbxNewCheckBox_2 = new JCheckBox("Miércoles");
+		chckbxNewCheckBox_2.setBounds(28, 214, 69, 22);
+		frmPlanificarActividad.getContentPane().add(chckbxNewCheckBox_2);
+		
+		JCheckBox chckbxNewCheckBox_3 = new JCheckBox("Jueves");
+		chckbxNewCheckBox_3.setBounds(28, 239, 69, 22);
+		frmPlanificarActividad.getContentPane().add(chckbxNewCheckBox_3);
+		
+		JCheckBox chckbxNewCheckBox_4 = new JCheckBox("Viernes");
+		chckbxNewCheckBox_4.setBounds(28, 264, 69, 22);
+		frmPlanificarActividad.getContentPane().add(chckbxNewCheckBox_4);
+		
+		JCheckBox chckbxNewCheckBox_5 = new JCheckBox("Sábado");
+		chckbxNewCheckBox_5.setBounds(28, 287, 69, 22);
+		frmPlanificarActividad.getContentPane().add(chckbxNewCheckBox_5);
+		
+		JCheckBox chckbxNewCheckBox_6 = new JCheckBox("Domingo");
+		chckbxNewCheckBox_6.setBounds(28, 312, 69, 22);
+		frmPlanificarActividad.getContentPane().add(chckbxNewCheckBox_6);
 	}
 	
 	public JTextField getTextFieldTipo() {
@@ -469,6 +493,4 @@ public class PlanificaActividad_View {
 	public void setSpinnerAforo(JSpinner spinnerAforo) {
 		this.spinnerAforo = spinnerAforo;
 	}
-	
-	
 }

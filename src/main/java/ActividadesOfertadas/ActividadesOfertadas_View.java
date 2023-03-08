@@ -90,10 +90,6 @@ public class ActividadesOfertadas_View {
 		scrollPane.setViewportView(table);
 		
 		botonVer = new JButton("Ver Actividades Ofertadas");
-		botonVer.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		botonVer.setBounds(271, 235, 191, 23);
 		frmActividadesOfertadas.getContentPane().add(botonVer);
 		
