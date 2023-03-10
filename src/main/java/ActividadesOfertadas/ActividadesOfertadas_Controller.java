@@ -3,6 +3,7 @@ package ActividadesOfertadas;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JTable;
 import javax.swing.table.TableModel;
 
 import giis.demo.util.SwingUtil;
@@ -31,7 +32,7 @@ public class ActividadesOfertadas_Controller {
 		
 		List <Actividades> actividades = model.getListaActividades(periodo);
 		
-		TableModel tmodel = SwingUtil.getTableModelFromPojos(actividades, new String[] {"nombre", "tipo", "fechainicio", "fechafin", "plazas", "preciosocio", "precionosocio"});
+		TableModel tmodel = SwingUtil.getTableModelFromPojos(actividades, new String[] {"nombre", "tipo", "fechaini", "fechafin", "plazas", "precio", "precionosocio"});
 		view.getTable().setModel(tmodel);
 	}
 	

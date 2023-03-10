@@ -125,11 +125,11 @@ insert into Pago (idPago, Importe, Fecha, Estado, idSocio, idNosocio, idReserva)
 
 insert into PeriodoInscripcion (idPeriodoinscrip ,Nombre,Fechainscripini,Fechainscripfin,Fechainscripininosocio,Fechainscripfinnosocio) values 
 
-(1,'Verano','2021-01-12','2022-02-13','2021-04-12','2021-04-14'), 
+(1,'Junio','2021-01-12','2022-02-13','2021-04-12','2021-04-14'), 
 
-(2,'Ve2rano','2021-01-12','2022-02-13','2021-04-12','2021-04-14'), 
+(2,'Septiembre','2021-01-12','2022-02-13','2021-04-12','2021-04-14'), 
 
-(3,'Ve2r2ano','2021-01-12','2022-02-13','2021-04-12','2021-04-14'); 
+(3,'Enero','2021-01-12','2022-02-13','2021-04-12','2021-04-14'); 
 
   
 

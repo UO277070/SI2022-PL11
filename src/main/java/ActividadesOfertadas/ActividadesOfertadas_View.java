@@ -59,7 +59,6 @@ public class ActividadesOfertadas_View {
 		frmActividadesOfertadas = new JFrame();
 		frmActividadesOfertadas.setTitle("Actividades Ofertadas");
 		frmActividadesOfertadas.setBounds(100, 100, 505, 300);
-		frmActividadesOfertadas.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmActividadesOfertadas.getContentPane().setLayout(null);
 		
 		JLabel LabelPeriodo = new JLabel("Periodo:");
@@ -72,7 +71,7 @@ public class ActividadesOfertadas_View {
 		frmActividadesOfertadas.getContentPane().add(periodo);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 40, 452, 184);
+		scrollPane.setBounds(10, 40, 469, 184);
 		frmActividadesOfertadas.getContentPane().add(scrollPane);
 		
 		table = new JTable();
