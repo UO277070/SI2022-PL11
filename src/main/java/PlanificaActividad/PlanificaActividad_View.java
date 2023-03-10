@@ -25,6 +25,8 @@ import javax.swing.border.BevelBorder;
 import javax.swing.JButton;
 import javax.swing.SpinnerListModel;
 import javax.swing.JCheckBox;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class PlanificaActividad_View {
 
@@ -274,33 +276,89 @@ public class PlanificaActividad_View {
 		spinnerDomingoFin.setBounds(207, 316, 62, 14);
 		frmPlanificarActividad.getContentPane().add(spinnerDomingoFin);
 		
-		JCheckBox chckbxNewCheckBox = new JCheckBox("Lunes");
-		chckbxNewCheckBox.setBounds(28, 164, 69, 22);
-		frmPlanificarActividad.getContentPane().add(chckbxNewCheckBox);
+		JCheckBox CheckBoxLunes = new JCheckBox("Lunes");
+		CheckBoxLunes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(CheckBoxLunes.isSelected()) {
+					spinnerLunesIni.setEnabled(true);
+					spinnerLunesFin.setEnabled(true);
+				}
+			}
+		});
+		CheckBoxLunes.setBounds(28, 164, 69, 22);
+		frmPlanificarActividad.getContentPane().add(CheckBoxLunes);
 		
-		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("Martes");
-		chckbxNewCheckBox_1.setBounds(28, 191, 69, 19);
-		frmPlanificarActividad.getContentPane().add(chckbxNewCheckBox_1);
+		JCheckBox CheckBoxMartes = new JCheckBox("Martes");
+		CheckBoxMartes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(CheckBoxMartes.isSelected()) {
+					spinnerMartesIni.setEnabled(true);
+					spinnerMartesFin.setEnabled(true);
+				}
+			}
+		});
+		CheckBoxMartes.setBounds(28, 191, 69, 19);
+		frmPlanificarActividad.getContentPane().add(CheckBoxMartes);
 		
-		JCheckBox chckbxNewCheckBox_2 = new JCheckBox("Miércoles");
-		chckbxNewCheckBox_2.setBounds(28, 214, 69, 22);
-		frmPlanificarActividad.getContentPane().add(chckbxNewCheckBox_2);
+		JCheckBox CheckBoxMiercoles = new JCheckBox("Miércoles");
+		CheckBoxMiercoles.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(CheckBoxMiercoles.isSelected()) {
+					spinnerMiercolesIni.setEnabled(true);
+					spinnerMiercolesFin.setEnabled(true);
+				}
+			}
+		});
+		CheckBoxMiercoles.setBounds(28, 214, 69, 22);
+		frmPlanificarActividad.getContentPane().add(CheckBoxMiercoles);
 		
-		JCheckBox chckbxNewCheckBox_3 = new JCheckBox("Jueves");
-		chckbxNewCheckBox_3.setBounds(28, 239, 69, 22);
-		frmPlanificarActividad.getContentPane().add(chckbxNewCheckBox_3);
+		JCheckBox CheckBoxJueves = new JCheckBox("Jueves");
+		CheckBoxJueves.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(CheckBoxJueves.isSelected()) {
+					spinnerJuevesIni.setEnabled(true);
+					spinnerJuevesFin.setEnabled(true);
+				}
+			}
+		});
+		CheckBoxJueves.setBounds(28, 239, 69, 22);
+		frmPlanificarActividad.getContentPane().add(CheckBoxJueves);
 		
-		JCheckBox chckbxNewCheckBox_4 = new JCheckBox("Viernes");
-		chckbxNewCheckBox_4.setBounds(28, 264, 69, 22);
-		frmPlanificarActividad.getContentPane().add(chckbxNewCheckBox_4);
+		JCheckBox CheckBoxViernes = new JCheckBox("Viernes");
+		CheckBoxViernes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(CheckBoxViernes.isSelected()) {
+					spinnerViernesIni.setEnabled(true);
+					spinnerViernesFin.setEnabled(true);
+				}
+			}
+		});
+		CheckBoxViernes.setBounds(28, 264, 69, 22);
+		frmPlanificarActividad.getContentPane().add(CheckBoxViernes);
 		
-		JCheckBox chckbxNewCheckBox_5 = new JCheckBox("Sábado");
-		chckbxNewCheckBox_5.setBounds(28, 287, 69, 22);
-		frmPlanificarActividad.getContentPane().add(chckbxNewCheckBox_5);
+		JCheckBox CheckBoxSabado = new JCheckBox("Sábado");
+		CheckBoxSabado.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(CheckBoxSabado.isSelected()) {
+					spinnerSabadoIni.setEnabled(true);
+					spinnerSabadoFin.setEnabled(true);
+				}
+			}
+		});
+		CheckBoxSabado.setBounds(28, 287, 69, 22);
+		frmPlanificarActividad.getContentPane().add(CheckBoxSabado);
 		
-		JCheckBox chckbxNewCheckBox_6 = new JCheckBox("Domingo");
-		chckbxNewCheckBox_6.setBounds(28, 312, 69, 22);
-		frmPlanificarActividad.getContentPane().add(chckbxNewCheckBox_6);
+		JCheckBox CheckBoxDomingo = new JCheckBox("Domingo");
+		CheckBoxDomingo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(CheckBoxDomingo.isSelected()) {
+					spinnerDomingoIni.setEnabled(true);
+					spinnerDomingoFin.setEnabled(true);
+				}
+			}
+		});
+		CheckBoxDomingo.setBounds(28, 312, 69, 22);
+		frmPlanificarActividad.getContentPane().add(CheckBoxDomingo);
 	}
 	
 	public JTextField getTextFieldTipo() {
