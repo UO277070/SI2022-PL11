@@ -31,7 +31,7 @@ public class ActividadesOfertadas_Controller {
 		
 		List <Actividades> actividades = model.getListaActividades(periodo);
 		
-		TableModel tmodel = SwingUtil.getTableModelFromPojos(actividades, new String[] {"nombre", "tipo", "fechainicio", "fechafin", "plazas", "preciosocio", "precionosocio"});
+		TableModel tmodel = SwingUtil.getTableModelFromPojos(actividades, new String[] {"nombre", "tipo", "fechaini", "fechafin", "plazas", "precio", "precionosocio"});
 		view.getTable().setModel(tmodel);
 	}
 	
