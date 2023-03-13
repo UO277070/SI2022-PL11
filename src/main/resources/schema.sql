@@ -230,8 +230,6 @@ fechainscripini TEXT,
 
 fechainscripfin TEXT, 
 
-fechainscripininosocio TEXT, 
-
 fechainscripfinnosocio TEXT 
 
 ); 

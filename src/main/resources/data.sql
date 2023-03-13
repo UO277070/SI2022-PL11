@@ -123,13 +123,13 @@ insert into Pago (idPago, Importe, Fecha, Estado, idSocio, idNosocio, idReserva)
 
   
 
-insert into PeriodoInscripcion (idPeriodoinscrip ,Nombre,Fechainscripini,Fechainscripfin,Fechainscripininosocio,Fechainscripfinnosocio) values 
+insert into PeriodoInscripcion (idPeriodoinscrip ,Nombre,Fechainscripini,Fechainscripfin,Fechainscripfinnosocio) values 
 
-(1,'Septiembre','2021-01-12','2022-02-13','2021-04-12','2021-04-14'), 
+(1,'Septiembre','2021-01-12','2022-02-13','2021-04-14'), 
 
-(2,'Enero','2021-01-12','2022-02-13','2021-04-12','2021-04-14'), 
+(2,'Enero','2021-01-12','2022-02-13','2021-04-14'), 
 
-(3,'Junio','2021-01-12','2022-02-13','2021-04-12','2021-04-14'); 
+(3,'Junio','2021-01-12','2022-02-13','2021-04-14'); 
 
   
 

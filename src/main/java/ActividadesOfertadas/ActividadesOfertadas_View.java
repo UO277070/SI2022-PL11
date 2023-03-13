@@ -59,7 +59,6 @@ public class ActividadesOfertadas_View {
 		frmActividadesOfertadas = new JFrame();
 		frmActividadesOfertadas.setTitle("Actividades Ofertadas");
 		frmActividadesOfertadas.setBounds(100, 100, 505, 300);
-		frmActividadesOfertadas.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmActividadesOfertadas.getContentPane().setLayout(null);
 		
 		JLabel LabelPeriodo = new JLabel("Periodo:");
