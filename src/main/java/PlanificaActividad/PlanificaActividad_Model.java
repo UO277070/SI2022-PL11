@@ -10,10 +10,10 @@ public class PlanificaActividad_Model {
 	
 	private Database db = new Database();
 	
-	public List<Instalaciones> getListaInstalaciones(){
-		String sql = "SELECT * from instalacion";
+	public List<Object []> getListaInstalaciones(){
+		String sql = "SELECT nombre from instalacion";
 		
-		return db.executeQueryPojo(Instalaciones.class, sql);
+		return db.executeQueryArray(sql);
 		
 	}
 	

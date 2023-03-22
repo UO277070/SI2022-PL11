@@ -86,7 +86,6 @@ public class PlanificaActividad_View {
 		frmPlanificarActividad = new JFrame();
 		frmPlanificarActividad.setTitle("Planificar Actividad");
 		frmPlanificarActividad.setBounds(100, 100, 620, 396);
-		frmPlanificarActividad.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmPlanificarActividad.getContentPane().setLayout(null);
 		
 		JLabel LabelInstalacion = new JLabel("Instalación:");
@@ -550,5 +549,21 @@ public class PlanificaActividad_View {
 
 	public void setSpinnerAforo(JSpinner spinnerAforo) {
 		this.spinnerAforo = spinnerAforo;
+	}
+
+	public JComboBox getComboBoxInstalacion() {
+		return comboBoxInstalacion;
+	}
+
+	public void setComboBoxInstalacion(List<Instalaciones> list) {
+		this.comboBoxInstalacion = (JComboBox) list;
+	}
+
+	public JComboBox getComboBoxPeriodo() {
+		return comboBoxPeriodo;
+	}
+
+	public void setComboBoxPeriodo(List<PeriodosInscripcion> list) {
+		this.comboBoxPeriodo = (JComboBox) list;
 	}
 }

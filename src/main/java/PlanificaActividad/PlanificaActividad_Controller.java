@@ -2,6 +2,7 @@ package PlanificaActividad;
 
 import java.util.List;
 
+import javax.swing.ComboBoxModel;
 import javax.swing.JOptionPane;
 
 import giis.demo.util.SwingUtil;
@@ -24,9 +25,8 @@ public class PlanificaActividad_Controller {
 	
 	
 	public void initView() {
-		this.model.getListaInstalaciones();
-		this.model.getPeriodos();
 		view.getFrame().setVisible(true); 
+		getInstalaciones();
 	
 	}
 	
@@ -35,9 +35,10 @@ public class PlanificaActividad_Controller {
 		this.view.addPeriodo(periodos);
 	}
 	
-	public void getIntalaciones() {
-		List<Instalaciones> intalaciones = model.getListaInstalaciones();
-		this.view.addIntalaciones(intalaciones);
+	public void getInstalaciones() {
+		List<Object []> intalaciones = model.getListaInstalaciones();
+		ComboBoxModel<Object> model = SwingUtil.getComboModelFromList(intalaciones);
+		view.getComboBoxInstalacion().setModel(model);
 	}
 	
 	public void crearActividad() {

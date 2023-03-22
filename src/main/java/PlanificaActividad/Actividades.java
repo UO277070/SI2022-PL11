@@ -1,57 +1,107 @@
 package PlanificaActividad;
 
 public class Actividades {
-	private String actividad;
-	private String fecha;
-	private int horaini;
-	private int horafin;
+	private int idPeriodo;
+	private int idInstalacion;
+	private String nombre;
+	private String tipo;
+	private int plazas;
+	private String fechaini;
+	private String fechafin;
+	private int precio;
+	private int precionosocio;
+	
 	
 	public Actividades() {
 		
 	}
 	
-	public Actividades(String a, String f, int hi, int hf) {
-		this.actividad=a;
-		this.fecha=f;
-		this.horaini=hi;
-		this.horafin=hf;
-	}
 
 	public String getActividad() {
-		return actividad;
+		return nombre;
 	}
 	
 	public void setActividad(String a) {
-		this.actividad=a;
+		this.nombre=a;
 	}
 	
-	@Override 
+
+	@Override
 	public String toString() {
-		return "Actividades [Nombre: " + actividad + ", fecha: " + fecha + ", hora inicial: " + horaini
-				+ ", hora final: " + horafin + "]" ;
+		return "Actividades [nombre=" + nombre + ", tipo=" + tipo + ", plazas=" + plazas + ", fechaini=" + fechaini
+				+ ", fechafin=" + fechafin + ", precio=" + precio + ", precionosocio=" + precionosocio + "]";
 	}
 
-	public String getFecha() {
-		return fecha;
+
+	public String getNombre() {
+		return nombre;
 	}
 
-	public void setFecha(String fecha) {
-		this.fecha = fecha;
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
-	public int getHora_ini() {
-		return horaini;
+
+	public String getTipo() {
+		return tipo;
 	}
 
-	public void setHora_ini(int hora_ini) {
-		this.horaini = hora_ini;
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
-	public int getHora_fin() {
-		return horafin;
+
+	public int getPlazas() {
+		return plazas;
 	}
 
-	public void setHora_fin(int hora_fin) {
-		this.horafin = hora_fin;
+
+	public void setPlazas(int plazas) {
+		this.plazas = plazas;
 	}
+
+
+	public String getFechaini() {
+		return fechaini;
+	}
+
+
+	public void setFechaini(String fechaini) {
+		this.fechaini = fechaini;
+	}
+
+
+	public String getFechafin() {
+		return fechafin;
+	}
+
+
+	public void setFechafin(String fechafin) {
+		this.fechafin = fechafin;
+	}
+
+
+	public int getPrecio() {
+		return precio;
+	}
+
+
+	public void setPrecio(int precio) {
+		this.precio = precio;
+	}
+
+
+	public int getPrecionosocio() {
+		return precionosocio;
+	}
+
+
+	public void setPrecionosocio(int precionosocio) {
+		this.precionosocio = precionosocio;
+	}
+	
+	
+	
 }
