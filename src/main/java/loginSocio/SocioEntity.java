@@ -1,4 +1,4 @@
-package reservaInstalacionSocio;
+package loginSocio;
 
 public class SocioEntity {
 	int idSocio; 

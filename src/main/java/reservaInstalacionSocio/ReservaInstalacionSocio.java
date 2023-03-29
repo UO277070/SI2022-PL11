@@ -65,6 +65,8 @@ public class ReservaInstalacionSocio extends JFrame {
 		contentPane.add(lblNewLabel_1);
 		
 		tFSocio = new JTextField();
+		tFSocio.setEditable(false);
+		tFSocio.setEnabled(false);
 		tFSocio.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -110,7 +112,7 @@ public class ReservaInstalacionSocio extends JFrame {
 		lblNewLabel_7.setBounds(221, 226, 106, 14);
 		contentPane.add(lblNewLabel_7);
 		
-		rdbtnPagoInstalacion = new JRadioButton("Pago en instalación");
+		rdbtnPagoInstalacion = new JRadioButton("Pago con tarjeta");
 		rdbtnPagoInstalacion.setSelected(true);
 		bGPago.add(rdbtnPagoInstalacion);
 		rdbtnPagoInstalacion.setBounds(234, 249, 144, 23);

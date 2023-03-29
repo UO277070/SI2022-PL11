@@ -1,32 +1,27 @@
 package reservaInstalacionSocio;
 
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Formatter;
 import java.util.List;
-import java.util.Scanner;
-
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.SpinnerNumberModel;
-import javax.swing.plaf.basic.BasicScrollPaneUI.ViewportChangeHandler;
-import javax.swing.table.TableModel;
-
-import giis.demo.tkrun.CarreraDisplayDTO;
 import giis.demo.util.SwingUtil;
 import giis.demo.util.UnexpectedException;
-import giis.demo.util.Util;
+import loginSocio.SocioEntity;
+import loginSocio.loginController;
+import loginSocio.loginModel;
+import loginSocio.loginView;
 
 public class ReservaController {
 	private ReservaModel model;
 	private ReservaInstalacionSocio view;
+	private loginController controller;
+	private SocioEntity socioLog;
 	
 	public ReservaController(ReservaModel rm, ReservaInstalacionSocio ri) {
 		this.model = rm;
@@ -57,8 +52,24 @@ public class ReservaController {
 		this.getPrecio();
 		
 		//Abre la ventana (sustituye al main generado por WindowBuilder)
-		view.getFrame().setVisible(true); 
+		controller=new loginController(new loginModel(), new loginView());
+		controller.initController();
+		boolean POK = controller.showDialog();
+        if (POK) {
+        	socioLog = controller.getSocio();
+        	view.getFrame().setVisible(true);
+        	setSocio();
+        }
+        
 	}
+	
+	public void setSocio() {
+		view.gettFSocio().setText(""+socioLog.getIdSocio());
+		view.setTitle("Sesión iniciada como: " + socioLog.getNombre());
+	}
+	
+	
+	
 	
 	/**
 	 * Introduce en cBInstalaciones todas las instalaciones presentes en la base de 
@@ -250,10 +261,9 @@ public class ReservaController {
 					//Consulta con los datos de la reserva que se acaba de hacer para el resguardo
 					ReservaEntity detalles = model.reservaDetalles(idsocio, idInstalacion, fecha, horaini, horafin);
 					double pago = Double.parseDouble(view.getLblCosteTotal().getText());
-					double newcuota = socio.cuota + pago;
 					
 					//Metodo de pago con un pago o cambio de la cuota
-					String metodo = metodopago(pago,newcuota,socio.idSocio,fecha,detalles.idReserva);
+					String metodo = metodopago(pago,socio.getIdSocio(),fecha,detalles.idReserva);
 					//Resguardo con los datos de la reserva
 					resguardo(detalles,metodo);
 					/*List<Object[]> lista = model.Prueba();
@@ -284,16 +294,19 @@ public class ReservaController {
 	 * @param idReserva
 	 * @return un String con el metodo usado
 	 */
-	private String metodopago(double pago, double newcuota, int idSocio, String fecha, int idReserva) {
+	private String metodopago(double pago, int idSocio, String fecha, int idReserva) {
+		String estado;
 		if(view.getRdbtnCuotaMensual().isSelected()) {
-			//Cambio cuota
-			model.updateCuotaMensual(newcuota, idSocio);
+			//Pago con cuota
+			estado = "sinpagar"; 
+			model.generaPago(pago,fecha,estado,idSocio,idReserva);
 			return "Añadido a su cuota mensual";
 		}
 		else {
 			//Insercion del pago
-			model.generaPago(pago, fecha, idSocio, idReserva);
-			return "Pago pendiente en instalación";
+			estado = "pagado"; 
+			model.generaPago(pago, fecha,estado,idSocio, idReserva);
+			return "Pago con tarjeta";
 		}
 	}
 	

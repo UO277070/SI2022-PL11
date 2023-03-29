@@ -12,6 +12,7 @@ import giis.demo.tkrun.CarreraDisplayDTO;
 import giis.demo.util.Database;
 import giis.demo.util.UnexpectedException;
 import giis.demo.util.Util;
+import loginSocio.SocioEntity;
 
 public class ReservaModel {
 	private Database db=new Database();
@@ -29,6 +30,7 @@ public class ReservaModel {
 		List<Object[]>rows=db.executeQueryArray(sql,nombreInst);
 		return (int)rows.get(0)[0];
 	}
+	
 	
 	public List<Object []> getHorasOcupadas(String nombreInst, String fecha) {
 		String sql=
@@ -85,11 +87,11 @@ public class ReservaModel {
 		return datosreserva.get(0);
 	}
 	
-	public void generaPago(double importe, String fecha, int idSocio, int idReserva) {
+	public void generaPago(double importe, String fecha, String estado, int idSocio, int idReserva) {
 		String sql = 
 				"INSERT INTO Pago (importe,fecha,estado,idSocio,idReserva) "
-				+ "values (?,?,'sinpagar',?,?)";
-		db.executeUpdate(sql,importe,fecha,idSocio,idReserva);
+				+ "values (?,?,?,?,?)";
+		db.executeUpdate(sql,importe,fecha,estado,idSocio,idReserva);
 	}
 	
 	public void updateCuotaMensual(double cuota,int idSocio) {
