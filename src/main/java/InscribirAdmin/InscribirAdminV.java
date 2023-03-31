@@ -53,39 +53,26 @@ public class InscribirAdminV {
 		frmInscribir.setBounds(100, 100, 518, 300);
 		frmInscribir.getContentPane().setLayout(null);
 		
-		JCheckBox checkBoxSocio = new JCheckBox("Socio");
-		checkBoxSocio.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(checkBoxSocio.isSelected()) {
-					comboBoxID.setEnabled(true);
-					textFieldNombre.setEnabled(false);
-					textFieldApellidos.setEnabled(false);
-					textFieldDNI.setEnabled(false);
-					textFieldCorreo.setEnabled(false);
-				}
-			}
-		});
-		checkBoxSocio.setBounds(27, 28, 51, 23);
-		frmInscribir.getContentPane().add(checkBoxSocio);
+		
 		
 		JLabel labelID = new JLabel("ID Socio:");
-		labelID.setBounds(27, 82, 51, 14);
+		labelID.setBounds(27, 82, 49, 16);
 		frmInscribir.getContentPane().add(labelID);
 		
 		JLabel lableNombre = new JLabel("Nombre:");
-		lableNombre.setBounds(27, 107, 46, 14);
+		lableNombre.setBounds(27, 107, 48, 16);
 		frmInscribir.getContentPane().add(lableNombre);
 		
 		JLabel labelApellidos = new JLabel("Apellidos:");
-		labelApellidos.setBounds(27, 132, 46, 14);
+		labelApellidos.setBounds(27, 132, 55, 16);
 		frmInscribir.getContentPane().add(labelApellidos);
 		
 		JLabel labelDNI = new JLabel("DNI:");
-		labelDNI.setBounds(27, 157, 46, 14);
+		labelDNI.setBounds(27, 157, 22, 16);
 		frmInscribir.getContentPane().add(labelDNI);
 		
 		JLabel labelCorreo = new JLabel("Correo:");
-		labelCorreo.setBounds(27, 182, 51, 14);
+		labelCorreo.setBounds(27, 182, 42, 16);
 		frmInscribir.getContentPane().add(labelCorreo);
 		
 		JComboBox comboBoxID = new JComboBox();
@@ -114,12 +101,12 @@ public class InscribirAdminV {
 		textFieldCorreo.setColumns(10);
 		
 		JLabel labelActividad = new JLabel("Actividad:");
-		labelActividad.setBounds(283, 32, 51, 14);
+		labelActividad.setBounds(283, 32, 55, 16);
 		frmInscribir.getContentPane().add(labelActividad);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(344, 28, 148, 22);
-		frmInscribir.getContentPane().add(comboBox_1);
+		JComboBox comboBoxActividades = new JComboBox();
+		comboBoxActividades.setBounds(344, 28, 148, 22);
+		frmInscribir.getContentPane().add(comboBoxActividades);
 		
 		JButton buttonInscribir = new JButton("Inscribir");
 		buttonInscribir.addActionListener(new ActionListener() {
@@ -128,6 +115,29 @@ public class InscribirAdminV {
 		});
 		buttonInscribir.setBounds(403, 227, 89, 23);
 		frmInscribir.getContentPane().add(buttonInscribir);
+		
+		JCheckBox checkBoxSocio = new JCheckBox("Socio");
+		checkBoxSocio.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(checkBoxSocio.isSelected()) {
+					comboBoxID.setEnabled(true);
+					textFieldNombre.setEnabled(false);
+					textFieldApellidos.setEnabled(false);
+					textFieldDNI.setEnabled(false);
+					textFieldCorreo.setEnabled(false);
+				}
+			}
+		});
+		checkBoxSocio.setBounds(27, 28, 57, 24);
+		frmInscribir.getContentPane().add(checkBoxSocio);
+	}
+
+	public JComboBox getComboBoxID() {
+		return comboBoxID;
+	}
+
+	public void setComboBoxID(JComboBox comboBoxID) {
+		this.comboBoxID = comboBoxID;
 	}
 
 	public JTextField getTextFieldNombre() {

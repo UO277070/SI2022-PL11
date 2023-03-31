@@ -1,5 +1,8 @@
 package InscribirAdmin;
 
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.swing.ComboBoxModel;
@@ -7,6 +10,7 @@ import javax.swing.ComboBoxModel;
 import ActividadesOfertadas.ActividadesOfertadas_Model;
 import ActividadesOfertadas.ActividadesOfertadas_View;
 import giis.demo.util.SwingUtil;
+import giis.demo.util.Util;
 import loginSocio.SocioEntity;
 import loginSocio.loginController;
 import loginSocio.loginModel;
@@ -47,10 +51,16 @@ public class InscribirAdminC {
 	public void getListaSocios() {
 		List <Object[]> socios = model.getListaSocios();
 		
-		ComboBoxModel combo = SwingUtil.getComboModelFromList(socios) ;
+		ComboBoxModel combo = SwingUtil.getComboModelFromList(socios);
+		view.getComboBoxID().setModel(combo);
+		
 	}
 	
 	public void getListaActividades() {
+		Date fecha = new Date();
+		
+		
+		
 		
 	}
 }
