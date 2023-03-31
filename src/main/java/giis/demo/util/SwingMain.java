@@ -9,6 +9,8 @@ import ActividadesOfertadas.ActividadesOfertadas_View;
 import PlanificaActividad.PlanificaActividad_Controller;
 import PlanificaActividad.PlanificaActividad_Model;
 import PlanificaActividad.PlanificaActividad_View;
+import InscribirAdmin.*;
+
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -106,7 +108,19 @@ public class SwingMain {
 			}
 		});
 		frame.getContentPane().add(btnPlanificarActividad);
+		
+		JButton btnInscribirAdmin = new JButton("Inscribir Socio como Administrador");
+		btnInscribirAdmin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				InscribirAdminC cont = new InscribirAdminC(new InscribirAdminM(), new InscribirAdminV());
+				cont.initController();
+			}
+		});
+		frame.getContentPane().add(btnInscribirAdmin);
+		
 	}
+	
+	
 
 	public JFrame getFrame() { return this.frame; }
 	
