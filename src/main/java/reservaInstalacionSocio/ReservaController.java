@@ -20,7 +20,6 @@ import loginSocio.loginView;
 public class ReservaController {
 	private ReservaModel model;
 	private ReservaInstalacionSocio view;
-	private loginController controller;
 	private SocioEntity socioLog;
 	
 	public ReservaController(ReservaModel rm, ReservaInstalacionSocio ri) {
@@ -52,7 +51,7 @@ public class ReservaController {
 		this.getPrecio();
 		
 		//Abre la ventana (sustituye al main generado por WindowBuilder)
-		controller=new loginController(new loginModel(), new loginView());
+		loginController controller=new loginController(new loginModel(), new loginView());
 		controller.initController();
 		boolean POK = controller.showDialog();
         if (POK) {

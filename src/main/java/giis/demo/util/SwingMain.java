@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import giis.demo.tkrun.*;
+import pagosSocio.*;
 import reservaInstalacionSocio.*;
 
 
@@ -71,9 +72,18 @@ public class SwingMain {
 				controller.initController();
 			}
 		});
+		
+		JButton btnPagosSocio = new JButton("Pagos (Socio)");
+		btnPagosSocio.addActionListener(new ActionListener() { //NOSONAR codigo autogenerado
+			public void actionPerformed(ActionEvent e) {
+				PagosController controller=new PagosController(new PagosModel(), new PagosView());
+				controller.initController();
+			}
+		});
 		frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
 		frame.getContentPane().add(btnConsultaReservasAdmin);
 		frame.getContentPane().add(btnReservaInstalacionSocio);
+		frame.getContentPane().add(btnPagosSocio);
 		
 			
 		JButton btnInicializarBaseDeDatos = new JButton("Inicializar Base de Datos en Blanco");

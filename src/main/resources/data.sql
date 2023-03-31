@@ -67,7 +67,8 @@ insert into Socio (idSocio, nombre, apellido1, apellido2, correo, cuota, moroso)
 
 (1, 'Ramon','Perez','González','Correo@ejemplo.com', 35, false), 
 
-(2, 'Pedro','Perez2','González2','Correo2@ejemplo.com', 35, true); 
+(2, 'Pedro','Perez2','González2','Correo2@ejemplo.com', 35, true),
+(3, 'Enrique','Rodriguez','González2','Correo3@ejemplo.com', 35, false); 
 
   
 
@@ -123,7 +124,8 @@ insert into Nosocio (idNosocio, Dni, Nombre, Apellido1, Apellido2, Correo) value
 
 insert into Pago (idPago, Importe, Fecha, Estado, idSocio, idNosocio, idReserva) values 
 
-(1, 10, '2022-01-17','completo',1 ,1,1); 
+(1, 10, '2022-01-17','completo',1 ,1,1),
+(5, 10, '2022-01-17','sinpagar',1 ,NULL,13); 
 
   
 
@@ -143,15 +145,15 @@ insert into PeriodoInscripcion (idPeriodoinscrip ,Nombre,Fechainscripini,Fechain
 
 insert into Reserva (idReserva, idSocio, idInstalacion , fecha, horaIni, horafin, estado ,reservadoPor, idActividad) values 
 
-(1,1,2,'2023-04-01', 10, 18, 'ocupado','Pepe', NULL ), 
+(1,4,2,'2023-04-01', 10, 18, 'ocupado','Pepe', NULL ), 
 
 (2,1,1,'2023-03-04', 15, 16,'ocupado', 'Ramon', NULL), 
 
-(3,1,1,'2023-03-04', 8, 9,'ocupado', 'Juan', NULL), 
+(3,4,1,'2023-03-04', 8, 9,'ocupado', 'Juan', NULL), 
 
-(4,1,1,'2023-03-04', 10, 14, 'ocupado','Pedro', NULL), 
+(4,2,1,'2023-03-04', 10, 14, 'ocupado','Pedro', NULL), 
 
-(5,1,2,'2023-03-03', 10, 14,'ocupado', 'Pedro', NULL), 
+(5,2,2,'2023-03-03', 10, 14,'ocupado', 'Pedro', NULL), 
 
 (13,1,1,'2023-04-01', 9, 12,'ocupado', 'Actividad1', 1 ), 
 
