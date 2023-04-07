@@ -45,5 +45,19 @@ public class InscribirAdminM {
 		return db.executeQueryArray(sql);
 	}
 	
+	public void insertInscripcionActividadSocio(int idActividad, int idSocio) {
+		String sql = "INSERT INTO Inscripcion (idActividad, idSocio) VALUES (?, ?)";
+		db.executeUpdate(sql, idActividad, idSocio);
+	}
+	
+	public void insertInscripcionActividadNoSocio(int idActividad, int idNoSocio) {
+		String sql = "INSERT INTO Inscripcion (idActividad, idNosocio) VALUES (?, ?)";
+		db.executeUpdate(sql, idActividad, idNoSocio);
+	}
+	
+	public void insertNoSocio(String dni, String nombre, String apellido1, String apellido2, String correo) {
+		String sql = "INSERT INTO Nosocio (dni, nombre, apellido1, apellido2, correo) VALUES (?,?,?,?,?)";
+		db.executeUpdate(sql, dni, nombre, apellido1, apellido2, correo);
+	}
 	
 }

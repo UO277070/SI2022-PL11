@@ -16,10 +16,11 @@ public class InscribirAdminV {
 
 	private JFrame frmInscribir;
 	private JTextField textFieldNombre;
-	private JTextField textFieldApellidos;
+	private JTextField textFieldPrimerApellido;
 	private JTextField textFieldDNI;
 	private JTextField textFieldCorreo;
 	private JComboBox comboBoxID;
+	private JTextField textFieldSegundoApellido;
 
 	/**
 	 * Launch the application.
@@ -63,40 +64,45 @@ public class InscribirAdminV {
 		lableNombre.setBounds(27, 107, 48, 16);
 		frmInscribir.getContentPane().add(lableNombre);
 		
-		JLabel labelApellidos = new JLabel("Apellidos:");
-		labelApellidos.setBounds(27, 132, 55, 16);
-		frmInscribir.getContentPane().add(labelApellidos);
+		JLabel labelPrimerApellido = new JLabel("Primer Apellido:");
+		labelPrimerApellido.setBounds(27, 132, 74, 14);
+		frmInscribir.getContentPane().add(labelPrimerApellido);
 		
 		JLabel labelDNI = new JLabel("DNI:");
-		labelDNI.setBounds(27, 157, 22, 16);
+		labelDNI.setBounds(27, 187, 22, 16);
 		frmInscribir.getContentPane().add(labelDNI);
 		
 		JLabel labelCorreo = new JLabel("Correo:");
-		labelCorreo.setBounds(27, 182, 42, 16);
+		labelCorreo.setBounds(27, 212, 42, 16);
 		frmInscribir.getContentPane().add(labelCorreo);
 		
 		JComboBox comboBoxID = new JComboBox();
 		comboBoxID.setEnabled(false);
-		comboBoxID.setBounds(83, 78, 156, 22);
+		comboBoxID.setBounds(120, 78, 156, 22);
 		frmInscribir.getContentPane().add(comboBoxID);
 		
 		textFieldNombre = new JTextField();
-		textFieldNombre.setBounds(83, 104, 156, 20);
+		textFieldNombre.setBounds(120, 104, 156, 20);
 		frmInscribir.getContentPane().add(textFieldNombre);
 		textFieldNombre.setColumns(10);
 		
-		textFieldApellidos = new JTextField();
-		textFieldApellidos.setBounds(83, 129, 156, 20);
-		frmInscribir.getContentPane().add(textFieldApellidos);
-		textFieldApellidos.setColumns(10);
+		textFieldPrimerApellido = new JTextField();
+		textFieldPrimerApellido.setBounds(120, 129, 156, 20);
+		frmInscribir.getContentPane().add(textFieldPrimerApellido);
+		textFieldPrimerApellido.setColumns(10);
+		
+		textFieldSegundoApellido = new JTextField();
+		textFieldSegundoApellido.setBounds(120, 156, 156, 20);
+		frmInscribir.getContentPane().add(textFieldSegundoApellido);
+		textFieldSegundoApellido.setColumns(10);
 		
 		textFieldDNI = new JTextField();
-		textFieldDNI.setBounds(83, 154, 156, 20);
+		textFieldDNI.setBounds(120, 184, 156, 20);
 		frmInscribir.getContentPane().add(textFieldDNI);
 		textFieldDNI.setColumns(10);
 		
 		textFieldCorreo = new JTextField();
-		textFieldCorreo.setBounds(83, 179, 156, 20);
+		textFieldCorreo.setBounds(120, 209, 156, 20);
 		frmInscribir.getContentPane().add(textFieldCorreo);
 		textFieldCorreo.setColumns(10);
 		
@@ -122,7 +128,8 @@ public class InscribirAdminV {
 				if(checkBoxSocio.isSelected()) {
 					comboBoxID.setEnabled(true);
 					textFieldNombre.setEnabled(false);
-					textFieldApellidos.setEnabled(false);
+					textFieldPrimerApellido.setEnabled(false);
+					textFieldSegundoApellido.setEnabled(false);
 					textFieldDNI.setEnabled(false);
 					textFieldCorreo.setEnabled(false);
 				}
@@ -130,6 +137,12 @@ public class InscribirAdminV {
 		});
 		checkBoxSocio.setBounds(27, 28, 57, 24);
 		frmInscribir.getContentPane().add(checkBoxSocio);
+		
+		JLabel labelSegundoApellido = new JLabel("Segundo Apellido:");
+		labelSegundoApellido.setBounds(27, 159, 86, 14);
+		frmInscribir.getContentPane().add(labelSegundoApellido);
+		
+		
 	}
 
 	public JComboBox getComboBoxID() {
@@ -148,12 +161,20 @@ public class InscribirAdminV {
 		this.textFieldNombre = textFieldNombre;
 	}
 
-	public JTextField getTextFieldApellidos() {
-		return textFieldApellidos;
+	public JTextField getTextFieldPrimerApellido() {
+		return textFieldPrimerApellido;
 	}
 
-	public void setTextFieldApellidos(JTextField textFieldApellidos) {
-		this.textFieldApellidos = textFieldApellidos;
+	public void setTextFieldPrimerApellido(JTextField textFielPrimerApellido) {
+		this.textFieldPrimerApellido = textFieldPrimerApellido;
+	}
+	
+	public JTextField getTextFieldSegundoApellido() {
+		return textFieldPrimerApellido;
+	}
+
+	public void setTextFieldSegundoApellido(JTextField textFielSegundoApellido) {
+		this.textFieldSegundoApellido = textFieldSegundoApellido;
 	}
 
 	public JTextField getTextFieldDNI() {
