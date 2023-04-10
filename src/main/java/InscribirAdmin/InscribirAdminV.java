@@ -20,7 +20,14 @@ public class InscribirAdminV {
 	private JTextField textFieldDNI;
 	private JTextField textFieldCorreo;
 	private JComboBox comboBoxID;
+	private JComboBox comboBoxActividades;
 	private JTextField textFieldSegundoApellido;
+	private JCheckBox checkBoxSocio;
+	private boolean esSocio = false;
+	private JButton buttonInscribir;
+
+
+	
 
 	/**
 	 * Launch the application.
@@ -152,6 +159,14 @@ public class InscribirAdminV {
 	public void setComboBoxID(JComboBox comboBoxID) {
 		this.comboBoxID = comboBoxID;
 	}
+	
+	public JComboBox getComboBoxActividades() {
+		return comboBoxID;
+	}
+
+	public void setComboBoxActividades(JComboBox comboBoxActividades) {
+		this.comboBoxID = comboBoxID;
+	}
 
 	public JTextField getTextFieldNombre() {
 		return textFieldNombre;
@@ -195,5 +210,28 @@ public class InscribirAdminV {
 
 	public JFrame getFrame() {
 		return this.frmInscribir;
+	}
+	
+	public boolean esSocio() {
+		if(checkBoxSocio.isSelected()) {
+			esSocio = true;
+		}
+		return esSocio;
+	}
+	
+	public JButton getButtonInscribir() {
+		return buttonInscribir;
+	}
+
+	public void setButtonInscribir(JButton buttonInscribir) {
+		this.buttonInscribir = buttonInscribir;
+	}
+
+	public JCheckBox getCheckBoxSocio() {
+		return checkBoxSocio;
+	}
+
+	public void setCheckBoxSocio(JCheckBox checkBoxSocio) {
+		this.checkBoxSocio = checkBoxSocio;
 	}
 }

@@ -16,12 +16,18 @@ public class InscribirAdminM {
 		return db.executeQueryArray(sql, fechaActual);
 	}
 	
-	public List<Object[]> getListaActividadesEnPeriodoInsNoSocio(String fechaActual){
+	public List<Object[]> getListaActividadesEnPeriodoNoSocio(String fechaActual){
 		String sql = "SELECT Actividad.nombre FROM Actividad "
 				+ "INNER JOIN PeriodoInscripcion "
 				+ "ON Actividad.idPeriodoinscrip = PeriodoInscripcion.idPeriodoinscrip "
 				+ "WHERE PeriodoInscripcion.fechainscripini <= ? AND PeriodoInscripcion.fechainscripfinnosocio >= ? ";
 		return db.executeQueryArray(sql, fechaActual);
+	}
+	
+	public List<Object[]> getIdActividad(String nombre) {
+		String sql = "SELECT Actividad.idActividad FROM Actividad"
+				+ "WHERE Actividad.nombre = ?";
+		return db.executeQueryArray(sql, nombre);
 	}
 	
 	public List<Object[]> getNumInscripcionesEnActividad(int idActividad) {
@@ -43,6 +49,11 @@ public class InscribirAdminM {
 	public List<Object[]> getListaSocios(){
 		String sql = "SELECT idSocio FROM Socio";
 		return db.executeQueryArray(sql);
+	}
+	
+	public List<NoSocio> getNoSocio(String dni){
+		String sql = "SELECT * FROM Nosocio WHERE dni = ?";
+		return db.executeQueryPojo(NoSocio.class, sql, dni);
 	}
 	
 	public void insertInscripcionActividadSocio(int idActividad, int idSocio) {
