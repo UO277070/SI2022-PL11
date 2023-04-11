@@ -20,6 +20,7 @@ public class InscribirSocioV {
 	private JTextField labelHoraFinCambio;
 	private JTextField labelDiasCambio;
 	private JTextField labelAforoCambio;
+	private JButton buttonInscribir;
 	
 
 	/**
@@ -211,4 +212,17 @@ public class InscribirSocioV {
 	public void setLabelAforo(JTextField labelAforo) {
 		this.labelAforoCambio = labelAforo;
 	}
+	
+	public JFrame getFrame() {
+		return this.frmInscribirseAActividad;
+	}
+
+	public JButton getButtonInscribir() {
+		return buttonInscribir;
+	}
+
+	public void setButtonInscribir(JButton buttonInscribir) {
+		this.buttonInscribir = buttonInscribir;
+	}
+	
 }

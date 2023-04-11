@@ -1,6 +1,8 @@
 package InscribirSocio;
 
 public class Actividades {
+	
+	private int idActividad;
 	private int idPeriodo;
 	private int idInstalacion;
 	private String nombre;
@@ -8,22 +10,11 @@ public class Actividades {
 	private int plazas;
 	private String fechaini;
 	private String fechafin;
+	private String horaini;
+	private String horafin;
+	private String diasem;
 	private int precio;
 	private int precionosocio;
-	
-	
-	public Actividades() {
-		
-	}
-	
-
-	public String getActividad() {
-		return nombre;
-	}
-	
-	public void setActividad(String a) {
-		this.nombre=a;
-	}
 	
 
 	@Override
@@ -32,6 +23,13 @@ public class Actividades {
 				+ ", fechafin=" + fechafin + ", precio=" + precio + ", precionosocio=" + precionosocio + "]";
 	}
 
+	public int getIdActividad() {
+		return this.idActividad;
+	}
+	
+	public void setIdActividad(int id) {
+		this.idActividad = id;
+	}
 
 	public String getNombre() {
 		return nombre;
@@ -100,6 +98,30 @@ public class Actividades {
 
 	public void setPrecionosocio(int precionosocio) {
 		this.precionosocio = precionosocio;
+	}
+
+	public String getHoraini() {
+		return horaini;
+	}
+
+	public void setHoraini(String horaini) {
+		this.horaini = horaini;
+	}
+
+	public String getHorafin() {
+		return horafin;
+	}
+
+	public void setHorafin(String horafin) {
+		this.horafin = horafin;
+	}
+
+	public String getDiasem() {
+		return diasem;
+	}
+
+	public void setDiasem(String diasem) {
+		this.diasem = diasem;
 	}
 	
 	

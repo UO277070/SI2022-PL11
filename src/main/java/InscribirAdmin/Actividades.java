@@ -1,6 +1,7 @@
 package InscribirAdmin;
 
 public class Actividades {
+	int idActividad;
 	private int idPeriodo;
 	private int idInstalacion;
 	private String nombre;
@@ -11,27 +12,19 @@ public class Actividades {
 	private int precio;
 	private int precionosocio;
 	
-	
-	public Actividades() {
-		
-	}
-	
-
-	public String getActividad() {
-		return nombre;
-	}
-	
-	public void setActividad(String a) {
-		this.nombre=a;
-	}
-	
-
 	@Override
 	public String toString() {
 		return "Actividades [nombre=" + nombre + ", tipo=" + tipo + ", plazas=" + plazas + ", fechaini=" + fechaini
 				+ ", fechafin=" + fechafin + ", precio=" + precio + ", precionosocio=" + precionosocio + "]";
 	}
-
+	
+	public int getIdActividad() {
+		return idActividad;
+	}
+	
+	public void setIdActividad(int id) {
+		this.idActividad = id;
+	}
 
 	public String getNombre() {
 		return nombre;
