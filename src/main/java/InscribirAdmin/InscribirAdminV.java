@@ -169,11 +169,11 @@ public class InscribirAdminV {
 	}
 	
 	public JComboBox getComboBoxActividades() {
-		return comboBoxID;
+		return comboBoxActividades;
 	}
 
 	public void setComboBoxActividades(JComboBox comboBoxActividades) {
-		this.comboBoxID = comboBoxID;
+		this.comboBoxActividades = comboBoxActividades;
 	}
 
 	public JTextField getTextFieldNombre() {

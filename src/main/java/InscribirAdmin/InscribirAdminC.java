@@ -6,6 +6,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import javax.swing.ComboBoxModel;
+import javax.swing.JOptionPane;
 
 import ActividadesOfertadas.ActividadesOfertadas_Model;
 import ActividadesOfertadas.ActividadesOfertadas_View;
@@ -27,6 +28,7 @@ public class InscribirAdminC {
 	private int idActividad;
 	private int idSocio;
 	private int idNoSocio;
+	private boolean esSocio;
 	 
 	
 	public InscribirAdminC(InscribirAdminM model, InscribirAdminV view) {
@@ -37,12 +39,13 @@ public class InscribirAdminC {
 		this.idActividad = 0;
 		this.idSocio = 0;
 		this.idNoSocio = 0;
+		this.esSocio = false;
 		
 		this.initView();
 	}
 	
 	public void initController() {
-		view.getComboBoxActividades().addItemListener(e -> getListaActividadesEnPeriodo());
+		//view.getComboBoxActividades().addItemListener(e -> getListaActividadesEnPeriodo());
 		view.getButtonInscribir().addActionListener(e -> inscribir());
 		view.getCheckBoxSocio().addItemListener(e -> getListaActividadesEnPeriodo());
 
@@ -70,22 +73,20 @@ public class InscribirAdminC {
 	public void getListaSocios() {
 		List <Object[]> socios = model.getListaSocios();
 		
-		ComboBoxModel combo = SwingUtil.getComboModelFromList(socios);
-		view.getComboBoxID().setModel(combo);
+		ComboBoxModel comboId = SwingUtil.getComboModelFromList(socios);
+		view.getComboBoxID().setModel(comboId);
 		
 	}
 	
 	public void getListaActividadesEnPeriodo() {
-		if(view.getCheckBoxSocio().isSelected()) {
-			List <Object[]> actividades = model.getListaActividadesEnPeriodoSocio(Util.dateToIsoString(fechaActual));
-			ComboBoxModel combo = SwingUtil.getComboModelFromList(actividades);
-			view.getComboBoxActividades().setModel(combo);
+		this.esSocio = view.getCheckBoxSocio().isSelected();
+		List <Object[]> actividades = model.getListaActividadesEnPeriodoNoSocio(Util.dateToIsoString(fechaActual));
+		ComboBoxModel comboActividades = SwingUtil.getComboModelFromList(actividades);
+		if(esSocio) {
+			actividades = model.getListaActividadesEnPeriodoSocio(Util.dateToIsoString(fechaActual));
+			comboActividades = SwingUtil.getComboModelFromList(actividades);
 		}
-		else {
-			List <Object[]> actividades = model.getListaActividadesEnPeriodoNoSocio(Util.dateToIsoString(fechaActual));
-			ComboBoxModel combo = SwingUtil.getComboModelFromList(actividades);
-			view.getComboBoxActividades().setModel(combo);
-		}
+		view.getComboBoxActividades().setModel(comboActividades);
 	}
 	
 	public void inscribir() {
@@ -95,16 +96,18 @@ public class InscribirAdminC {
 				- (Integer) model.getNumInscripcionesEnActividad(this.idActividad).get(0)[0]);
 		
 		
-		if((this.plazaslibres != 0) && (view.getCheckBoxSocio().isSelected())) {
+		if((this.plazaslibres != 0) && (this.esSocio)) {
 			model.insertInscripcionActividadSocio(this.idActividad, this.idSocio);
 		}
 		
-		if((this.plazaslibres != 0) && (!view.getCheckBoxSocio().isSelected())) {
+		if((this.plazaslibres != 0) && (!this.esSocio)) {
 			model.insertNoSocio(view.getTextFieldDNI().getText(), view.getTextFieldNombre().getText(), view.getTextFieldPrimerApellido().getText(), view.getTextFieldSegundoApellido().getText(), view.getTextFieldCorreo().getText());
 			List<NoSocio> noSocio = model.getNoSocio(view.getTextFieldDNI().getText());
 			this.idNoSocio = noSocio.get(0).getIdNoSocio();
 			model.insertInscripcionActividadNoSocio(idActividad, this.idNoSocio);
 		}
+		
+		JOptionPane.showMessageDialog(null,"Inscripcion realizada","Inscripcion", JOptionPane.INFORMATION_MESSAGE);
 	}
 	
 }

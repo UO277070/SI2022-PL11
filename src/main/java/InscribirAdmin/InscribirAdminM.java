@@ -57,12 +57,12 @@ public class InscribirAdminM {
 	}
 	
 	public void insertInscripcionActividadSocio(int idActividad, int idSocio) {
-		String sql = "INSERT INTO Inscripcion (idActividad, idSocio) VALUES (?, ?)";
+		String sql = "INSERT INTO Inscripcion (idActividad, idSocio, idNoSocio) VALUES (?, ?, NULL)";
 		db.executeUpdate(sql, idActividad, idSocio);
 	}
 	
 	public void insertInscripcionActividadNoSocio(int idActividad, int idNoSocio) {
-		String sql = "INSERT INTO Inscripcion (idActividad, idNosocio) VALUES (?, ?)";
+		String sql = "INSERT INTO Inscripcion (idActividad, idSoocio, idNosocio) VALUES (?,NULL, ?)";
 		db.executeUpdate(sql, idActividad, idNoSocio);
 	}
 	
