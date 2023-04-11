@@ -62,7 +62,7 @@ public class InscribirAdminM {
 	}
 	
 	public void insertInscripcionActividadNoSocio(int idActividad, int idNoSocio) {
-		String sql = "INSERT INTO Inscripcion (idActividad, idSoocio, idNosocio) VALUES (?,NULL, ?)";
+		String sql = "INSERT INTO Inscripcion (idActividad, idSocio, idNosocio) VALUES (?,NULL, ?)";
 		db.executeUpdate(sql, idActividad, idNoSocio);
 	}
 	

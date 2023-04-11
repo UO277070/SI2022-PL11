@@ -96,6 +96,7 @@ public class InscribirSocioC {
 			model.insertInscripcionActividadSocio(this.idActividad, this.idSocio);
 		}
 		this.resguardo(actividad);
+		JOptionPane.showMessageDialog(null,"Inscripcion realizada","Inscripcion", JOptionPane.INFORMATION_MESSAGE);
 	}
 	
 	public void resguardo(Actividades detalles) {
