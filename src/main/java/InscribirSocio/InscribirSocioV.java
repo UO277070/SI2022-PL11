@@ -12,14 +12,14 @@ public class InscribirSocioV {
 
 	private JFrame frmInscribirseAActividad;
 	private JComboBox comboBoxActividad;
-	private JTextField labelTipoCambio;
-	private JTextField labelPrecioCambio;
-	private JTextField labelFechaIniCambio;
-	private JTextField labelFechaFinCambio;
-	private JTextField labelHoraIniCambio;
-	private JTextField labelHoraFinCambio;
-	private JTextField labelDiasCambio;
-	private JTextField labelAforoCambio;
+	private JLabel labelTipoCambio;
+	private JLabel labelPrecioCambio;
+	private JLabel labelFechaIniCambio;
+	private JLabel labelFechaFinCambio;
+	private JLabel labelHoraIniCambio;
+	private JLabel labelHoraFinCambio;
+	private JLabel labelDiasCambio;
+	private JLabel labelAforoCambio;
 	private JButton buttonInscribir;
 	
 
@@ -64,72 +64,72 @@ public class InscribirSocioV {
 		frmInscribirseAActividad.getContentPane().add(comboBoxActividad);
 		
 		JLabel labelTipo = new JLabel("Tipo:");
-		labelTipo.setBounds(10, 57, 46, 14);
+		labelTipo.setBounds(10, 57, 118, 14);
 		frmInscribirseAActividad.getContentPane().add(labelTipo);
 		
 		JLabel labelPrecio = new JLabel("Precio:");
-		labelPrecio.setBounds(10, 82, 33, 14);
+		labelPrecio.setBounds(10, 82, 118, 14);
 		frmInscribirseAActividad.getContentPane().add(labelPrecio);
 		
 		JLabel labelFechaIni = new JLabel("Fecha de Inicio:");
-		labelFechaIni.setBounds(10, 107, 76, 14);
+		labelFechaIni.setBounds(10, 107, 118, 14);
 		frmInscribirseAActividad.getContentPane().add(labelFechaIni);
 		
 		JLabel labelFechaFin = new JLabel("Fecha de Fin:");
-		labelFechaFin.setBounds(10, 132, 65, 14);
+		labelFechaFin.setBounds(10, 132, 118, 14);
 		frmInscribirseAActividad.getContentPane().add(labelFechaFin);
 		
 		JLabel labelHoraIni = new JLabel("Hora de Inicio:");
-		labelHoraIni.setBounds(10, 157, 70, 14);
+		labelHoraIni.setBounds(10, 157, 118, 14);
 		frmInscribirseAActividad.getContentPane().add(labelHoraIni);
 		
 		JLabel labelHoraFin = new JLabel("Hora de Fin:");
-		labelHoraFin.setBounds(10, 182, 59, 14);
+		labelHoraFin.setBounds(10, 182, 118, 14);
 		frmInscribirseAActividad.getContentPane().add(labelHoraFin);
 		
 		JLabel labelDias = new JLabel("Días de Realización:");
-		labelDias.setBounds(10, 205, 95, 14);
+		labelDias.setBounds(10, 205, 118, 14);
 		frmInscribirseAActividad.getContentPane().add(labelDias);
 		
 		JLabel labelAforo = new JLabel("Aforo:");
-		labelAforo.setBounds(10, 230, 31, 14);
+		labelAforo.setBounds(10, 230, 118, 14);
 		frmInscribirseAActividad.getContentPane().add(labelAforo);
 		
 		buttonInscribir = new JButton("Inscribir");
 		buttonInscribir.setBounds(335, 226, 71, 23);
 		frmInscribirseAActividad.getContentPane().add(buttonInscribir);
 		
-		JLabel labelTipoCambio = new JLabel("");
-		labelTipoCambio.setBounds(119, 57, 46, 14);
+		labelTipoCambio = new JLabel("");
+		labelTipoCambio.setBounds(119, 57, 143, 14);
 		frmInscribirseAActividad.getContentPane().add(labelTipoCambio);
 		
-		JLabel labelPrecioCambio = new JLabel("");
-		labelPrecioCambio.setBounds(119, 82, 46, 14);
+		labelPrecioCambio = new JLabel("");
+		labelPrecioCambio.setBounds(119, 82, 143, 14);
 		frmInscribirseAActividad.getContentPane().add(labelPrecioCambio);
 		
-		JLabel labelFechaIniCambio = new JLabel("");
-		labelFechaIniCambio.setBounds(119, 107, 46, 14);
+		labelFechaIniCambio = new JLabel("");
+		labelFechaIniCambio.setBounds(119, 107, 143, 14);
 		frmInscribirseAActividad.getContentPane().add(labelFechaIniCambio);
 		
-		JLabel labelFechaFinCambio = new JLabel("");
-		labelFechaFinCambio.setBounds(119, 132, 46, 14);
+		labelFechaFinCambio = new JLabel("");
+		labelFechaFinCambio.setBounds(119, 132, 143, 14);
 		frmInscribirseAActividad.getContentPane().add(labelFechaFinCambio);
 		
-		JLabel labelHoraIniCambio = new JLabel("");
+		labelHoraIniCambio = new JLabel("");
 		labelHoraIniCambio.setEnabled(true);
-		labelHoraIniCambio.setBounds(119, 157, 46, 14);
+		labelHoraIniCambio.setBounds(119, 157, 143, 14);
 		frmInscribirseAActividad.getContentPane().add(labelHoraIniCambio);
 		
-		JLabel labelHoraFinCambio = new JLabel("");
-		labelHoraFinCambio.setBounds(119, 182, 46, 14);
+		labelHoraFinCambio = new JLabel("");
+		labelHoraFinCambio.setBounds(119, 182, 143, 14);
 		frmInscribirseAActividad.getContentPane().add(labelHoraFinCambio);
 		
-		JLabel labelDiasCambio = new JLabel("");
-		labelDiasCambio.setBounds(119, 205, 46, 14);
+		labelDiasCambio = new JLabel("");
+		labelDiasCambio.setBounds(119, 205, 143, 14);
 		frmInscribirseAActividad.getContentPane().add(labelDiasCambio);
 		
-		JLabel labelAforoCambio = new JLabel("");
-		labelAforoCambio.setBounds(119, 230, 46, 14);
+		labelAforoCambio = new JLabel("");
+		labelAforoCambio.setBounds(119, 230, 143, 14);
 		frmInscribirseAActividad.getContentPane().add(labelAforoCambio);
 	}
 
@@ -149,67 +149,67 @@ public class InscribirSocioV {
 		this.comboBoxActividad = comboBoxActividad;
 	}
 
-	public JTextField getLabelTipo() {
+	public JLabel getLabelTipo() {
 		return labelTipoCambio;
 	}
 
-	public void setLabelTipo(JTextField labelTipo) {
+	public void setLabelTipo(JLabel labelTipo) {
 		this.labelTipoCambio = labelTipo;
 	}
 
-	public JTextField getLabelPrecio() {
+	public JLabel getLabelPrecio() {
 		return labelPrecioCambio;
 	}
 
-	public void setLabelPrecio(JTextField labelPrecio) {
+	public void setLabelPrecio(JLabel labelPrecio) {
 		this.labelPrecioCambio = labelPrecio;
 	}
 
-	public JTextField getLabelFechaIni() {
+	public JLabel getLabelFechaIni() {
 		return labelFechaIniCambio;
 	}
 
-	public void setLabelFechaIni(JTextField labelFechaIni) {
+	public void setLabelFechaIni(JLabel labelFechaIni) {
 		this.labelFechaIniCambio = labelFechaIni;
 	}
 
-	public JTextField getLabelFechaFin() {
+	public JLabel getLabelFechaFin() {
 		return labelFechaFinCambio;
 	}
 
-	public void setLabelFechaFin(JTextField labelFechaFin) {
+	public void setLabelFechaFin(JLabel labelFechaFin) {
 		this.labelFechaFinCambio = labelFechaFin;
 	}
 
-	public JTextField getLabelHoraIni() {
+	public JLabel getLabelHoraIni() {
 		return labelHoraIniCambio;
 	}
 
-	public void setLabelHoraIni(JTextField labelHoraIni) {
+	public void setLabelHoraIni(JLabel labelHoraIni) {
 		this.labelHoraIniCambio = labelHoraIni;
 	}
 
-	public JTextField getLabelHoraFin() {
+	public JLabel getLabelHoraFin() {
 		return labelHoraFinCambio;
 	}
 
-	public void setLabelHoraFin(JTextField labelHoraFin) {
+	public void setLabelHoraFin(JLabel labelHoraFin) {
 		this.labelHoraFinCambio = labelHoraFin;
 	}
 
-	public JTextField getLabelDias() {
+	public JLabel getLabelDias() {
 		return labelDiasCambio;
 	}
 
-	public void setLabelDias(JTextField labelDias) {
+	public void setLabelDias(JLabel labelDias) {
 		this.labelDiasCambio = labelDias;
 	}
 
-	public JTextField getLabelAforo() {
+	public JLabel getLabelAforo() {
 		return labelAforoCambio;
 	}
 
-	public void setLabelAforo(JTextField labelAforo) {
+	public void setlabelAforo(JLabel labelAforo) {
 		this.labelAforoCambio = labelAforo;
 	}
 	

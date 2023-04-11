@@ -7,13 +7,13 @@ insert into Actividad(idActividad,idPeriodoinscrip,idInstalacion,Nombre,Tipo,Pla
 
 (1, 1, 1, 'Natacion' , 'tipo1', 200, 50, 80, '2023-01-17', '2023-06-17', 'Estado1'), 
 
-(2, 2, 1, 'Tenis' , 'tipo1', 200, 50, 80, '2023-01-17', '2023-03-17', 'Estado1'), 
+(2, 2, 1, 'Tenis' , 'tipo1', 150, 25, 65, '2023-04-2', '2023-06-17', 'Iniciada'), 
 
-(3, 2, 1, 'Padel' ,'tipo1', 200, 50, 80, '2023-01-17', '2023-03-17', 'Estado1'), 
+(3, 2, 1, 'Padel' ,'tipo1', 100, 15, 40, '2023-04-17', '2023-07-17', 'En espera'), 
 
 (4, 3, 1, 'Yoga' , 'tipo1', 200, 50, 80, '2023-01-17', '2023-03-17', 'Estado1'), 
 
-(5, 2, 1, 'Pilates' , 'tipo1', 200, 50, 80, '2023-01-17', '2023-03-17', 'Estado1'); 
+(5, 2, 1, 'Pilates' , 'tipo1', 200, 20, 30, '2023-04-01', '2023-08-17', 'Iniciada'); 
 
   
 
@@ -25,29 +25,9 @@ insert into Actividadhorario(idActividad, diasem, Horaini, Horafin) values
 
 (3, '2023-03-01', 08, 10), 
 
-(4, '2023-03-01', 08, 10), 
+(4, '2023-03-01', 08, 10),
 
-(1, '2023-03-01', 08, 10), 
-
-(2, '2023-03-19', 08, 10), 
-
-(3, '2023-03-19', 08, 10), 
-
-(4, '2023-03-19', 08, 10), 
-
-(1, '2023-03-21', 08, 10), 
-
-(1, '2023-03-21', 08, 10), 
-
-(1, '2023-03-21', 08, 10), 
-
-(1, '2023-03-21', 08, 10), 
-
-(2, '2023-03-21', 08, 10), 
-
-(3, '2023-03-21', 08, 10), 
-
-(4, '2023-03-21', 08, 10); 
+(5, '2023-04-12', 12, 14); 
 
 insert into Socio (idSocio, nombre, apellido1, apellido2, correo, cuota, moroso) values 
 
@@ -61,7 +41,10 @@ insert into Socio (idSocio, nombre, apellido1, apellido2, correo, cuota, moroso)
 
 insert into Inscripcion (idActividad, idSocio, idNosocio) values  
 
-(1 ,1 ,1); 
+(1 ,5 ,1),
+(2,1,1),
+(3,4,1),
+(5,4,1); 
 
   
 

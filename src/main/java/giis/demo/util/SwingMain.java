@@ -119,7 +119,7 @@ public class SwingMain {
 		});
 		frame.getContentPane().add(btnInscribirAdmin);
 		
-		JButton btnInscribirSocio = new JButton("inscribirse en Actividad como Socio");
+		JButton btnInscribirSocio = new JButton("Inscribirse en Actividad como Socio");
 		btnInscribirSocio.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				InscribirSocioC cont = new InscribirSocioC(new InscribirSocioM(), new InscribirSocioV());

@@ -6,6 +6,7 @@ import java.util.Formatter;
 import java.util.List;
 
 import javax.swing.ComboBoxModel;
+import javax.swing.JOptionPane;
 
 import InscribirAdmin.NoSocio;
 import giis.demo.util.SwingUtil;
@@ -81,8 +82,7 @@ public class InscribirSocioC {
 	public void getInscripciones() {
 		this.actividad = model.getActividad(view.getComboBoxActividad().getSelectedItem().toString()).get(0);
 		this.idActividad = actividad.getIdActividad();
-		this.plazaslibres =  Math.max(0,  (Integer) model.getPlazasTotalesActividad(this.idActividad).get(0)[0]
-				- (Integer) model.getNumInscripcionesEnActividad(this.idActividad).get(0)[0]);
+		this.plazaslibres =  Math.max(0, this.actividad.getPlazas() - (Integer) model.getNumInscripcionesEnActividad(this.idActividad).get(0)[0]);
 	}
 	
 	
@@ -95,9 +95,10 @@ public class InscribirSocioC {
 		if(this.plazaslibres != 0) {
 			model.insertInscripcionActividadSocio(this.idActividad, this.idSocio);
 		}
+		this.resguardo(actividad);
 	}
 	
-	public void resguardo(Actividades detalles, String metodo) {
+	public void resguardo(Actividades detalles) {
 		Formatter out = null;
 		try {
 			//Ruta para llegar a la carpeta de descargas
