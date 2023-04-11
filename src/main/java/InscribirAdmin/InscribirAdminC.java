@@ -42,9 +42,11 @@ public class InscribirAdminC {
 	}
 	
 	public void initController() {
-		view.getComboBoxID().addItemListener(e -> getListaSocios());
 		view.getComboBoxActividades().addItemListener(e -> getListaActividadesEnPeriodo());
 		view.getButtonInscribir().addActionListener(e -> inscribir());
+		view.getCheckBoxSocio().addItemListener(e -> getListaActividadesEnPeriodo());
+
+		
 	}
 	
 	

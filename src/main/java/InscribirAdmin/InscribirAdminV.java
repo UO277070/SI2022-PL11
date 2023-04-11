@@ -140,6 +140,14 @@ public class InscribirAdminV {
 					textFieldDNI.setEnabled(false);
 					textFieldCorreo.setEnabled(false);
 				}
+				else {
+					comboBoxID.setEnabled(false);
+					textFieldNombre.setEnabled(true);
+					textFieldPrimerApellido.setEnabled(true);
+					textFieldSegundoApellido.setEnabled(true);
+					textFieldDNI.setEnabled(true);
+					textFieldCorreo.setEnabled(true);
+				}
 			}
 		});
 		checkBoxSocio.setBounds(27, 28, 57, 24);
