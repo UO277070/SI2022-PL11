@@ -11,10 +11,8 @@ public class PlanificaActividad_Model {
 	private Database db = new Database();
 	
 	public List<Object []> getListaInstalaciones(){
-		String sql = "SELECT nombre from instalacion";
-		
+		String sql = "SELECT idInstalacion, nombre from instalacion";
 		return db.executeQueryArray(sql);
-		
 	}
 	
 	public List<PeriodosInscripcion> getPeriodos(){

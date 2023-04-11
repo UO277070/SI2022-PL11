@@ -1,6 +1,8 @@
 package InscribirSocio;
 
+import java.io.IOException;
 import java.util.Date;
+import java.util.Formatter;
 import java.util.List;
 
 import javax.swing.ComboBoxModel;
@@ -92,6 +94,34 @@ public class InscribirSocioC {
 		
 		if(this.plazaslibres != 0) {
 			model.insertInscripcionActividadSocio(this.idActividad, this.idSocio);
+		}
+	}
+	
+	public void resguardo(Actividades detalles, String metodo) {
+		Formatter out = null;
+		try {
+			//Ruta para llegar a la carpeta de descargas
+			String home = System.getProperty("user.home");
+			out = new Formatter(home+"\\Downloads\\resguardo.txt");
+			
+			//Texto del txt
+			out.format("Resguardo de su inscripción\n"+
+						"Actividad: "+detalles.nombre+"\n"+
+						"Instalacion: "+detalles.idInstalacion+"\n"+
+						"Tipo: "+detalles.tipo+"\n"+
+						"Fecha de Inicio: "+detalles.fechaini+"\n"+
+						"Fecha de Fin: "+detalles.fechafin+"\n"+
+						"Hora de Inicio: "+detalles.horaini+"\n"+
+						"Hora de Fin: "+detalles.horafin+"\n"+
+						"Días de realización: "+detalles.diasem+"\n"+
+						"Plazas Totales: "+detalles.plazas+"\n");
+			
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+		finally {
+			if (out !=null) out.close();
 		}
 	}
 	

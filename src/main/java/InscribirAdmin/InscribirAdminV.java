@@ -23,7 +23,6 @@ public class InscribirAdminV {
 	private JComboBox comboBoxActividades;
 	private JTextField textFieldSegundoApellido;
 	private JCheckBox checkBoxSocio;
-	private boolean esSocio = false;
 	private JButton buttonInscribir;
 
 
@@ -83,7 +82,7 @@ public class InscribirAdminV {
 		labelCorreo.setBounds(27, 212, 42, 16);
 		frmInscribir.getContentPane().add(labelCorreo);
 		
-		JComboBox comboBoxID = new JComboBox();
+		comboBoxID = new JComboBox();
 		comboBoxID.setEnabled(false);
 		comboBoxID.setBounds(120, 78, 156, 22);
 		frmInscribir.getContentPane().add(comboBoxID);
@@ -117,11 +116,11 @@ public class InscribirAdminV {
 		labelActividad.setBounds(283, 32, 55, 16);
 		frmInscribir.getContentPane().add(labelActividad);
 		
-		JComboBox comboBoxActividades = new JComboBox();
+		comboBoxActividades = new JComboBox();
 		comboBoxActividades.setBounds(344, 28, 148, 22);
 		frmInscribir.getContentPane().add(comboBoxActividades);
 		
-		JButton buttonInscribir = new JButton("Inscribir");
+		buttonInscribir = new JButton("Inscribir");
 		buttonInscribir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -129,7 +128,8 @@ public class InscribirAdminV {
 		buttonInscribir.setBounds(403, 227, 89, 23);
 		frmInscribir.getContentPane().add(buttonInscribir);
 		
-		JCheckBox checkBoxSocio = new JCheckBox("Socio");
+		checkBoxSocio = new JCheckBox("Socio");
+		checkBoxSocio.setSelected(false);
 		checkBoxSocio.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(checkBoxSocio.isSelected()) {
@@ -212,12 +212,6 @@ public class InscribirAdminV {
 		return this.frmInscribir;
 	}
 	
-	public boolean esSocio() {
-		if(checkBoxSocio.isSelected()) {
-			esSocio = true;
-		}
-		return esSocio;
-	}
 	
 	public JButton getButtonInscribir() {
 		return buttonInscribir;
@@ -234,4 +228,5 @@ public class InscribirAdminV {
 	public void setCheckBoxSocio(JCheckBox checkBoxSocio) {
 		this.checkBoxSocio = checkBoxSocio;
 	}
+	
 }

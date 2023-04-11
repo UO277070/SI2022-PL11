@@ -10,6 +10,7 @@ import PlanificaActividad.PlanificaActividad_Controller;
 import PlanificaActividad.PlanificaActividad_Model;
 import PlanificaActividad.PlanificaActividad_View;
 import InscribirAdmin.*;
+import InscribirSocio.*;
 
 
 import javax.swing.BoxLayout;
@@ -109,7 +110,7 @@ public class SwingMain {
 		});
 		frame.getContentPane().add(btnPlanificarActividad);
 		
-		JButton btnInscribirAdmin = new JButton("Inscribir Socio como Administrador");
+		JButton btnInscribirAdmin = new JButton("Inscribir en Actividad como Administrador");
 		btnInscribirAdmin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				InscribirAdminC cont = new InscribirAdminC(new InscribirAdminM(), new InscribirAdminV());
@@ -117,6 +118,16 @@ public class SwingMain {
 			}
 		});
 		frame.getContentPane().add(btnInscribirAdmin);
+		
+		JButton btnInscribirSocio = new JButton("inscribirse en Actividad como Socio");
+		btnInscribirSocio.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				InscribirSocioC cont = new InscribirSocioC(new InscribirSocioM(), new InscribirSocioV());
+				cont.initController();
+			}
+		});
+		frame.getContentPane().add(btnInscribirSocio);
+		
 		
 	}
 	

@@ -13,7 +13,7 @@ public class InscribirAdminM {
 				+ "INNER JOIN PeriodoInscripcion "
 				+ "ON Actividad.idPeriodoinscrip = PeriodoInscripcion.idPeriodoinscrip "
 				+ "WHERE PeriodoInscripcion.fechainscripini <= ? AND PeriodoInscripcion.fechainscripfin >= ? ";
-		return db.executeQueryArray(sql, fechaActual);
+		return db.executeQueryArray(sql, fechaActual, fechaActual);
 	}
 	
 	public List<Object[]> getListaActividadesEnPeriodoNoSocio(String fechaActual){
@@ -21,11 +21,11 @@ public class InscribirAdminM {
 				+ "INNER JOIN PeriodoInscripcion "
 				+ "ON Actividad.idPeriodoinscrip = PeriodoInscripcion.idPeriodoinscrip "
 				+ "WHERE PeriodoInscripcion.fechainscripini <= ? AND PeriodoInscripcion.fechainscripfinnosocio >= ? ";
-		return db.executeQueryArray(sql, fechaActual);
+		return db.executeQueryArray(sql, fechaActual, fechaActual);
 	}
 	
 	public List<Object[]> getIdActividad(String nombre) {
-		String sql = "SELECT Actividad.idActividad FROM Actividad"
+		String sql = "SELECT Actividad.idActividad FROM Actividad "
 				+ "WHERE Actividad.nombre = ?";
 		return db.executeQueryArray(sql, nombre);
 	}
@@ -36,7 +36,7 @@ public class InscribirAdminM {
 	} 
 	
 	public List<Object[]> getInscripcionesEnActividad(int idActividad){
-		String sql = "SELECT idActividad, idSocio, idNosocio FROM Inscripcion"
+		String sql = "SELECT idActividad, idSocio, idNosocio FROM Inscripcion "
 				+ "WHERE idActividad = ?";
 		return db.executeQueryArray(sql, idActividad);
 	}

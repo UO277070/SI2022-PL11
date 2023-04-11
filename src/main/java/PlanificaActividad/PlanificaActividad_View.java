@@ -93,7 +93,7 @@ public class PlanificaActividad_View {
 		LabelInstalacion.setBounds(412, 11, 74, 14);
 		frmPlanificarActividad.getContentPane().add(LabelInstalacion);
 		
-		JComboBox comboBoxInstalacion = new JComboBox();
+		comboBoxInstalacion = new JComboBox();
 		comboBoxInstalacion.setBounds(412, 36, 162, 22);
 		frmPlanificarActividad.getContentPane().add(comboBoxInstalacion);
 		
@@ -140,7 +140,7 @@ public class PlanificaActividad_View {
 		separator.setBounds(10, 136, 584, 2);
 		frmPlanificarActividad.getContentPane().add(separator);
 		
-		JButton ButtonCrear = new JButton("Crear");
+		ButtonCrear = new JButton("Crear");
 		ButtonCrear.setBounds(520, 323, 74, 23);
 		frmPlanificarActividad.getContentPane().add(ButtonCrear);
 		
@@ -154,7 +154,7 @@ public class PlanificaActividad_View {
 		frmPlanificarActividad.getContentPane().add(textFieldNombre);
 		textFieldNombre.setColumns(10);
 		
-		JComboBox comboBoxPeriodo = new JComboBox();
+		comboBoxPeriodo = new JComboBox();
 		comboBoxPeriodo.setBounds(412, 91, 167, 22);
 		frmPlanificarActividad.getContentPane().add(comboBoxPeriodo);
 		
@@ -406,14 +406,6 @@ public class PlanificaActividad_View {
 		this.calendar = calendar;
 	}
 	
-	public void addPeriodo(List<PeriodosInscripcion> periodos) {
-		comboBoxPeriodo.addItem(periodos);
-	}
-	
-	public void addIntalaciones(List<Instalaciones> instalaciones) {
-		comboBoxInstalacion.addItem(instalaciones);
-	}
-	
 	public JDateChooser getdCini() {
 		return dCini;
 	}
@@ -555,15 +547,15 @@ public class PlanificaActividad_View {
 		return comboBoxInstalacion;
 	}
 
-	public void setComboBoxInstalacion(List<Instalaciones> list) {
-		this.comboBoxInstalacion = (JComboBox) list;
+	public void setComboBoxInstalacion(JComboBox comboBoxInstalacion) {
+		this.comboBoxInstalacion = comboBoxInstalacion;
 	}
 
 	public JComboBox getComboBoxPeriodo() {
 		return comboBoxPeriodo;
 	}
 
-	public void setComboBoxPeriodo(List<PeriodosInscripcion> list) {
-		this.comboBoxPeriodo = (JComboBox) list;
+	public void setComboBoxPeriodo(JComboBox comboBoxPeriodo) {
+		this.comboBoxPeriodo = comboBoxPeriodo;
 	}
 }

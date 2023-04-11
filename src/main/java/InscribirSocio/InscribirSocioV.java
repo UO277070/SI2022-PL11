@@ -59,7 +59,7 @@ public class InscribirSocioV {
 		labelActividad.setBounds(10, 25, 48, 14);
 		frmInscribirseAActividad.getContentPane().add(labelActividad);
 		
-		JComboBox comboBoxActividad = new JComboBox();
+		comboBoxActividad = new JComboBox();
 		comboBoxActividad.setBounds(68, 21, 124, 22);
 		frmInscribirseAActividad.getContentPane().add(comboBoxActividad);
 		
@@ -95,7 +95,7 @@ public class InscribirSocioV {
 		labelAforo.setBounds(10, 230, 31, 14);
 		frmInscribirseAActividad.getContentPane().add(labelAforo);
 		
-		JButton buttonInscribir = new JButton("Inscribir");
+		buttonInscribir = new JButton("Inscribir");
 		buttonInscribir.setBounds(335, 226, 71, 23);
 		frmInscribirseAActividad.getContentPane().add(buttonInscribir);
 		

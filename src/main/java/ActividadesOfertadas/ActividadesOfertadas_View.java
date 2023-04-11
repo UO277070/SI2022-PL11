@@ -66,7 +66,6 @@ public class ActividadesOfertadas_View {
 		frmActividadesOfertadas.getContentPane().add(LabelPeriodo);
 		
 		periodo = new JComboBox();
-		periodo.setModel(new DefaultComboBoxModel(new String[] {"Septiembre", "Enero", "Junio"}));
 		periodo.setBounds(67, 15, 96, 18);
 		frmActividadesOfertadas.getContentPane().add(periodo);
 		

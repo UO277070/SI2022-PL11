@@ -32,7 +32,7 @@ public class PlanificaActividad_Controller {
 	
 	public void getPeriodos() {
 		List<PeriodosInscripcion> periodos = model.getPeriodos();
-		this.view.addPeriodo(periodos);
+		
 	}
 	
 	public void getInstalaciones() {

@@ -2,19 +2,19 @@ package InscribirSocio;
 
 public class Actividades {
 	
-	private int idActividad;
-	private int idPeriodo;
-	private int idInstalacion;
-	private String nombre;
-	private String tipo;
-	private int plazas;
-	private String fechaini;
-	private String fechafin;
-	private String horaini;
-	private String horafin;
-	private String diasem;
-	private int precio;
-	private int precionosocio;
+	 int idActividad;
+	 int idPeriodo;
+	 int idInstalacion;
+	 String nombre;
+	 String tipo;
+	 int plazas;
+	 String fechaini;
+	 String fechafin;
+	 String horaini;
+	 String horafin;
+	 String diasem;
+	 int precio;
+	 int precionosocio;
 	
 
 	@Override

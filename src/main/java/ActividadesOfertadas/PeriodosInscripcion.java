@@ -1,4 +1,4 @@
-package PlanificaActividad;
+package ActividadesOfertadas;
 
 public class PeriodosInscripcion {
 	 String idPeriodoinscrip;

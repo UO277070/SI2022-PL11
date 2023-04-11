@@ -3,6 +3,7 @@ package ActividadesOfertadas;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.ComboBoxModel;
 import javax.swing.JTable;
 import javax.swing.table.TableModel;
 
@@ -20,6 +21,7 @@ public class ActividadesOfertadas_Controller {
 	}
 	
 	public void initView() {
+		this.getPeriodos();
 		view.getFrame().setVisible(true);
 	}
 	
@@ -34,6 +36,13 @@ public class ActividadesOfertadas_Controller {
 		
 		TableModel tmodel = SwingUtil.getTableModelFromPojos(actividades, new String[] {"nombre", "tipo", "fechaini", "fechafin", "plazas", "precio", "precionosocio"});
 		view.getTable().setModel(tmodel);
+	}
+	
+	public void getPeriodos() {
+		List<Object[]> periodos = model.getListaPeriodos();
+		
+		ComboBoxModel combo = SwingUtil.getComboModelFromList(periodos);
+		view.getPeriodo().setModel(combo); 
 	}
 	
 	

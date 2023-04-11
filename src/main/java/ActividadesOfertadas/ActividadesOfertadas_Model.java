@@ -24,4 +24,9 @@ private Database db = new Database();
 		return db.executeQueryPojo(Actividades.class, sql, periodo);
 	}
 	
+	public List<Object[]> getListaPeriodos(){
+		String sql = "SELECT nombre FROM PeriodoInscripcion";
+		return db.executeQueryArray(sql);
+	}
+	
 }

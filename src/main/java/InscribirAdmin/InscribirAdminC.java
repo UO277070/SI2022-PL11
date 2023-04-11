@@ -74,7 +74,7 @@ public class InscribirAdminC {
 	}
 	
 	public void getListaActividadesEnPeriodo() {
-		if(view.esSocio()) {
+		if(view.getCheckBoxSocio().isSelected()) {
 			List <Object[]> actividades = model.getListaActividadesEnPeriodoSocio(Util.dateToIsoString(fechaActual));
 			ComboBoxModel combo = SwingUtil.getComboModelFromList(actividades);
 			view.getComboBoxActividades().setModel(combo);
@@ -93,11 +93,11 @@ public class InscribirAdminC {
 				- (Integer) model.getNumInscripcionesEnActividad(this.idActividad).get(0)[0]);
 		
 		
-		if((this.plazaslibres != 0) && (view.esSocio())) {
+		if((this.plazaslibres != 0) && (view.getCheckBoxSocio().isSelected())) {
 			model.insertInscripcionActividadSocio(this.idActividad, this.idSocio);
 		}
 		
-		if((this.plazaslibres != 0) && (!view.esSocio())) {
+		if((this.plazaslibres != 0) && (!view.getCheckBoxSocio().isSelected())) {
 			model.insertNoSocio(view.getTextFieldDNI().getText(), view.getTextFieldNombre().getText(), view.getTextFieldPrimerApellido().getText(), view.getTextFieldSegundoApellido().getText(), view.getTextFieldCorreo().getText());
 			List<NoSocio> noSocio = model.getNoSocio(view.getTextFieldDNI().getText());
 			this.idNoSocio = noSocio.get(0).getIdNoSocio();

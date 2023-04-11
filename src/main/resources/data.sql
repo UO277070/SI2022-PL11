@@ -5,21 +5,15 @@ delete from Actividad;
 
 insert into Actividad(idActividad,idPeriodoinscrip,idInstalacion,Nombre,Tipo,Plazas,Precio,Precionosocio,Fechaini,Fechafin,Estado) values  
 
-(1, 1, 1, 'Actividad1' , 'tipo1', 200, 50, 80, '2022-01-17', '2022-06-17', 'Estado1'), 
+(1, 1, 1, 'Natacion' , 'tipo1', 200, 50, 80, '2023-01-17', '2023-06-17', 'Estado1'), 
 
-(2, 2, 1, 'Actividad1' , 'tipo1', 200, 50, 80, '2022-01-17', '2022-03-17', 'Estado1'), 
+(2, 2, 1, 'Tenis' , 'tipo1', 200, 50, 80, '2023-01-17', '2023-03-17', 'Estado1'), 
 
-(3, 3, 1, 'Actividad1' ,'tipo1', 200, 50, 80, '2022-01-17', '2022-03-17', 'Estado1'), 
+(3, 2, 1, 'Padel' ,'tipo1', 200, 50, 80, '2023-01-17', '2023-03-17', 'Estado1'), 
 
-(4, 3, 1, 'Actividad1' , 'tipo1', 200, 50, 80, '2022-01-17', '2022-03-17', 'Estado1'), 
+(4, 3, 1, 'Yoga' , 'tipo1', 200, 50, 80, '2023-01-17', '2023-03-17', 'Estado1'), 
 
-(5, 2, 1, 'Actividad1' , 'tipo1', 200, 50, 80, '2022-01-17', '2022-03-17', 'Estado1'), 
-
-(6, 1, 1, 'Actividad1' , 'tipo1', 200, 50, 80, '2022-07-17', '2022-09-17', 'Estado1'), 
-
-(7, 1, 1, 'Actividad1' , 'tipo1', 200, 50, 80, '2022-10-17', '2022-12-17', 'Estado1'), 
-
-(8, 1, 1, 'Actividad1' , 'tipo1', 200, 50, 80, '2022-12-17', '2022-3-17', 'Estado1'); 
+(5, 2, 1, 'Pilates' , 'tipo1', 200, 50, 80, '2023-01-17', '2023-03-17', 'Estado1'); 
 
   
 
@@ -117,33 +111,16 @@ insert into Pago (idPago, Importe, Fecha, Estado, idSocio, idNosocio, idReserva)
 
 (1, 10, '2022-01-17','completo',1 ,1,1); 
 
-  
 
-  
-
-  
 
 insert into PeriodoInscripcion (idPeriodoinscrip ,Nombre,Fechainscripini,Fechainscripfin,Fechainscripfinnosocio) values 
 
-<<<<<<< HEAD
-(1,'Junio','2021-01-12','2022-02-13','2021-04-12','2021-04-14'), 
-=======
-(1,'Septiembre','2021-01-12','2022-02-13','2021-04-14'), 
->>>>>>> branch 'PlanificaActividad' of https://github.com/UO277070/SI2023-PL11
+(1,'Enero','2023-01-01','2023-02-02','2023-01-15'), 
 
-<<<<<<< HEAD
-(2,'Septiembre','2021-01-12','2022-02-13','2021-04-12','2021-04-14'), 
-=======
-(2,'Enero','2021-01-12','2022-02-13','2021-04-14'), 
->>>>>>> branch 'PlanificaActividad' of https://github.com/UO277070/SI2023-PL11
+(2,'Abril','2023-04-01','2023-05-01','2023-04-15'),
 
-<<<<<<< HEAD
-(3,'Enero','2021-01-12','2022-02-13','2021-04-12','2021-04-14'); 
-=======
-(3,'Junio','2021-01-12','2022-02-13','2021-04-14'); 
->>>>>>> branch 'PlanificaActividad' of https://github.com/UO277070/SI2023-PL11
+(3,'Septiembre','2023-09-01','2023-10-01','2023-09-15'); 
 
-  
 
 insert into Reserva (idReserva, idSocio, idInstalacion , fecha, horaIni, horafin, estado ,reservadoPor, idActividad) values 
 
