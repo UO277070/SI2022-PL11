@@ -17,7 +17,7 @@ public class InscribirSocioM {
 	
 	
 	public List<Actividades> getActividad(String nombre){
-		String sql = "SELECT Actividad.nombre, Actividad.tipo, Actividad.precio, Actividad.fechaini, "
+		String sql = "SELECT Actividad.idActividad, Actividad.nombre, Actividad.tipo, Actividad.precio, Actividad.fechaini, "
 				+ "Actividad.fechafin, Actividad.plazas, Actividadhorario.horaini, Actividadhorario.horafin, Actividadhorario.diasem "
 				+ "FROM Actividad INNER JOIN Actividadhorario "
 				+ "ON Actividad.idActividad = Actividadhorario.idActividad "

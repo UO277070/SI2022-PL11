@@ -76,7 +76,7 @@ public class InscribirSocioC {
 		view.getLabelHoraIni().setText(actividad.getHoraini());
 		view.getLabelHoraFin().setText(actividad.getHorafin());
 		view.getLabelDias().setText(actividad.getDiasem());
-		view.getLabelAforo().setText(""+this.plazaslibres+"/"+""+actividad.getPlazas());
+		view.getLabelAforo().setText(""+model.getNumInscripcionesEnActividad(this.idActividad).get(0)[0]+"/"+""+actividad.getPlazas());
 	}
 	
 	public void getInscripciones() {
@@ -90,7 +90,7 @@ public class InscribirSocioC {
 		this.actividad = model.getActividad(view.getComboBoxActividad().getSelectedItem().toString()).get(0);
 		this.idActividad = actividad.getIdActividad();
 		this.idSocio = this.socioLog.getIdSocio();
-		
+		this.getInscripciones();
 		
 		if(this.plazaslibres != 0) {
 			model.insertInscripcionActividadSocio(this.idActividad, this.idSocio);
