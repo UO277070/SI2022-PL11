@@ -41,10 +41,10 @@ insert into Socio (idSocio, nombre, apellido1, apellido2, correo, cuota, moroso)
 
 insert into Inscripcion (idActividad, idSocio, idNosocio) values  
 
-(1 ,5 ,1),
-(2,1,1),
-(3,4,1),
-(5,4,1); 
+(1 ,5 ,NULL),
+(2,1,NULL),
+(3,NULL,1),
+(5,NULL,3); 
 
   
 
