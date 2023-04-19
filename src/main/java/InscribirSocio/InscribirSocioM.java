@@ -43,7 +43,7 @@ public class InscribirSocioM {
 	
 	public List<Inscripcion> getInscripcionesSocio(int idSocio){
 		String sql = "SELECT idActividad, idSocio FROM Inscripcion "
-				+ "WHERE AND idSocio = ?";
+				+ "WHERE idSocio = ?";
 		return db.executeQueryPojo(Inscripcion.class,sql, idSocio);
 	}
 	

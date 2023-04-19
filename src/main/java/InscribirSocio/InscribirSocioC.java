@@ -3,6 +3,7 @@ package InscribirSocio;
 import java.io.IOException;
 import java.util.Date;
 import java.util.Formatter;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.swing.ComboBoxModel;
@@ -98,17 +99,23 @@ public class InscribirSocioC {
 		this.idSocio = this.socioLog.getIdSocio();
 		this.getInscripciones();
 		this.getInscripcionesSocio();
+		Iterator itr = this.inscripciones.iterator();
+		int idAux = 0;
 		
-		
-		
-		
+		while(itr.hasNext()) {
+			idAux = ((Inscripcion) itr.next()).getIdActividad();
+			if(idAux == this.idActividad) {
+				idAux = this.idActividad;
+				JOptionPane.showMessageDialog(null,"Ya tienes una inscripción para esa actividad.","Inscripcion", JOptionPane.INFORMATION_MESSAGE);
+			}
+		}
 		if(this.plazaslibres == 0) {
-			JOptionPane.showMessageDialog(null,"El aforo para esta actividad esá compeleto.","Inscripcion", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null,"El aforo para esta actividad esá completo.","Inscripcion", JOptionPane.INFORMATION_MESSAGE);
 		}
 		/*if(this.inscripcion.getIdActividad() == this.idActividad) {
 			JOptionPane.showMessageDialog(null,"Ya tienes una inscripción para esa actividad.","Inscripcion", JOptionPane.INFORMATION_MESSAGE);
 		}*/
-		else {
+		if(idAux != this.idActividad) {
 			model.insertInscripcionActividadSocio(this.idActividad, this.idSocio);
 			this.resguardo(actividad);
 			JOptionPane.showMessageDialog(null,"Inscripcion realizada.","Inscripcion", JOptionPane.INFORMATION_MESSAGE);
