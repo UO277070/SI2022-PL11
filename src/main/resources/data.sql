@@ -98,11 +98,11 @@ insert into Pago (idPago, Importe, Fecha, Estado, idSocio, idNosocio, idReserva)
 
 insert into PeriodoInscripcion (idPeriodoinscrip ,Nombre,Fechainscripini,Fechainscripfin,Fechainscripfinnosocio) values 
 
-(1,'Enero','2023-01-01','2023-02-02','2023-01-15'), 
+(1,'Enero','2023-01-01','2023-01-15','2023-02-01'), 
 
-(2,'Abril','2023-04-01','2023-05-01','2023-04-15'),
+(2,'Abril','2023-04-01','2023-04-15','2023-05-01'),
 
-(3,'Septiembre','2023-09-01','2023-10-01','2023-09-15'); 
+(3,'Septiembre','2023-09-01','2023-09-15','2023-10-01'); 
 
 
 insert into Reserva (idReserva, idSocio, idInstalacion , fecha, horaIni, horafin, estado ,reservadoPor, idActividad) values 

@@ -20,7 +20,7 @@ public class InscribirAdminM {
 		String sql = "SELECT Actividad.nombre FROM Actividad "
 				+ "INNER JOIN PeriodoInscripcion "
 				+ "ON Actividad.idPeriodoinscrip = PeriodoInscripcion.idPeriodoinscrip "
-				+ "WHERE PeriodoInscripcion.fechainscripini <= ? AND PeriodoInscripcion.fechainscripfinnosocio >= ? ";
+				+ "WHERE PeriodoInscripcion.fechainscripfin <= ? AND PeriodoInscripcion.fechainscripfinnosocio >= ? ";
 		return db.executeQueryArray(sql, fechaActual, fechaActual);
 	}
 	
