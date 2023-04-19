@@ -41,10 +41,10 @@ public class InscribirSocioM {
 		return db.executeQueryArray(sql, idActividad);
 	} 
 	
-	public List<Object[]> getInscripcionesEnActividad(int idActividad){
-		String sql = "SELECT idActividad, idSocio, idNosocio FROM Inscripcion "
-				+ "WHERE idActividad = ?";
-		return db.executeQueryArray(sql, idActividad);
+	public List<Inscripcion> getInscripcionesSocio(int idSocio){
+		String sql = "SELECT idActividad, idSocio FROM Inscripcion "
+				+ "WHERE AND idSocio = ?";
+		return db.executeQueryPojo(Inscripcion.class,sql, idSocio);
 	}
 	
 	public void insertInscripcionActividadSocio(int idActividad, int idSocio) {

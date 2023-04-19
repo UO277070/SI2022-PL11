@@ -21,6 +21,7 @@ public class InscribirSocioC {
 	private loginController controller;
 	private SocioEntity socioLog;
 	private Actividades actividad;
+	private List<Inscripcion> inscripciones;
 	private int idSocio;
 	private int idActividad;
 	private int plazaslibres;
@@ -85,18 +86,34 @@ public class InscribirSocioC {
 		this.plazaslibres =  Math.max(0, this.actividad.getPlazas() - (Integer) model.getNumInscripcionesEnActividad(this.idActividad).get(0)[0]);
 	}
 	
+	public void getInscripcionesSocio() {
+		this.idSocio = this.socioLog.getIdSocio();
+		this.inscripciones = model.getInscripcionesSocio(this.idSocio);
+		
+	}
 	
 	public void inscribir() {
 		this.actividad = model.getActividad(view.getComboBoxActividad().getSelectedItem().toString()).get(0);
 		this.idActividad = actividad.getIdActividad();
 		this.idSocio = this.socioLog.getIdSocio();
 		this.getInscripciones();
+		this.getInscripcionesSocio();
 		
-		if(this.plazaslibres != 0) {
-			model.insertInscripcionActividadSocio(this.idActividad, this.idSocio);
+		
+		
+		
+		if(this.plazaslibres == 0) {
+			JOptionPane.showMessageDialog(null,"El aforo para esta actividad esá compeleto.","Inscripcion", JOptionPane.INFORMATION_MESSAGE);
 		}
-		this.resguardo(actividad);
-		JOptionPane.showMessageDialog(null,"Inscripcion realizada","Inscripcion", JOptionPane.INFORMATION_MESSAGE);
+		/*if(this.inscripcion.getIdActividad() == this.idActividad) {
+			JOptionPane.showMessageDialog(null,"Ya tienes una inscripción para esa actividad.","Inscripcion", JOptionPane.INFORMATION_MESSAGE);
+		}*/
+		else {
+			model.insertInscripcionActividadSocio(this.idActividad, this.idSocio);
+			this.resguardo(actividad);
+			JOptionPane.showMessageDialog(null,"Inscripcion realizada.","Inscripcion", JOptionPane.INFORMATION_MESSAGE);
+		}
+		
 	}
 	
 	public void resguardo(Actividades detalles) {
