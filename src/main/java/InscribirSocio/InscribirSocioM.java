@@ -1,6 +1,8 @@
 package InscribirSocio;
 
 import java.util.List;
+
+import InscribirAdmin.ListaEsperaSocio;
 import loginSocio.*;
 import giis.demo.util.Database;
 
@@ -52,4 +54,13 @@ public class InscribirSocioM {
 		db.executeUpdate(sql, idActividad, idSocio);
 	}
 	
+	public void insertListaEsperaSocio(int idActividad, int idSocio, int posicion) {
+		String sql = "INSERT INTO Listaesperasocio VALUES (?, ?, ?)";
+		db.executeUpdate(sql, idActividad, idSocio, posicion);
+	}
+	
+	public List<ListaEsperaSocio> getListaEsperaSocioActividad(int idActividad){
+		String sql = "SELECT idActividad, idSocio, posicion FROM Listaesperasocio WHERE idActividad = ?";
+		return db.executeQueryPojo(ListaEsperaSocio.class, sql, idActividad);
+	}
 }

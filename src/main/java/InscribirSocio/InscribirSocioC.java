@@ -9,6 +9,7 @@ import java.util.List;
 import javax.swing.ComboBoxModel;
 import javax.swing.JOptionPane;
 
+import InscribirAdmin.ListaEsperaSocio;
 import InscribirAdmin.NoSocio;
 import giis.demo.util.SwingUtil;
 import giis.demo.util.Util;
@@ -110,7 +111,19 @@ public class InscribirSocioC {
 			}
 		}
 		if(this.plazaslibres == 0) {
-			JOptionPane.showMessageDialog(null,"El aforo para esta actividad esá completo.","Inscripcion", JOptionPane.INFORMATION_MESSAGE);
+			int max, min, pos;
+			max = 1;
+			min = Integer.MAX_VALUE;
+			List<ListaEsperaSocio> listaEspera = model.getListaEsperaSocioActividad(this.idActividad);
+			Iterator<ListaEsperaSocio> itrlista = listaEspera.iterator();
+			if(!itrlista.hasNext()) {
+				pos = itrlista.next().getPosicion();
+				if(pos >= max) max = pos + 1;
+				if(pos <= min) min = pos;
+			}
+			model.insertListaEsperaSocio(this.idActividad, this.idSocio, max);
+			JOptionPane.showMessageDialog(null,"El aforo para esta actividad esá completo.\nSe ha inscrito en lista de espera de socios para la actividad " + idActividad + " con éxito.\n" +
+					"Posición en lista de espera de socios: " + (max - min + 1),"Inscripcion", JOptionPane.INFORMATION_MESSAGE);
 		}
 		/*if(this.inscripcion.getIdActividad() == this.idActividad) {
 			JOptionPane.showMessageDialog(null,"Ya tienes una inscripción para esa actividad.","Inscripcion", JOptionPane.INFORMATION_MESSAGE);
