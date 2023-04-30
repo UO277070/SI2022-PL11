@@ -71,4 +71,24 @@ public class InscribirAdminM {
 		db.executeUpdate(sql, dni, nombre, apellido1, apellido2, correo);
 	}
 	
+	public void insertListaEsperaSocio(int idActividad, int idSocio, int posicion) {
+		String sql = "INSERT INTO Listaesperasocio VALUES (?, ?, ?)";
+		db.executeUpdate(sql, idActividad, idSocio, posicion);
+	}
+	
+	public void insertListaEsperaNoSocio(int idActividad, int idNoSocio, int posicion) {
+		String sql = "INSERT INTO Listaesperanosocio VALUES (?, ?, ?)";
+		db.executeUpdate(sql, idActividad, idNoSocio, posicion);
+	}
+	
+	public List<ListaEsperaSocio> getListaEsperaSocioActividad(int idActividad){
+		String sql = "SELECT idActividad, idSocio, posicion FROM Listaesperasocio WHERE idActividad = ?";
+		return db.executeQueryPojo(ListaEsperaSocio.class, sql, idActividad);
+	}
+	
+	public List<ListaEsperaSocio> getListaEsperaNoSocioActividad(int idActividad){
+		String sql = "SELECT idActividad, idNosocio, posicion FROM Listaesperanosocio WHERE idActividad = ?";
+		return db.executeQueryPojo(ListaEsperaSocio.class, sql, idActividad);
+	}
+	
 }

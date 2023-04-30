@@ -1,6 +1,7 @@
 package InscribirAdmin;
 
 import java.util.Date;
+import java.util.Iterator;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
@@ -98,6 +99,7 @@ public class InscribirAdminC {
 		
 		if((this.plazaslibres != 0) && (this.esSocio)) {
 			model.insertInscripcionActividadSocio(this.idActividad, this.idSocio);
+			JOptionPane.showMessageDialog(null,"Inscripcion realizada","Inscripcion", JOptionPane.INFORMATION_MESSAGE);
 		}
 		
 		if((this.plazaslibres != 0) && (!this.esSocio)) {
@@ -105,9 +107,44 @@ public class InscribirAdminC {
 			List<NoSocio> noSocio = model.getNoSocio(view.getTextFieldDNI().getText());
 			this.idNoSocio = noSocio.get(0).getIdNoSocio();
 			model.insertInscripcionActividadNoSocio(idActividad, this.idNoSocio);
+			JOptionPane.showMessageDialog(null,"Inscripcion realizada","Inscripcion", JOptionPane.INFORMATION_MESSAGE);
 		}
 		
-		JOptionPane.showMessageDialog(null,"Inscripcion realizada","Inscripcion", JOptionPane.INFORMATION_MESSAGE);
+		//NO hay plazas libres
+		else {
+			if(this.esSocio) {
+				int max, min, pos;
+				max = 1;
+				min = Integer.MAX_VALUE;
+				List<ListaEsperaSocio> listaEspera = model.getListaEsperaSocioActividad(this.idActividad);
+				Iterator<ListaEsperaSocio> itr = listaEspera.iterator();
+				if(!itr.hasNext()) {
+					pos = itr.next().getPosicion();
+					if(pos >= max) max = pos + 1;
+					if(pos <= min) min = pos;
+				}
+				model.insertListaEsperaSocio(this.idActividad, this.idSocio, max);
+				JOptionPane.showMessageDialog(null,"Se ha inscrito al socio " + idSocio + " en lista de espera de socios para la actividad " + idActividad + " con éxito.\n" +
+						"Posición en lista de espera de socios: " + (max - min + 1));
+			}
+			if(!this.esSocio) {
+				int max, min, pos;
+				max = 1;
+				min = Integer.MAX_VALUE;
+				List<ListaEsperaSocio> listaEspera = model.getListaEsperaNoSocioActividad(this.idActividad);
+				Iterator<ListaEsperaSocio> itr = listaEspera.iterator();
+				if(!itr.hasNext()) min = 1;
+				while(itr.hasNext()) {
+					pos = itr.next().getPosicion();
+					if(pos >= max) max = pos + 1;
+					if(pos <= min) min = pos;
+				}
+				model.insertListaEsperaSocio(this.idActividad, this.idNoSocio, max);
+				JOptionPane.showMessageDialog(null,"Se ha inscrito al no-socio " + idNoSocio + " en lista de espera de no-socios para la actividad " + idActividad + " con éxito.\n" +
+						"Posición en lista de espera de no-socios: " + (max - min + 1));
+			}
+		}
+		
 	}
 	
 }
