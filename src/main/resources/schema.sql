@@ -146,7 +146,7 @@ idActividad INTEGER,
 
 IdSocio INTEGER, 
 
-posicion NUMERIC 
+posicion INTEGER 
 
 ); 
 
