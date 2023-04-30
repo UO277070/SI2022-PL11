@@ -41,10 +41,10 @@ insert into Socio (idSocio, nombre, apellido1, apellido2, correo, cuota, moroso)
 
 insert into Inscripcion (idActividad, idSocio, idNosocio) values  
 
-(1 ,5 ,1),
-(2,1,1),
-(3,4,1),
-(5,4,1); 
+(1 ,5 ,NULL),
+(2,1,NULL),
+(3,NULL,1),
+(5,NULL,3); 
 
   
 
@@ -98,11 +98,11 @@ insert into Pago (idPago, Importe, Fecha, Estado, idSocio, idNosocio, idReserva)
 
 insert into PeriodoInscripcion (idPeriodoinscrip ,Nombre,Fechainscripini,Fechainscripfin,Fechainscripfinnosocio) values 
 
-(1,'Enero','2023-01-01','2023-02-02','2023-01-15'), 
+(1,'Enero','2023-01-01','2023-01-15','2023-02-01'), 
 
-(2,'Abril','2023-04-01','2023-05-01','2023-04-15'),
+(2,'Junio','2023-04-01','2023-05-15','2023-06-01'),
 
-(3,'Septiembre','2023-09-01','2023-10-01','2023-09-15'); 
+(3,'Septiembre','2023-09-01','2023-09-15','2023-10-01'); 
 
 
 insert into Reserva (idReserva, idSocio, idInstalacion , fecha, horaIni, horafin, estado ,reservadoPor, idActividad) values 

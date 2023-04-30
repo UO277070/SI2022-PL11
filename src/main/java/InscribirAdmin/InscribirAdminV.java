@@ -193,7 +193,7 @@ public class InscribirAdminV {
 	}
 	
 	public JTextField getTextFieldSegundoApellido() {
-		return textFieldPrimerApellido;
+		return textFieldSegundoApellido;
 	}
 
 	public void setTextFieldSegundoApellido(JTextField textFielSegundoApellido) {

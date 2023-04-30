@@ -3,6 +3,7 @@ package InscribirSocio;
 import java.io.IOException;
 import java.util.Date;
 import java.util.Formatter;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.swing.ComboBoxModel;
@@ -21,6 +22,7 @@ public class InscribirSocioC {
 	private loginController controller;
 	private SocioEntity socioLog;
 	private Actividades actividad;
+	private List<Inscripcion> inscripciones;
 	private int idSocio;
 	private int idActividad;
 	private int plazaslibres;
@@ -76,7 +78,7 @@ public class InscribirSocioC {
 		view.getLabelHoraIni().setText(actividad.getHoraini());
 		view.getLabelHoraFin().setText(actividad.getHorafin());
 		view.getLabelDias().setText(actividad.getDiasem());
-		view.getLabelAforo().setText(""+this.plazaslibres+"/"+""+actividad.getPlazas());
+		view.getLabelAforo().setText(""+model.getNumInscripcionesEnActividad(this.idActividad).get(0)[0]+"/"+""+actividad.getPlazas());
 	}
 	
 	public void getInscripciones() {
@@ -85,18 +87,40 @@ public class InscribirSocioC {
 		this.plazaslibres =  Math.max(0, this.actividad.getPlazas() - (Integer) model.getNumInscripcionesEnActividad(this.idActividad).get(0)[0]);
 	}
 	
+	public void getInscripcionesSocio() {
+		this.idSocio = this.socioLog.getIdSocio();
+		this.inscripciones = model.getInscripcionesSocio(this.idSocio);
+		
+	}
 	
 	public void inscribir() {
 		this.actividad = model.getActividad(view.getComboBoxActividad().getSelectedItem().toString()).get(0);
 		this.idActividad = actividad.getIdActividad();
 		this.idSocio = this.socioLog.getIdSocio();
+		this.getInscripciones();
+		this.getInscripcionesSocio();
+		Iterator itr = this.inscripciones.iterator();
+		int idAux = 0;
 		
-		
-		if(this.plazaslibres != 0) {
-			model.insertInscripcionActividadSocio(this.idActividad, this.idSocio);
+		while(itr.hasNext()) {
+			idAux = ((Inscripcion) itr.next()).getIdActividad();
+			if(idAux == this.idActividad) {
+				idAux = this.idActividad;
+				JOptionPane.showMessageDialog(null,"Ya tienes una inscripción para esa actividad.","Inscripcion", JOptionPane.INFORMATION_MESSAGE);
+			}
 		}
-		this.resguardo(actividad);
-		JOptionPane.showMessageDialog(null,"Inscripcion realizada","Inscripcion", JOptionPane.INFORMATION_MESSAGE);
+		if(this.plazaslibres == 0) {
+			JOptionPane.showMessageDialog(null,"El aforo para esta actividad esá completo.","Inscripcion", JOptionPane.INFORMATION_MESSAGE);
+		}
+		/*if(this.inscripcion.getIdActividad() == this.idActividad) {
+			JOptionPane.showMessageDialog(null,"Ya tienes una inscripción para esa actividad.","Inscripcion", JOptionPane.INFORMATION_MESSAGE);
+		}*/
+		if(idAux != this.idActividad) {
+			model.insertInscripcionActividadSocio(this.idActividad, this.idSocio);
+			this.resguardo(actividad);
+			JOptionPane.showMessageDialog(null,"Inscripcion realizada.","Inscripcion", JOptionPane.INFORMATION_MESSAGE);
+		}
+		
 	}
 	
 	public void resguardo(Actividades detalles) {

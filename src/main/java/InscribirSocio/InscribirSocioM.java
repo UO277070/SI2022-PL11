@@ -17,7 +17,7 @@ public class InscribirSocioM {
 	
 	
 	public List<Actividades> getActividad(String nombre){
-		String sql = "SELECT Actividad.nombre, Actividad.tipo, Actividad.precio, Actividad.fechaini, "
+		String sql = "SELECT Actividad.idActividad, Actividad.nombre, Actividad.tipo, Actividad.precio, Actividad.fechaini, "
 				+ "Actividad.fechafin, Actividad.plazas, Actividadhorario.horaini, Actividadhorario.horafin, Actividadhorario.diasem "
 				+ "FROM Actividad INNER JOIN Actividadhorario "
 				+ "ON Actividad.idActividad = Actividadhorario.idActividad "
@@ -41,10 +41,10 @@ public class InscribirSocioM {
 		return db.executeQueryArray(sql, idActividad);
 	} 
 	
-	public List<Object[]> getInscripcionesEnActividad(int idActividad){
-		String sql = "SELECT idActividad, idSocio, idNosocio FROM Inscripcion "
-				+ "WHERE idActividad = ?";
-		return db.executeQueryArray(sql, idActividad);
+	public List<Inscripcion> getInscripcionesSocio(int idSocio){
+		String sql = "SELECT idActividad, idSocio FROM Inscripcion "
+				+ "WHERE idSocio = ?";
+		return db.executeQueryPojo(Inscripcion.class,sql, idSocio);
 	}
 	
 	public void insertInscripcionActividadSocio(int idActividad, int idSocio) {
