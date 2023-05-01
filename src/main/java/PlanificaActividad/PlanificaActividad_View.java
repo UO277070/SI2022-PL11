@@ -535,8 +535,8 @@ public class PlanificaActividad_View {
 		this.ButtonCrear = b;
 	}
 
-	public int getSpinnerAforo() {
-		return (int) spinnerAforo.getValue();
+	public JSpinner getSpinnerAforo() {
+		return  spinnerAforo;
 	}
 
 	public void setSpinnerAforo(JSpinner spinnerAforo) {
