@@ -135,10 +135,15 @@ public class InscribirAdminV {
 				if(checkBoxSocio.isSelected()) {
 					comboBoxID.setEnabled(true);
 					textFieldNombre.setEnabled(false);
+					textFieldNombre.setText("");
 					textFieldPrimerApellido.setEnabled(false);
+					textFieldPrimerApellido.setText("");
 					textFieldSegundoApellido.setEnabled(false);
+					textFieldSegundoApellido.setText("");
 					textFieldDNI.setEnabled(false);
+					textFieldDNI.setText("");
 					textFieldCorreo.setEnabled(false);
+					textFieldCorreo.setText("");
 				}
 				else {
 					comboBoxID.setEnabled(false);

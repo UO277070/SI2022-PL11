@@ -35,10 +35,16 @@ public class InscribirAdminM {
 		return db.executeQueryArray(sql, idActividad);
 	} 
 	
-	public List<Object[]> getInscripcionesEnActividad(int idActividad){
-		String sql = "SELECT idActividad, idSocio, idNosocio FROM Inscripcion "
-				+ "WHERE idActividad = ?";
-		return db.executeQueryArray(sql, idActividad);
+	public List<Object[]> getInscripcionesEnActividadSocio(int idActividad, int idSocio){
+		String sql = "SELECT idActividad, idSocio FROM Inscripcion "
+				+ "WHERE idActividad = ? AND idSocio = ?";
+		return db.executeQueryArray(sql, idActividad, idSocio);
+	}
+	
+	public List<Object[]> getInscripcionesEnActividadNoSocio(int idActividad, int idNoSocio){
+		String sql = "SELECT idActividad, idNosocio FROM Inscripcion "
+				+ "WHERE idActividad = ? AND idNosocio = ?";
+		return db.executeQueryArray(sql, idActividad, idNoSocio);
 	}
 	
 	public List<Object[]> getPlazasTotalesActividad(int idActividad){
@@ -89,6 +95,16 @@ public class InscribirAdminM {
 	public List<ListaEsperaSocio> getListaEsperaNoSocioActividad(int idActividad){
 		String sql = "SELECT idActividad, idNosocio, posicion FROM Listaesperanosocio WHERE idActividad = ?";
 		return db.executeQueryPojo(ListaEsperaSocio.class, sql, idActividad);
+	}
+	
+	public void deleteListaEsperaSocio(int idActividad, int idSocio) {
+		String sql = "DELETE FROM Listaesperasocio WHERE idActividad = ? AND idSocio = ?";
+		db.executeUpdate(sql, idActividad, idSocio);
+	}
+	
+	public void deleteListaEsperaNoSocio(int idActividad, int idNosocio) {
+		String sql = "DELETE FROM Listaesperasocio WHERE idActividad = ? AND idNosocio = ?";
+		db.executeUpdate(sql, idActividad, idNosocio);
 	}
 	
 }

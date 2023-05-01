@@ -102,21 +102,40 @@ public class InscribirSocioC {
 		this.getInscripcionesSocio();
 		Iterator itr = this.inscripciones.iterator();
 		int idAux = 0;
+		boolean yaInscrito = false;
+		List<ListaEsperaSocio> listaEspera = model.getListaEsperaSocioActividad(this.idActividad);
+		Iterator<ListaEsperaSocio> itrlista = listaEspera.iterator();
 		
+		//Comprobar si el socio ya está en lista de espera
+		while (itrlista.hasNext()) {
+	        ListaEsperaSocio espera = itrlista.next();
+	        if (espera.getIdSocio() == this.idSocio) {
+	            JOptionPane.showMessageDialog(null,"Ya estás en la lista de espera para esta actividad.","Inscripcion", JOptionPane.INFORMATION_MESSAGE);
+	            return;
+	        }
+	    }
+		
+		//Comprobar si el socio ya está inscrito en la actividad
 		while(itr.hasNext()) {
 			idAux = ((Inscripcion) itr.next()).getIdActividad();
 			if(idAux == this.idActividad) {
-				idAux = this.idActividad;
-				JOptionPane.showMessageDialog(null,"Ya tienes una inscripción para esa actividad.","Inscripcion", JOptionPane.INFORMATION_MESSAGE);
+				yaInscrito = true;
+				break;
 			}
 		}
+		//Si ya está inscrito se informa y no se inscribe
+		if(yaInscrito) {
+			JOptionPane.showMessageDialog(null,"Ya tienes una inscripción para esa actividad.","Inscripcion", JOptionPane.INFORMATION_MESSAGE);
+			return;
+		}
+		
+		//No hay plazas libres y se inserta a la lista de espera
 		if(this.plazaslibres == 0) {
 			int max, min, pos;
 			max = 1;
 			min = Integer.MAX_VALUE;
-			List<ListaEsperaSocio> listaEspera = model.getListaEsperaSocioActividad(this.idActividad);
-			Iterator<ListaEsperaSocio> itrlista = listaEspera.iterator();
-			if(!itrlista.hasNext()) {
+			if(!itrlista.hasNext()) min = 1;
+			while(itrlista.hasNext()) {
 				pos = itrlista.next().getPosicion();
 				if(pos >= max) max = pos + 1;
 				if(pos <= min) min = pos;
@@ -125,15 +144,43 @@ public class InscribirSocioC {
 			JOptionPane.showMessageDialog(null,"El aforo para esta actividad esá completo.\nSe ha inscrito en lista de espera de socios para la actividad " + idActividad + " con éxito.\n" +
 					"Posición en lista de espera de socios: " + (max - min + 1),"Inscripcion", JOptionPane.INFORMATION_MESSAGE);
 		}
-		/*if(this.inscripcion.getIdActividad() == this.idActividad) {
-			JOptionPane.showMessageDialog(null,"Ya tienes una inscripción para esa actividad.","Inscripcion", JOptionPane.INFORMATION_MESSAGE);
-		}*/
-		if(idAux != this.idActividad) {
-			model.insertInscripcionActividadSocio(this.idActividad, this.idSocio);
-			this.resguardo(actividad);
-			JOptionPane.showMessageDialog(null,"Inscripcion realizada.","Inscripcion", JOptionPane.INFORMATION_MESSAGE);
-		}
 		
+		//Hay plazas libres y no está inscrito
+		else if(!yaInscrito && this.plazaslibres > 0) {
+			int max = 1, min, pos;
+			min = Integer.MAX_VALUE;
+			
+			//Hay socios en lista de espera 
+			if(!listaEspera.isEmpty()) {
+				//Obtener al primer socio en la lista de espera
+				ListaEsperaSocio siguiente = listaEspera.get(0);
+				int idSiguiente = siguiente.getIdSocio();
+				int posicion = siguiente.getPosicion();
+				//Eliminar al socio de la lista de espera
+				model.deleteListaEsperaSocio(this.idActividad, idSiguiente);
+				//Inscribir al socio en espera en la actividad
+				model.insertInscripcionActividadSocio(this.idActividad, idSiguiente);
+				JOptionPane.showMessageDialog(null,"Se ha inscrito automáticamente al siguiente socio en lista de espera para la actividad " + idActividad + ".\n" +
+		                "Posición en lista de espera de socios: " + posicion,"Inscripcion", JOptionPane.INFORMATION_MESSAGE);
+				//Añadir al socio actual a la lista de espera
+				if(!itrlista.hasNext()) min = 1;
+				while(itrlista.hasNext()) {
+					pos = itrlista.next().getPosicion();
+					if(pos >= max) max = pos + 1;
+					if(pos <= min) min = pos;
+				}
+				model.insertListaEsperaSocio(this.idActividad, this.idSocio, max);
+				JOptionPane.showMessageDialog(null,"El aforo para esta actividad esá completo.\nSe ha inscrito en lista de espera de socios para la actividad " + idActividad + " con éxito.\n" +
+						"Posición en lista de espera de socios: " + (max - min + 1),"Inscripcion", JOptionPane.INFORMATION_MESSAGE);
+				
+			}
+			//No hay nadie en lista de espera
+			else {
+				model.insertInscripcionActividadSocio(this.idActividad, this.idSocio);
+				this.resguardo(actividad);
+				JOptionPane.showMessageDialog(null,"Inscripcion realizada.","Inscripcion", JOptionPane.INFORMATION_MESSAGE);
+			}	
+		}
 	}
 	
 	public void resguardo(Actividades detalles) {

@@ -13,7 +13,7 @@ insert into Actividad(idActividad,idPeriodoinscrip,idInstalacion,Nombre,Tipo,Pla
 
 (4, 3, 1, 'Yoga' , 'tipo1', 200, 50, 80, '2023-01-17', '2023-03-17', 'Estado1'), 
 
-(5, 2, 1, 'Pilates' , 'tipo1', 200, 20, 30, '2023-04-01', '2023-08-17', 'Iniciada'); 
+(5, 2, 1, 'Pilates' , 'tipo1', 1, 20, 30, '2023-04-01', '2023-08-17', 'Iniciada'); 
 
   
 

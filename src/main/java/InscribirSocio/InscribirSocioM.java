@@ -63,4 +63,9 @@ public class InscribirSocioM {
 		String sql = "SELECT idActividad, idSocio, posicion FROM Listaesperasocio WHERE idActividad = ?";
 		return db.executeQueryPojo(ListaEsperaSocio.class, sql, idActividad);
 	}
+	
+	public void deleteListaEsperaSocio(int idActividad, int idSocio) {
+		String sql = "DELETE FROM Listaesperasocio WHERE idActividad = ? AND idSocio = ?";
+		db.executeUpdate(sql, idActividad, idSocio);
+	}
 }
