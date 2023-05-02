@@ -6,6 +6,17 @@ public class Dia {
 	private int horaini;
 	private int horafin;
 	
+	
+	public Dia() {
+		
+	}
+	
+	public Dia(String diasem, int horaini, int horafin) {
+		this.diasem = diasem;
+		this.horaini = horaini;
+		this.horafin = horafin;
+	}
+	
 	public int getIdActividad() {
 		return idActividad;
 	}

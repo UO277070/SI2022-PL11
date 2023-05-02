@@ -10,8 +10,8 @@ public class PlanificaActividad_Model {
 	
 	private Database db = new Database();
 	
-	public List<Object []> getListaInstalaciones(){
-		String sql = "SELECT idInstalacion, nombre from instalacion";
+	public List<Object[]> getListaInstalaciones(){
+		String sql = "SELECT nombre FROM instalacion";
 		return db.executeQueryArray(sql);
 	}
 	
@@ -29,14 +29,20 @@ public class PlanificaActividad_Model {
 		return db.executeQueryArray(sql, instalacion);
 	}
 	
+	public List<Object[]> getIdActividad(String nombre) {
+		String sql = "SELECT Actividad.idActividad FROM Actividad "
+				+ "WHERE Actividad.nombre = ?";
+		return db.executeQueryArray(sql, nombre);
+	}
+	
 	public void insertaActividad(int idPeriodo,int idInstalacion, String nombre, String tipo, int plazas, int precio, int precionosocio, String fechaini, String fechafin) {
-		String sql = "Insert into actividad(idPeriodoinscripcion, idInstalacion, nombre,tipo,plazas,precio,precionosocio,fechaini,fechafin,estado) values (?,?,?,?,?,?,?,?,?,"+"En espera"+")";
+		String sql = "INSERT INTO actividad(idPeriodoinscrip, idInstalacion, nombre, tipo, plazas, precio, precionosocio, fechaini, fechafin, estado) VALUES (?,?,?,?,?,?,?,?,?,'En espera')";
 		db.executeUpdate(sql, idPeriodo, idInstalacion, nombre, tipo, plazas, precio, precionosocio, fechaini, fechafin);
 	}
 	
-	public void insertaHorario(List<Dia> a, int idActividad) {
-		String sql = "Insert into actividad_horario values(?,?,?,?) ";
-		for(Dia i:a){
+	public void insertaHorario(List<Dia> d, int idActividad) {
+		String sql = "INSERT INTO Actividadhorario VALUES(?,?,?,?) ";
+		for(Dia i:d){
 			db.executeUpdate(sql,idActividad,i.getDiasem(),i.getHoraini(),i.getHorafin());
 		}
 	}
