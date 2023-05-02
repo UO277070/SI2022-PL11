@@ -89,7 +89,7 @@ public class InscribirAdminC {
 			actividades = model.getListaActividadesEnPeriodoSocio(Util.dateToIsoString(fechaActual));
 			comboActividades = SwingUtil.getComboModelFromList(actividades);
 		}
-		else {
+		else{
 			actividades = model.getListaActividadesEnPeriodoNoSocio(Util.dateToIsoString(fechaActual));
 			comboActividades = SwingUtil.getComboModelFromList(actividades);
 		}
@@ -192,7 +192,7 @@ public class InscribirAdminC {
 	        while(itrSocio.hasNext()) {
 	        	ListaEsperaSocio espera = itrSocio.next();
 		        if (espera.getIdSocio() == this.idSocio) {
-		            JOptionPane.showMessageDialog(null,"Ya estás en la lista de espera para esta actividad.","Inscripcion", JOptionPane.INFORMATION_MESSAGE);
+		            JOptionPane.showMessageDialog(null,"Ya está en la lista de espera para esta actividad.","Inscripcion", JOptionPane.INFORMATION_MESSAGE);
 		            return;
 		        }
 	        }
@@ -237,28 +237,23 @@ public class InscribirAdminC {
 
 	        // Si no hay plazas libres, añadir al socio a la lista de espera
 	        if(this.plazaslibres == 0) {
-	        	int max = 1, min = Integer.MAX_VALUE, pos;
-	 	        if (!itrSocio.hasNext())
-	 	            min = 1;
+	        	int pos = listaEsperaSocio.size() + 1;
 	 	        while (itrSocio.hasNext()) {
 	 	            ListaEsperaSocio espera = itrSocio.next();
-	 	            pos = espera.getPosicion();
 	 	            if (espera.getIdSocio() == this.idSocio) {
 	 	                JOptionPane.showMessageDialog(null,
 	 	                        "Ya está en la lista de espera para esta actividad.", "Inscripción",
 	 	                        JOptionPane.INFORMATION_MESSAGE);
 	 	                return;
 	 	            }
-	 	            if (pos >= max)
-	 	                max = pos + 1;
-	 	            if (pos <= min)
-	 	                min = pos;
 
 	 	        }
-	 	        model.insertListaEsperaSocio(this.idActividad, this.idSocio, max);
+	 	        model.insertListaEsperaSocio(this.idActividad, this.idSocio, pos);
 	 	        JOptionPane.showMessageDialog(null, "Se ha inscrito al socio " + idSocio
 	 	                + " en lista de espera de socios para la actividad " + idActividad + " con éxito.\n"
-	 	                + "Posición en lista de espera de socios: " + (max - min + 1));
+	 	                + "Posición en lista de espera de socios: " + pos);
+	 	       this.plazaslibres = Math.max(0, (Integer) model.getPlazasTotalesActividad(this.idActividad).get(0)[0]
+	                     - (Integer) model.getNumInscripcionesEnActividad(this.idActividad).get(0)[0]); 
 	        }
 	       
 
@@ -287,16 +282,15 @@ public class InscribirAdminC {
 		            return;
 		     }
 	         
-	         // Comprobar si el socio ya está en la lista de espera de la actividad
-		        
+	         // Comprobar si el no socio ya está en la lista de espera de la actividad   
 	         while(itrNosocio.hasNext()) {
 	        	 ListaEsperaSocio espera = itrNosocio.next();
 	        	 if (espera.getIdSocio() == this.idNoSocio) {
-	        		 JOptionPane.showMessageDialog(null,"Ya estás en la lista de espera para esta actividad.","Inscripcion", JOptionPane.INFORMATION_MESSAGE);
+	        		 JOptionPane.showMessageDialog(null,"Ya está en la lista de espera para esta actividad.","Inscripcion", JOptionPane.INFORMATION_MESSAGE);
 	        		 return;
 	        	 }
 	         }
-	         
+	        
 	         // Si hay plazas libres, inscribir al socio si no hay nadie en lista de espera
 	         while (this.plazaslibres > 0) {
 	        	 if(!listaEsperaNosocio.isEmpty()) {
@@ -335,9 +329,7 @@ public class InscribirAdminC {
 
 	         // Si no hay plazas libres, añadir al socio a la lista de espera
 	         if(this.plazaslibres == 0) {
-	        	 int max = 1, min = Integer.MAX_VALUE, pos;
-	        	 if (!itrNosocio.hasNext())
-	        		 min = 1;
+	        	 int pos = listaEsperaNosocio.size() + 1;
 	        	 while (itrNosocio.hasNext()) {
 	        		 ListaEsperaSocio espera = itrNosocio.next();
 	        		 pos = espera.getPosicion();
@@ -347,16 +339,13 @@ public class InscribirAdminC {
 	        					 JOptionPane.INFORMATION_MESSAGE);
 	        			 return;
 	        		 }
-	        		 if (pos >= max)
-	        			 max = pos + 1;
-	        		 if (pos <= min)
-	        			 min = pos;
-
 	        	 }
-	        	 model.insertListaEsperaNoSocio(this.idActividad, this.idNoSocio, max);
+	        	 model.insertListaEsperaNoSocio(this.idActividad, this.idNoSocio, pos);
 	        	 JOptionPane.showMessageDialog(null, "Se ha inscrito al no-socio " + idNoSocio
 	        			 + " en lista de espera de no-socios para la actividad " + idActividad + " con éxito.\n"
-	        			 + "Posición en lista de espera de no-socios: " + (max - min + 1));
+	        			 + "Posición en lista de espera de no-socios: " + pos);
+	        	 this.plazaslibres = Math.max(0, (Integer) model.getPlazasTotalesActividad(this.idActividad).get(0)[0]
+	                     - (Integer) model.getNumInscripcionesEnActividad(this.idActividad).get(0)[0]); 
 	         }
 	    }
 	}
